@@ -194,7 +194,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/排序/" style="font-size: 10px;">排序</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a>
+                        <a href="/tags/排序/" style="font-size: 10px;">排序</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/链表/" style="font-size: 10px;">链表</a>
                     </div>
                 </section>
                 
@@ -279,7 +279,7 @@
   
     <div class="article-meta">
       <a  href="/2017/08/29/AboutList/" class="article-date">
-      <time datetime="2017-08-29T09:55:42.028Z" itemprop="datePublished">2017-08-29</time>
+      <time datetime="2017-08-29T13:31:00.000Z" itemprop="datePublished">2017-08-29</time>
 </a>
 
     </div>
@@ -289,11 +289,22 @@
       <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2017/08/29/AboutList/">关于链表</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>title: 关于链表<br>date: 2017-8-29 21:31:00<br>tags: [链表]<br>category: 算法</p>
-<h1 id="链表相关总结"><a href="#链表相关总结" class="headerlink" title="链表相关总结"></a>链表相关总结</h1><h2 id="1-单链表反转问题"><a href="#1-单链表反转问题" class="headerlink" title="1.单链表反转问题"></a>1.单链表反转问题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"># python 描述</div><div class="line">def ReverseList(self, pHead):</div><div class="line">    # write code here</div><div class="line">    prev = None</div><div class="line">    while pHead:</div><div class="line">        temp = pHead.next</div><div class="line">        pHead.next = prev</div><div class="line">        prev = pHead</div><div class="line">        pHead = temp</div><div class="line">        </div><div class="line">    return prev</div></pre></td></tr></table></figure>
+        <h1 id="链表相关总结"><a href="#链表相关总结" class="headerlink" title="链表相关总结"></a>链表相关总结</h1><h2 id="1-单链表反转问题"><a href="#1-单链表反转问题" class="headerlink" title="1.单链表反转问题"></a>1.单链表反转问题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"># python 描述</div><div class="line">def ReverseList(self, pHead):</div><div class="line">    # write code here</div><div class="line">    prev = None</div><div class="line">    while pHead:</div><div class="line">        temp = pHead.next</div><div class="line">        pHead.next = prev</div><div class="line">        prev = pHead</div><div class="line">        pHead = temp</div><div class="line">        </div><div class="line">    return prev</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">//java 描述</div><div class="line">public class Solution &#123;</div><div class="line">    public ListNode ReverseList(ListNode head) &#123;</div><div class="line">        ListNode prev = null;</div><div class="line">        ListNode temp = null;</div><div class="line">        while(head != null)&#123;</div><div class="line">            temp = head.next;</div><div class="line">            head.next = prev;</div><div class="line">            prev = head;</div><div class="line">            head = temp;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        return prev;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>单链表反转问题，一个循环的流程就是下图所描述的那样。从代码中也可以看到写法也是有规律的，四行赋值表达式在写法上有一个循环，记住这个规律，可以避免写错误，也比较好记。<strong> 注意：最后返回的是 <code>prev</code></strong></p>
 <center><img src="http://ovfwdusm3.bkt.clouddn.com/01.png?e=1504003534&amp;token=tzQI0Tym_3LEGdh6XNBAVUeb1A5licw8eA8M4gIt:E-SfdPks5eoztNPXGdXwuZWCPG4" alt="图1、链表反转"></center><br><center><img src="http://ovfwdusm3.bkt.clouddn.com/02.png?e=1504003534&amp;token=tzQI0Tym_3LEGdh6XNBAVUeb1A5licw8eA8M4gIt:Di1yUmAne1E4SrptiuHijN1aTfU" alt="图2、代码规律"></center>
@@ -303,8 +314,16 @@
     <div class="article-info article-info-index">
       
       
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/算法/">算法</a>
+    </div>
+
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/链表/">链表</a></li></ul>
+    </div>
+
       
       <div class="clearfix"></div>
     </div>
