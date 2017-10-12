@@ -78,11 +78,350 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2017-09-06T08:31:14.000Z"><a href="/2017/09/06/2017-9-6/">2017-09-06</a></time>
+        <time datetime="2017-09-28T07:38:40.000Z"><a href="/2017/09/28/Java/Java深拷贝/">2017-09-28</a></time>
       
       
   
-    <h1 class="title"><a href="/2017/09/06/2017-9-6/">2017-9-6</a></h1>
+    <h1 class="title"><a href="/2017/09/28/Java/Java深拷贝/">Java深拷贝</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>Java中浅拷贝和深拷贝的区别：浅拷贝对类对象一无所知，如果对象中包含的所有数据类型都是基本类型或基本类型，拷贝没什么问题。但是对象中包含类对象，拷贝的结果使两个域引用同一个对象。</p>
+<p>实现深拷贝的方法：</p>
+<ol>
+<li>实现Cloneable接口</li>
+<li>使用public访问修饰符重新定义CLone().</li>
+</ol>
+<p><em>代码来自Java核心编程第一卷第8版P213</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">import java.util.Date;</div><div class="line">import java.util.GregorianCalendar;</div><div class="line"></div><div class="line">public class CloneTest &#123;</div><div class="line">    public static void main(String[] args)&#123;</div><div class="line">        try &#123;</div><div class="line">            Employee original = new Employee(&quot;John Q. Public&quot;, 5000);</div><div class="line">            original.setHireDay(2000, 1, 1);</div><div class="line">            Employee copy = original.clone();</div><div class="line">            copy.raiseSalary(10);</div><div class="line">            copy.setHireDay(2002, 12, 31);</div><div class="line">            System.out.println(&quot;original=&quot; + original);</div><div class="line">            System.out.println(&quot;copy=&quot; + copy);</div><div class="line">        &#125;</div><div class="line">        catch (CloneNotSupportedException e)&#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">class Employee implements Cloneable&#123;</div><div class="line">    public Employee(String n, double s)&#123;</div><div class="line">        name = n;</div><div class="line">        salary = s;</div><div class="line">        hireDay = new Date();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public Employee clone() throws CloneNotSupportedException&#123;</div><div class="line">        //call Object.clone()</div><div class="line">        Employee cloned = (Employee) super.clone();</div><div class="line"></div><div class="line">        //clone mutable fields</div><div class="line">        cloned.hireDay = (Date) hireDay.clone();</div><div class="line"></div><div class="line">        return cloned;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setHireDay(int year, int month, int day) &#123;</div><div class="line">        Date newHireDay = new GregorianCalendar(year, month - 1, day).getTime();</div><div class="line"></div><div class="line">        //Example of instance field multime</div><div class="line">        hireDay.setTime(newHireDay.getTime());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void raiseSalary(double byPercent)&#123;</div><div class="line">        double raise = salary + byPercent / 100;</div><div class="line">        salary += raise;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public String toString()&#123;</div><div class="line">        return &quot;Employee[name=&quot; + name + &quot;, salary=&quot; + salary + &quot;,hireday=&quot; + hireDay + &quot;]&quot;;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private string name;</div><div class="line">    private double salary;</div><div class="line">    private date hireday;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/Java/">Java</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/Java/">Java</a>, <a href="/tags/深拷贝/">深拷贝</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-09-28T06:49:37.000Z"><a href="/2017/09/28/算法/LeetCode_334/">2017-09-28</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/09/28/算法/LeetCode_334/">LeetCode_334 Reverse String</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>题目描述:</p>
+<p>Write a function that takes a string as input and returns the string reversed.</p>
+<p>Example:<br>Given s = “hello”, return “olleh”.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">//Java</div><div class="line">class Solution &#123;</div><div class="line">    public String reverseString(String s) &#123;</div><div class="line">        char[] str = s.toCharArray();</div><div class="line">        int i = 0;</div><div class="line">        int j = str.length - 1;</div><div class="line">        </div><div class="line">        while(i &lt; j)&#123;</div><div class="line">            char temp = str[i];</div><div class="line">            str[i] = str[j];</div><div class="line">            str[j]  = temp;</div><div class="line">            </div><div class="line">            i++; </div><div class="line">            j--;</div><div class="line">        &#125;</div><div class="line">        return new String(str);</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#Python</div><div class="line">class Solution(object):</div><div class="line">    def reverseString(self, s):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        :type s: str</div><div class="line">        :rtype: str</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        return s[::-1]</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/算法/">算法</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/字符串/">字符串</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-09-28T05:04:47.000Z"><a href="/2017/09/28/文章/上帝为什么不奖赏好人/">2017-09-28</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/09/28/文章/上帝为什么不奖赏好人/">上帝为什么不奖赏好人</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="作者：张若水"><a href="#作者：张若水" class="headerlink" title="作者：张若水"></a>作者：张若水</h3><p>1963年，一位叫玛莉·班尼的女孩写信给《芝加哥论坛报》，因为她实在搞不明白，为什么她帮妈妈把烤好的甜饼送到餐桌上，得到的只是一句“好孩子”的夸奖，而那个什么都不干，只知捣蛋的戴维（她的弟弟）得到的却是一个甜饼。她想问一问无所不知的西勒·库斯特先生，上帝真的是公平的吗？为什么她在家和学校常看到一些像她这样的好孩子被上帝遗忘了。</p>
+<p>西勒·库斯特是《芝加哥论坛报》儿童版栏目的主持人，十多年来，孩子们有关“上帝为什么不奖赏好人，为什么不惩罚坏人”之类的来信，他收到不下千封。每当拆阅这样的信件，他心就非常沉重，因为他不知该怎样回答这些提问。正当他对玛莉小姑娘的来信不知如何回答是好时，一位朋友邀请他参加婚礼。也许他一生都该感谢这次婚礼，因为就是在这次婚礼上，他找到了答案，并且这个答案让他一夜之间名扬天下。</p>
+<p>西勒·库斯特是这样回忆那场婚礼的：牧师主持完仪式后，新娘和新郎互赠戒指，也许是他们正沉浸在幸福之中，也许是两人过于激动。总之，在他们互赠戒指时，两人阴错阳差地把戒指戴在了对方的右手上。牧师看到这一情节，幽默地提醒：右手已经够完美了，我想你们最好还是用它来装扮左手吧。</p>
+<p>西勒·库斯特说，正是牧师的这一幽默，让他茅塞顿开。右手成为右手，本身就非常完美了，是没有必要把饰物再戴在右手上了。那些有道德的人，之所以常常被忽略，不就是因为他们已经非常完美了吗？后来，西勒·库斯特得出结论，上帝让右手成为右手，就是对右手最高的奖赏，同理，上帝让善人成为善人，也就是对善人的最高奖赏。</p>
+<p>西勒·库斯特发现这一真理后，兴奋不已，他以“上帝让你成为好孩子，就是对你的最高奖赏”为题，立即给玛莉·班尼回了一封信，这封信在《芝加哥论坛报》刊登之后，在不长的时间内，被美国及欧洲一千多家报刊转载，并且每年的儿童节他们都要重新刊载一次。</p>
+<p>前不久，一位中国人不知在什么地方发现了这封信，读后在网页上留言说：“中国民间有一句古话，叫‘恶有恶报，善有善报，不是不报，时候未到’。我曾经对恶人迟迟得不到报应感到迷惑不解。现在我终于明白，因为‘让恶人成为恶人,就是上帝对他们的惩罚。’”</p>
+<p>人为善，福虽未至，祸已远离；人为恶，祸虽未至，福已远离。</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/兴趣爱好/">兴趣爱好</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/张若水/">张若水</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-09-27T13:22:42.000Z"><a href="/2017/09/27/文章/一百岁感言/">2017-09-27</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/09/27/文章/一百岁感言/">一百岁感言</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="作者：杨绛"><a href="#作者：杨绛" class="headerlink" title="作者：杨绛"></a>作者：杨绛</h3><p>我今年一百岁，已经走到了人生的边缘，我无法确知自己还能走多远，寿命是不由自主的，但我很清楚我快“回家”了。</p>
+<p>我得洗净这一百年沾染的污秽回家。我没有“登泰山而小天下”之感，只在自己的小天地里过平静的生活。细想至此，我心静如水，我该平和地迎接每一天，准备回家。</p>
+<p>在这物欲横流的人世间，人生一世实在是够苦。你存心做一个与世无争的老实人吧，人家就利用你欺侮你。你稍有才德品貌，人家就嫉妒你排挤你。你大度退让，人家就侵犯你损害你。你要不与人争，就得与世无求，同时还要维持实力准备斗争。你要和别人和平共处，就先得和他们周旋，还得准备随时吃亏。</p>
+<p>少年贪玩，青年迷恋爱情，壮年汲汲于成名成家，暮年自安于自欺欺人。</p>
+<p>人寿几何，顽铁能炼成的精金，能有多少？但不同程度的锻炼，必有不同程度的成绩；不同程度的纵欲放肆，必积下不同程度的顽劣。</p>
+<p>上苍不会让所有幸福集中到某个人身上，得到爱情未必拥有金钱；拥有金钱未必得到快乐；得到快乐未必拥有健康；拥有健康未必一切都会如愿以偿。</p>
+<p>保持知足常乐的心态才是淬炼心智，净化心灵的最佳途径。一切快乐的享受都属于精神，这种快乐把忍受变为享受，是精神对于物质的胜利，这便是人生哲学。</p>
+<p>一个人经过不同程度的锻炼，就获得不同程度的修养、不同程度的效益。好比香料，捣得愈碎，磨得愈细，香得愈浓烈。我们曾如此渴望命运的波澜，到最后才发现：人生最曼妙的风景，竟是内心的淡定与从容……我们曾如此期盼外界的认可，到最后才知道：世界是自己的，与他人毫无关系！</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/兴趣爱好/">兴趣爱好</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/杨绛/">杨绛</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-09-27T09:07:26.000Z"><a href="/2017/09/27/文章/小孩子的不快活/">2017-09-27</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/09/27/文章/小孩子的不快活/">小孩子的不快活</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="作者：徐志摩"><a href="#作者：徐志摩" class="headerlink" title="作者：徐志摩"></a>作者：徐志摩</h2><p>你在小孩时快活不?我，不快活。至少我在回忆中想不起来。</p>
+<p>单看我们孩子的衣着先就可笑。浑身全给裹得紧紧，膊、胫、腿，也不让露在外面，怕着凉。怕着凉，不错；可是裤子是开裆的，孩子一往下蹲，屁股就往外露，肚子也就连带通风——这倒不怕着凉了!</p>
+<p>孩子是不能常洗澡的，洗澡又容易着凉，在我们家乡地方终年不洗澡的孩子并不出奇，我都不知道自己小时候每年洗几回澡。冬天不用说，因为屋子不生火，当然不洗。夏天有时不得不洗，但只浅浅的一只小桶，水又很烫，结果孩子们也就不爱洗。</p>
+<p>我记得孩子时候顶怕两件事：一件是剃头；一件是洗澡。“今天我总得‘捉牢’他来剃头”，“今天我总得‘捉牢’他来洗澡”，我妈总是这么说。他们可不对我讲一个一定得洗澡的理由，他们也不把洗的方法给弄适意些。这影响深极了，我到现在也总把洗澡看做一种必要的麻烦。</p>
+<p>我的受业师父查桐荪先生，因为他出世时父母怕孩子着凉没有给他洗澡，他就把这不洗澡习惯一直带到棺材里去——从生到死五十几年一次都没有洗过身体!不刷牙、不洗头、很少洗脸。</p>
+<p>我们很少想到，品格、性情，乃至思想上的不洁也多半是缘于小时候父母的姑息与颟顸。一般父母心目中的“好孩子”观念是：愈不像孩子的孩子在他们看来是愈好的孩子。</p>
+<p>孩子得听话，不许闹——中国父母顶得意的是孩子听人家吩咐规规矩矩地叫人，绝对机械性地叫人——“伯伯”、“妈妈”。</p>
+<p>因为要强制孩子听话，大人们有时就用种种哄骗恫吓的方法。多少成人作伪与怯懦的品性是在“别哭，老虎来了”、“别嚷，老太太来了”、“不许吃，吃了要长疮的”一类话下养成的!</p>
+<p>不要怪孩子性情不好，或是愁他们身子不好，实际只要你们肯费一点心思，花一点工夫，认清了孩子本能的倾向，治水似的耐心地去疏导它，原来不好的地方很容易变好。</p>
+<p>做父母的都有一个创作的机会，把你们的孩子养成一个健康、活泼、灵敏、慈爱的成人，替社会造一个有用的人才，替自然完成一个有意识的工作，同时也增你们自己的光，添你们的欢喜——这机会还不够大吗?</p>
+<p>现代的成人，为什么都是这么懒、这么脏(尤其在品格上与思想)、这么蠢、这么丑、这么破烂?现代的青年，为什么这么弱、这么多愁多悲哀?这种种的不健康——多是做爹娘的当初不曾尽他们应尽的责任，一半是愚暗，一半是懒怠。</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/兴趣爱好/">兴趣爱好</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/徐志摩/">徐志摩</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-09-27T07:09:08.000Z"><a href="/2017/09/27/文章/明日又天涯/">2017-09-27</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/09/27/文章/明日又天涯/">明日又天涯</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="作者：三毛"><a href="#作者：三毛" class="headerlink" title="作者：三毛"></a>作者：三毛</h2><p>我的朋友，今夜我是跟你告别了，多少次又多少次，你的眼光在默默的问我，Echo，你的将来要怎么过？你一个人这样的走了，你会好好的吗？你会吗？你会吗？</p>
+<p>看见你哀怜的眼睛，我的胃马上便绞痛起来，我也轻轻的在对自己哀求——不要再痛了，不要再痛了，难道痛得还没有尽头吗？</p>
+<p>明日，是一个不能逃避的东西，我没有退路。我不能回答你眼里的问题，我只知道，我胃痛，我便捂住自己的胃，不说一句话，因为这个痛是真真实实的。</p>
+<p>多少次，你说，虽然我是意气飞扬，满含自信若有所思的仰着头，脸上荡着笑，可是，灯光下，我的眼睛藏不住秘密，我的眸子里，闪烁的只是满满的倔强的眼泪，还有，那一个海也似的情深的故事。</p>
+<p>你说，Echo，你会一个人过日子吗？我想反问你，你听说过有谁，在这世界上，不是孤独的生，不是孤独的死？有谁？请你告诉我。</p>
+<p>你也说，不要忘了写信来，细细的告诉我，你的日子是怎么的在度过，因为有人在挂念你。</p>
+<p>我爱的朋友，不必写信，现在就可以告诉你，我是走了，回到我的家里去，在那儿，有海，有空茫的天，还有那永远吹拂着大风的哀愁海滩。</p>
+<p>家的后面，是一片无人的田野，左邻右舍，也只有在度假的时候才会出现，这个地方，可以走两小时不见人迹，而海鸥的叫声却是总也不断。</p>
+<p>我的日子会怎么过？</p>
+<p>我会一样的洗衣服，擦地，管我的盆景，铺我的床。偶尔，我会去小镇上，在买东西的时候，跟人说说话，去邮局信箱里，盼一封你的来信。也可能，在天气晴朗，而又心境安稳的时候，我会坐飞机，去那个最后之岛，买一把鲜花，在荷西长眠的地方坐一个静静的黄昏。</p>
+<p>再也没有鬼哭神号的事情了，最坏的已经来过了，再也没有什么。我只是有时会胃痛，会在一个人吃饭的时候，有些食不下咽。</p>
+<p>也曾对你说过，暮色来时，我会仔细的锁好门窗，也不再在白日将自己打扮得花枝招展，因为我很明白，昨日的风情，只会增加自己今日的不安全，那么，我的长裙，便留在箱子里吧。</p>
+<p>又说过，要养一只大狼狗，买一把猎枪，要是有谁，不得我的允许敢跨入我的花园一步，那么我要他死在我的枪下。说出这句话来，你震惊了，你心疼了，你方才知道，Echo的明日不是好玩的，你说，Echo你还是回来，</p>
+<p>我一直是要你回来的。</p>
+<p>我的朋友，我想再问你一句已经问过的话，有谁，在这个世界上不是孤独的生，不是孤独的死？</p>
+<p>青春结伴，我已有过，是感恩，是满足，没有遗憾。</p>
+<p>再说，夜来了，我拉上窗帘，将自己锁在屋内，是安全的，不再出去看黑</p>
+<p>夜里满天的繁星了，因为我知道，在任何一个星座上，都找不到我心里呼叫的名字。</p>
+<p>我开了温暖的落地灯，坐在我的大摇椅里，靠在软软的红色垫子上，这儿是我的家，一向是我的家。我坐下，擦擦我的口琴，然后，试几个音，然后，在那一屋的寂静里，我依旧吹着那首最爱的歌曲——甜蜜的家庭。</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/兴趣爱好/">兴趣爱好</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/三毛/">三毛</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-09-06T08:31:14.000Z"><a href="/2017/09/06/日记/2017-9-6/">2017-09-06</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/09/06/日记/2017-9-6/">2017-9-6</a></h1>
   
 
     </header>
@@ -126,11 +465,11 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2017-09-04T05:05:21.000Z"><a href="/2017/09/04/2017-9-4/">2017-09-04</a></time>
+        <time datetime="2017-09-04T05:05:21.000Z"><a href="/2017/09/04/日记/2017-9-4/">2017-09-04</a></time>
       
       
   
-    <h1 class="title"><a href="/2017/09/04/2017-9-4/">2017-9-4</a></h1>
+    <h1 class="title"><a href="/2017/09/04/日记/2017-9-4/">2017-9-4</a></h1>
   
 
     </header>
@@ -178,11 +517,11 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2017-09-02T04:40:23.000Z"><a href="/2017/09/02/2017-9-2/">2017-09-02</a></time>
+        <time datetime="2017-09-02T04:40:23.000Z"><a href="/2017/09/02/日记/2017-9-2/">2017-09-02</a></time>
       
       
   
-    <h1 class="title"><a href="/2017/09/02/2017-9-2/">2017-9-2</a></h1>
+    <h1 class="title"><a href="/2017/09/02/日记/2017-9-2/">2017-9-2</a></h1>
   
 
     </header>
@@ -302,296 +641,11 @@
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2017-08-29T14:39:48.000Z"><a href="/2017/08/29/字符串总结/">2017-08-29</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2017/08/29/字符串总结/">字符串总结</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="1-字符串反转问题"><a href="#1-字符串反转问题" class="headerlink" title="1. 字符串反转问题"></a>1. 字符串反转问题</h2><blockquote>
-<p>牛客最近来了一个新员工Fish，每天早晨总是会拿着一本英文杂志，写些句子在本子上。同事Cat对Fish写的内容颇感兴趣，有一天他向Fish借来翻看，但却读不懂它的意思。例如，“student. a am I”。后来才意识到，这家伙原来把句子单词的顺序翻转了，正确的句子应该是“I am a student.”。Cat对一一的翻转这些单词顺序可不在行，你能帮助他么？</p>
-</blockquote>
-<p><code>思路</code>：先切割单词，后反转句子。注意意外情况就是句子是” “<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">def ReverseSentence(self, s):</div><div class="line">    return &apos; &apos;.join(s.strip().split(&apos; &apos;)[::-1]) or s</div></pre></td></tr></table></figure></p>
-<h2 id="2-求等差数列问题"><a href="#2-求等差数列问题" class="headerlink" title="2. 求等差数列问题"></a>2. 求等差数列问题</h2><blockquote>
-<p>求1+2+3+…+n，要求不能使用乘除法、for、while、if、else、switch、case等关键字及条件判断语句（A?B:C）。</p>
-</blockquote>
-<p><code>思路</code>：这道题显然就是要用递归<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">def Sum_Solution(self, n):</div><div class="line">    return 0 if n &lt; 1 else n + self.Sum_Solution(n - 1)</div></pre></td></tr></table></figure></p>
-<h2 id="3-全排列和子集问题"><a href="#3-全排列和子集问题" class="headerlink" title="3. 全排列和子集问题"></a>3. 全排列和子集问题</h2><h3 id="3-1-不带重复和带重复的的子集问题"><a href="#3-1-不带重复和带重复的的子集问题" class="headerlink" title="3.1 不带重复和带重复的的子集问题"></a>3.1 不带重复和带重复的的子集问题</h3><p><code>思路</code>：数组保持有序可以避免重复。穷举所有的集合，然后每次从当前集合中添加新的那个数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line">input: &#123;1, 2&#125;</div><div class="line">output: &#123;&#125;, &#123;1&#125;, &#123;2&#125;, &#123;1, 2&#125;</div><div class="line"></div><div class="line">                      &#123;&#125;</div><div class="line">                    ↙    ↘</div><div class="line">                  &#123;1&#125;     &#123;2&#125;</div><div class="line">                  ↙</div><div class="line">                &#123;1,2&#125;</div><div class="line"></div><div class="line">public List&lt;List&lt;Integer&gt;&gt; subsets(int[] nums) &#123;</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;List&lt;Integer&gt;&gt;();</div><div class="line">        if(nums == null || nums.length == 0)&#123;</div><div class="line">            return result;</div><div class="line">        &#125;</div><div class="line">        List&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;();</div><div class="line">        Arrays.sort(nums);</div><div class="line">        subsetsHelper(result, list, nums, 0);</div><div class="line">        </div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    //这就是搜索的模板，先加一个数，然后撤销数</div><div class="line">    private void subsetsHelper(List&lt;List&lt;Integer&gt;&gt; result,</div><div class="line">        List&lt;Integer&gt; list, int[] nums, int pos)&#123;</div><div class="line">            </div><div class="line">            result.add(new ArrayList&lt;Integer&gt;(list));</div><div class="line">            </div><div class="line">            for(int i = pos; i &lt; nums.length; i++)&#123;</div><div class="line"></div><div class="line">                *********************************************</div><div class="line">                *   if(i != pos &amp;&amp; num[i] == num[i - 1]&#123;    *</div><div class="line">                *        cintinues;                         *</div><div class="line">                *   &#125;                                       *</div><div class="line">                *                                           *</div><div class="line">                *       pos      i                          *</div><div class="line">                *        ↓       ↓                          *</div><div class="line">                *   1, 1th_2, 2th_2, 3th_2                  *</div><div class="line">                *   ↑                                       *</div><div class="line">                *                                           *</div><div class="line">                *   &#123;1, 1th_2&#125; = &#123;1, 2th_2&#125;                 *</div><div class="line">                *                                           *</div><div class="line">                *   只改动上面这句话就可以解决带重复的问题     *    </div><div class="line">                *   复杂度，有n个数，O(2^n)                  *</div><div class="line">                *********************************************</div><div class="line"></div><div class="line">                list.add(nums[i]);</div><div class="line">                subsetsHelper(result, list, nums, i+1);</div><div class="line">                list.remove(list.size() - 1);   //回溯，每次把尝试加的那个数撤销掉，尝试加另外一个数。比如从空集出发，先加1，然后删掉1，尝试加2</div><div class="line">            &#125;</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
-<h3 id="3-2-不带重复和带重复的全排列"><a href="#3-2-不带重复和带重复的全排列" class="headerlink" title="3.2 不带重复和带重复的全排列"></a>3.2 不带重复和带重复的全排列</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">public List&lt;List&lt;Integer&gt;&gt; permute(int[] nums) &#123;</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; results = new ArrayList();</div><div class="line">        if(nums == null || nums.length == 0)&#123;</div><div class="line">            return results;</div><div class="line">        &#125;</div><div class="line">        List&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;();</div><div class="line">        Helper(results, list, nums);</div><div class="line">        return results;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    // 不带重复的数</div><div class="line">    private void Helper(List&lt;List&lt;Integer&gt;&gt; results, List&lt;Integer&gt; list, int[] nums)</div><div class="line">        if(list.size() == nums.length)&#123;</div><div class="line">            results.add(new ArrayList&lt;Integer&gt;(list));</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        for(int i = 0; i &lt; nums.length; i++)&#123;</div><div class="line">            if(list.contains(nums[i]))&#123;</div><div class="line">                continue;</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">            list.add(nums[i]);</div><div class="line">            Helper(results, list, nums);</div><div class="line">            list.remove(list.size()-1);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    //带重复的数</div><div class="line">    private void Helper(List&lt;List&lt;Integer&gt;&gt; results, int[] nums,</div><div class="line">                        int[] visited, List&lt;Integer&gt; list)&#123;</div><div class="line">        if(list.size() == nums.length)&#123;</div><div class="line">            results.add(new ArrayList&lt;Integer&gt;(list));</div><div class="line">            return ;    //排列一次结束要返回</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        for(int i = 0; i &lt; nums.length; i++)&#123;</div><div class="line">            if (visited[i] == 1 || (i != 0 &amp;&amp; nums[i] == nums[i-1] &amp;&amp; visited[i-1] == 0))&#123;</div><div class="line">                continue;</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">            visited[i] = 1;</div><div class="line">            list.add(nums[i]);</div><div class="line">            Helper(results, nums, visited, list);</div><div class="line">            list.remove(list.size() - 1);</div><div class="line">            visited[i] = 0;</div><div class="line">        &#125; </div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-  
-  <div class="categories">
-    <a href="/categories/算法/">算法</a>
-  </div>
-
-        
-  
-  <div class="tags">
-    <a href="/tags/字符串/">字符串</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2016-08-30T08:44:02.000Z"><a href="/2016/08/30/Java面试常考题/">2016-08-30</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2016/08/30/Java面试常考题/">Java面试常考题</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-  
-  <div class="categories">
-    <a href="/categories/Java/">Java</a>
-  </div>
-
-        
-  
-  <div class="tags">
-    <a href="/tags/Java/">Java</a>, <a href="/tags/JVM/">JVM</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2016-04-03T14:11:56.000Z"><a href="/2016/04/03/QuickSort/">2016-04-03</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2016/04/03/QuickSort/">快速排序</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h1 id="快速排序算法"><a href="#快速排序算法" class="headerlink" title="快速排序算法"></a>快速排序算法</h1><p>算法思路：快速排序目前我见到两种版本，两种版本的区别就是哨兵位置的不同，有人喜欢使用数组的最后一位做哨兵位置，有人喜欢用数组的中间位置作为哨兵。<br>下面这份代码是以中间位置作为哨兵。主要思路就是，使用两个指针，分别从最左边和最右边往中间滑，分别找到左边的第一个大于哨兵的数和右边第一个小于哨兵<br>的数，然后交换这两个数的位置。然后继续滑动两个指针，一趟过完以后，会发现，哨兵左边的数都小于哨兵，哨兵右边的数都大于哨兵。于是就可以用递归分别继续<br>对左右两边的两段进行同样思路的快排。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">static int[] numbers = &#123;4, 10,14,11,17,8,13,15,12,2,6,9&#125;;</div><div class="line"></div><div class="line">private static void quicksort(int low, int high) &#123;</div><div class="line">    int i = low, j = high;</div><div class="line">    int pivot = numbers[low + (high-low)/2];</div><div class="line"></div><div class="line">    while (i &lt;= j) &#123;</div><div class="line">        while (numbers[i] &lt; pivot) &#123;</div><div class="line">            i++;</div><div class="line">        &#125;</div><div class="line">        while (numbers[j] &gt; pivot) &#123;</div><div class="line">            j--;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        if (i &lt;= j) &#123;</div><div class="line">            exchange(i, j);</div><div class="line">            i++;</div><div class="line">            j--;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    if (low &lt; j)</div><div class="line">        quicksort(low, j);</div><div class="line">    if (i &lt; high)</div><div class="line">        quicksort(i, high);</div><div class="line">&#125;</div><div class="line"></div><div class="line">private static void exchange(int i, int j) &#123;</div><div class="line">    int temp = numbers[i];</div><div class="line">    numbers[i] = numbers[j];</div><div class="line">    numbers[j] = temp;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-  
-  <div class="categories">
-    <a href="/categories/算法/">算法</a>
-  </div>
-
-        
-  
-  <div class="tags">
-    <a href="/tags/排序/">排序</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-03-30T09:27:25.000Z"><a href="/2015/03/30/JVM简介/">2015-03-30</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/03/30/JVM简介/">JVM简介</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="1-JVM的体系架构"><a href="#1-JVM的体系架构" class="headerlink" title="1. JVM的体系架构"></a>1. JVM的体系架构</h2><blockquote>
-<p>举个栗子：JVM就像是一台柴油机，Java就像是柴油，JVM需要Java才能跑起来。柴油可以在汽车、飞机、坦克中使用，这就是跨平台特性。</p>
-</blockquote>
-<p>Java编译器针对不同的平台将Java文件源文件编译成字节码，JVM把字节码文件中的命令翻译成不同平台的机器码。<br>Java技术体系可以分为四个平台：</p>
-<ol>
-<li><strong>Java Card</strong>: 支持小程序，用于智能卡等</li>
-<li><strong>Java ME</strong>: 支持Java运行于移动终端， Android</li>
-<li><strong>Java SE</strong>： 支持桌面级应用</li>
-<li><strong>Java EE</strong>： 支持多层架构的企业级应用</li>
-</ol>
-<center><img src="http://yeshenlin.com/yelin_image/03.gif" alt="图1、Java体系结构"></center><br>从上面这张图中我可以看到JDK与JRE的区别与联系：<br><strong>JRE：Java Runtime  Environment</strong><br><strong>JDK: Java Development Kit</strong><br>顾名思义，JRE是Java程序运行时必须的环境，包含了Java虚拟机和Java类库，是运行Java编程程序的环境，是给想运行Java程序的人使用的。<br>JDK是Java开发工具包，它包含了JRE和Java程序开发所需要的工具包，是提供给程序员使用的。<br><br>Java的物理结构：<br><center><img src="http://yeshenlin.com/yelin_image/04.gif" alt="图2、Java物理结构"></center>
-
-
-
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-  
-  <div class="categories">
-    <a href="/categories/Java/">Java</a>
-  </div>
-
-        
-  
-  <div class="tags">
-    <a href="/tags/Java/">Java</a>, <a href="/tags/JVM/">JVM</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-03-30T08:27:25.000Z"><a href="/2015/03/30/Java编译和执行的过程/">2015-03-30</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/03/30/Java编译和执行的过程/">Java编译和执行的过程</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>Java的编译过程由Java编译器执行，Java的运行过程由JVM执行引擎执行。</p>
-<center><img src="http://yeshenlin.com/yelin_image/05.gif" alt="Java编译"></center><br><center><img src="http://yeshenlin.com/yelin_image/06.gif" alt="Java执行"></center>
-
-<p>Java的编译和执行过程主要包含三个机制</p>
-<ol>
-<li>Java源码编译机制</li>
-<li>类加载机制</li>
-<li>类执行机制</li>
-</ol>
-<h2 id="Java源码编译机制"><a href="#Java源码编译机制" class="headerlink" title="Java源码编译机制"></a>Java源码编译机制</h2><p>Java源码编译机制由一下三个过程组成：</p>
-<ol>
-<li>分析和输入到符号表</li>
-<li>注解处理</li>
-<li>语法分析和生成class文件</li>
-</ol>
-<p>流程图如下图所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">*.java --------&gt; 分析和注入 ---------&gt; 注解处理 ---------&gt; 语法分析 ---------&gt; *.class </div><div class="line">            |                                      |                            |</div><div class="line">            |______________________________________|                            |</div><div class="line">                                                                                |</div><div class="line">                                                                                ↓</div><div class="line">                                                                    ---------------------------------------------|</div><div class="line">                                                                    \1. 结构信息。包含class文件结构版本号各部分信息;\</div><div class="line">                                                                    \2. 元数据。声明与常量的信息，类、超类、接口的声 \</div><div class="line">                                                                    \   明信息、域和方法声明的信息和常量池；        \</div><div class="line">                                                                    \3. 方法信息。语句和源码表达式的信息。          \</div><div class="line">                                                                    \---------------------------------------------</div></pre></td></tr></table></figure>
-<h2 id="类加载机制"><a href="#类加载机制" class="headerlink" title="类加载机制"></a>类加载机制</h2><p>JVM类的加载是通过ClassLoader及其子类来完成的，类的层次关系和记载顺序可以用一下图来进行描述。</p>
-<p><center><img src="http://yeshenlin.com/yelin_image/07.gif" alt="类加载机制"></center></p>
-<h3 id="BootStrap-ClassLoader"><a href="#BootStrap-ClassLoader" class="headerlink" title="BootStrap ClassLoader"></a>BootStrap ClassLoader</h3><p>负责加载$JAVA_HOME中jre/lib/rt.jar里所有的 class，由 C++ 实现，不是 ClassLoader 子类。</p>
-<h3 id="Extension-ClassLoader"><a href="#Extension-ClassLoader" class="headerlink" title="Extension ClassLoader"></a>Extension ClassLoader</h3><p>负责加载Java平台中的扩展功能的一些jar包</p>
-<h3 id="App-ClassLoader"><a href="#App-ClassLoader" class="headerlink" title="App ClassLoader"></a>App ClassLoader</h3><p>负责加载classpath中指定的jar包及目录中的class</p>
-<h3 id="Custom-ClassLoader"><a href="#Custom-ClassLoader" class="headerlink" title="Custom ClassLoader"></a>Custom ClassLoader</h3><p>应用程序根据自身需要定义的ClassLoader。</p>
-<p>加载过程会先检查自底向上检测类是否被加载，而检查过程是自顶向下的。</p>
-<h2 id="类执行机制"><a href="#类执行机制" class="headerlink" title="类执行机制"></a>类执行机制</h2><p>JVM执行字节码，线程创建，产生计数器（PC）和栈（Stack），程序计数器存放下一条指令在方法内的偏移量，栈中存放一个个栈帧。每个栈帧对应着每个方法的每次调用，而栈帧又是有局部变量和操作数栈两部分组成，局部变量区用于存放方法中的局部变量和参数，操作数栈中用于存放方法执行过程中产生的中间结果。<br>栈的结构如下图所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">        ------------------------</div><div class="line">        |                      |</div><div class="line">    ----------------------     |</div><div class="line">    |                    |     |</div><div class="line">---------------------    |     |</div><div class="line">|   -------------   |    |     |</div><div class="line">|   | 局部变量区 |   |    |     |</div><div class="line">|   -------------   |    |     |</div><div class="line">|                   |    |     |</div><div class="line">|   -------------   |    |     |</div><div class="line">|   |  操作数栈  |   |    |------</div><div class="line">|   -------------   |    |</div><div class="line">|                   |-----</div><div class="line">|       栈帧        |</div><div class="line">---------------------</div></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-  
-  <div class="categories">
-    <a href="/categories/Java/">Java</a>
-  </div>
-
-        
-  
-  <div class="tags">
-    <a href="/tags/Java/">Java</a>, <a href="/tags/JVM/">JVM</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
 
 <nav id="pagination">
   
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">下一页 &raquo;</a>
   </nav>
 
 </nav>
@@ -609,15 +663,17 @@
   <h3 class="title">分类</h3>
   <ul class="entry">
   
-    <li><a href="/categories/Java/">Java</a><small>4</small></li>
+    <li><a href="/categories/Java/">Java</a><small>5</small></li>
+  
+    <li><a href="/categories/Python/">Python</a><small>2</small></li>
   
     <li><a href="/categories/个人生活/">个人生活</a><small>5</small></li>
   
     <li><a href="/categories/兴趣爱好/">兴趣爱好</a><small>4</small></li>
   
-    <li><a href="/categories/技能树/">技能树</a><small>0</small></li>
+    <li><a href="/categories/技能树/">技能树</a><small>1</small></li>
   
-    <li><a href="/categories/算法/">算法</a><small>5</small></li>
+    <li><a href="/categories/算法/">算法</a><small>7</small></li>
   
     <li><a href="/categories/编程感悟/">编程感悟</a><small>1</small></li>
   
@@ -631,23 +687,23 @@
   <ul class="entry">
     
       <li>
-        <a href="/2017/10/06/我不想水群了/">我不想水群了</a>
+        <a href="/2017/10/12/算法/商汤科技笔试题/">商汤科技笔试题（求大陆的面积）</a>
       </li>
     
       <li>
-        <a href="/2017/10/06/49岁的程序员/">49岁的程序员</a>
+        <a href="/2017/10/12/Java/Java多线程/">Java多线程</a>
       </li>
     
       <li>
-        <a href="/2017/10/02/LeetCode_38/">LeetCode_38 Count and Say</a>
+        <a href="/2017/10/12/技能树/那些值得学习的人的博客/">那些值得学习的人的博客</a>
       </li>
     
       <li>
-        <a href="/2017/10/02/2017-10-2/">2017-10-2</a>
+        <a href="/2017/10/11/Python/Python高级特性/">Python高级特性</a>
       </li>
     
       <li>
-        <a href="/2017/09/28/Java深拷贝/">Java深拷贝</a>
+        <a href="/2017/10/11/Python/Python的Dict和Set/">Python的Dict和Set</a>
       </li>
     
   </ul>
@@ -659,9 +715,15 @@
   <h3 class="title">标签</h3>
   <ul class="entry">
   
+    <li><a href="/tags/BFS/">BFS</a><small>1</small></li>
+  
+    <li><a href="/tags/DP/">DP</a><small>1</small></li>
+  
     <li><a href="/tags/JVM/">JVM</a><small>3</small></li>
   
-    <li><a href="/tags/Java/">Java</a><small>4</small></li>
+    <li><a href="/tags/Java/">Java</a><small>5</small></li>
+  
+    <li><a href="/tags/Python/">Python</a><small>1</small></li>
   
     <li><a href="/tags/coding/">coding</a><small>1</small></li>
   
@@ -669,7 +731,13 @@
   
     <li><a href="/tags/三毛/">三毛</a><small>1</small></li>
   
+    <li><a href="/tags/切片/">切片</a><small>1</small></li>
+  
+    <li><a href="/tags/列表生成式/">列表生成式</a><small>1</small></li>
+  
     <li><a href="/tags/图像分割/">图像分割</a><small>0</small></li>
+  
+    <li><a href="/tags/多线程/">多线程</a><small>1</small></li>
   
     <li><a href="/tags/字符串/">字符串</a><small>2</small></li>
   
@@ -687,7 +755,13 @@
   
     <li><a href="/tags/深拷贝/">深拷贝</a><small>1</small></li>
   
+    <li><a href="/tags/生成器/">生成器</a><small>1</small></li>
+  
     <li><a href="/tags/生活/">生活</a><small>1</small></li>
+  
+    <li><a href="/tags/迭代/">迭代</a><small>1</small></li>
+  
+    <li><a href="/tags/链接/">链接</a><small>1</small></li>
   
     <li><a href="/tags/链表/">链表</a><small>1</small></li>
   
@@ -699,7 +773,7 @@
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/JVM/" style="font-size: 16.67px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/coding/" style="font-size: 10px;">coding</a> <a href="/tags/string/" style="font-size: 10px;">string</a> <a href="/tags/三毛/" style="font-size: 10px;">三毛</a> <a href="/tags/字符串/" style="font-size: 13.33px;">字符串</a> <a href="/tags/张若水/" style="font-size: 10px;">张若水</a> <a href="/tags/徐志摩/" style="font-size: 10px;">徐志摩</a> <a href="/tags/排序/" style="font-size: 10px;">排序</a> <a href="/tags/日记/" style="font-size: 20px;">日记</a> <a href="/tags/杨绛/" style="font-size: 10px;">杨绛</a> <a href="/tags/深拷贝/" style="font-size: 10px;">深拷贝</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/链表/" style="font-size: 10px;">链表</a>
+    <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/JVM/" style="font-size: 15px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/coding/" style="font-size: 10px;">coding</a> <a href="/tags/string/" style="font-size: 10px;">string</a> <a href="/tags/三毛/" style="font-size: 10px;">三毛</a> <a href="/tags/切片/" style="font-size: 10px;">切片</a> <a href="/tags/列表生成式/" style="font-size: 10px;">列表生成式</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/字符串/" style="font-size: 12.5px;">字符串</a> <a href="/tags/张若水/" style="font-size: 10px;">张若水</a> <a href="/tags/徐志摩/" style="font-size: 10px;">徐志摩</a> <a href="/tags/排序/" style="font-size: 10px;">排序</a> <a href="/tags/日记/" style="font-size: 17.5px;">日记</a> <a href="/tags/杨绛/" style="font-size: 10px;">杨绛</a> <a href="/tags/深拷贝/" style="font-size: 10px;">深拷贝</a> <a href="/tags/生成器/" style="font-size: 10px;">生成器</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/迭代/" style="font-size: 10px;">迭代</a> <a href="/tags/链接/" style="font-size: 10px;">链接</a> <a href="/tags/链表/" style="font-size: 10px;">链表</a>
   </div>
 </div>
 
