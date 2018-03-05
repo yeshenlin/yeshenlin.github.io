@@ -3,21 +3,18 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8" />
   
-  <title>JVM简介 | 爱吃猫的鱼</title>
+  <title>Mac搭建VPS并加速翻墙 | 爱吃猫的鱼</title>
   <meta name="author" content="爱吃猫的鱼" />
 
   
-  <meta name="description" content="1. JVM的体系架构
-举个栗子：JVM就像是一台柴油机，Java就像是柴油，JVM需要Java才能跑起来。柴油可以在汽车、飞机、坦克中使用，这就是跨平台特性。
-
-Java编译器针对不同的平台将Java文件源文件编译成字节码，JVM把字节码文件中的命令翻译成不同平台的机器码。Java技术体系可以分为" />
+  <meta name="description" content="1.付费VPS准备1.1 在搬瓦工官网上选择适合自己的VPS，如果只是平常用于简单翻墙的话，建议选择最便宜的那种类型，因为一个月500GB的流量正常情况下是用不完的。付费后，就可以在自己的My Service中看到自己拥有的VPS。" />
   
 
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  <meta property="og:title" content="JVM简介" />
+  <meta property="og:title" content="Mac搭建VPS并加速翻墙" />
   <meta property="og:site_name" content="爱吃猫的鱼" />
 
   
@@ -82,31 +79,37 @@ Java编译器针对不同的平台将Java文件源文件编译成字节码，JVM
     <header>
       
         <div class="icon"></div>
-        <time datetime="2015-03-30T09:27:25.000Z"><a href="/2015/03/30/Java/JVM简介/">2015-03-30</a></time>
+        <time datetime="2018-03-05T06:51:44.000Z"><a href="/2018/03/05/技能树/搭建VPS并加速翻墙/">2018-03-05</a></time>
       
       
   
-    <h1 class="title">JVM简介</h1>
+    <h1 class="title">Mac搭建VPS并加速翻墙</h1>
   
 
     </header>
     <div class="entry">
       
-        <h2 id="1-JVM的体系架构"><a href="#1-JVM的体系架构" class="headerlink" title="1. JVM的体系架构"></a>1. JVM的体系架构</h2><blockquote>
-<p>举个栗子：JVM就像是一台柴油机，Java就像是柴油，JVM需要Java才能跑起来。柴油可以在汽车、飞机、坦克中使用，这就是跨平台特性。</p>
-</blockquote>
-<p>Java编译器针对不同的平台将Java文件源文件编译成字节码，JVM把字节码文件中的命令翻译成不同平台的机器码。<br>Java技术体系可以分为四个平台：</p>
-<ol>
-<li><strong>Java Card</strong>: 支持小程序，用于智能卡等</li>
-<li><strong>Java ME</strong>: 支持Java运行于移动终端， Android</li>
-<li><strong>Java SE</strong>： 支持桌面级应用</li>
-<li><strong>Java EE</strong>： 支持多层架构的企业级应用</li>
-</ol>
-<center><img src="http://yeshenlin.com/yelin_image/03.gif" alt="图1、Java体系结构"></center><br>从上面这张图中我可以看到JDK与JRE的区别与联系：<br><strong>JRE：Java Runtime  Environment</strong><br><strong>JDK: Java Development Kit</strong><br>顾名思义，JRE是Java程序运行时必须的环境，包含了Java虚拟机和Java类库，是运行Java编程程序的环境，是给想运行Java程序的人使用的。<br>JDK是Java开发工具包，它包含了JRE和Java程序开发所需要的工具包，是提供给程序员使用的。<br><br>Java的物理结构：<br><center><img src="http://yeshenlin.com/yelin_image/04.gif" alt="图2、Java物理结构"></center>
+        <h2 id="1-付费VPS准备"><a href="#1-付费VPS准备" class="headerlink" title="1.付费VPS准备"></a>1.付费VPS准备</h2><p>1.1 在<a href="https://bandwagonhost.com/" target="_blank" rel="external">搬瓦工官网</a>上选择适合自己的VPS，如果只是平常用于简单翻墙的话，建议选择最便宜的那种类型，因为一个月500GB的流量正常情况下是用不完的。付费后，就可以在自己的My Service中看到自己拥有的VPS。<br><a id="more"></a></p>
+<center><img src="http://yeshenlin.com/yelin_image/32.png" width="600"></center>
+
+<p>1.2 给VPS安装操作系统<br>进入KiwiVM Control Panel，然后进入Install new OS选项，选择centox-6-x86格式的操作系统，进行安装，大概几分钟后操作系统自动安装结束，并启动。</p>
+<center><img src="http://yeshenlin.com/yelin_image/34.png" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/35.png" width="600"></center>
+
+<h2 id="2-安装ShadowSocks服务"><a href="#2-安装ShadowSocks服务" class="headerlink" title="2.安装ShadowSocks服务"></a>2.安装ShadowSocks服务</h2><p>一键安装SS服务后，可以看到SS的端口和SS的密码,端口和密码在后面的配置中会用到。</p>
+<center><img src="http://yeshenlin.com/yelin_image/36.png" width="600"></center>
+
+<h2 id="3-安装KCPTUN加速服务"><a href="#3-安装KCPTUN加速服务" class="headerlink" title="3.安装KCPTUN加速服务"></a>3.安装KCPTUN加速服务</h2><p>打开ROOT-shell basic， 根据三行脚本去下载KCPTUN脚本并安装它,分别的作用时下载、赋予执行权限、执行。在执行的过程中会出现很多参数填充项，其中加速端口就是前面的SS端口。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget https://raw.githubusercontent.com/kuoruan/kcptun_installer/master/kcptun.sh</div><div class="line">chmod +x ./kcptun.sh</div><div class="line">./kcptun.sh</div></pre></td></tr></table></figure></p>
+<center><img src="http://yeshenlin.com/yelin_image/37.png" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/38.png" width="600"></center>
 
 
 
 
+<h2 id="4-MAC本地配置SS-KCPTUN客户端"><a href="#4-MAC本地配置SS-KCPTUN客户端" class="headerlink" title="4.MAC本地配置SS+KCPTUN客户端"></a>4.MAC本地配置SS+KCPTUN客户端</h2><p>下载<a href="https://github.com/shadowsocks/ShadowsocksX-NG/releases/download/v1.7.1/ShadowsocksX-NG.1.7.1.zip" target="_blank" rel="external">ShadowsocksX-NG</a>,然后如下图进行参数配置。密码就是SS的密码。</p>
+<center><img src="http://yeshenlin.com/yelin_image/39.png" width="600"></center>
+
+<p>下载<a href="https://github.com/xtaci/kcptun/releases/download/v20171201/kcptun-darwin-386-20171201.tar.gz" target="_blank" rel="external">kcptun-darwin</a>,然后对配置文件client.json进行修改，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&quot;localaddr&quot;:&quot;:12984&quot;,</div><div class="line">&quot;remoteaddr&quot;:&quot;65.49.132.76:29900&quot;,</div><div class="line">&quot;key&quot;:&quot;very fast&quot;,</div><div class="line">&quot;crypt&quot;:&quot;aes&quot;,</div><div class="line">&quot;mode&quot;:&quot;fast&quot;,</div><div class="line">&quot;conn&quot;:1,</div><div class="line">&quot;autoexpire&quot;: 60,</div><div class="line">&quot;mtu&quot;:1350,</div><div class="line">&quot;sndwnd&quot;:512,</div><div class="line">&quot;rcvwnd&quot;:512,</div><div class="line">&quot;datashard&quot;:10,</div><div class="line">&quot;parityshard&quot;:3,</div><div class="line">&quot;dscp&quot;: 0,</div><div class="line">&quot;nocomp&quot;: false,</div><div class="line">&quot;acknodelay&quot;: false,</div><div class="line">&quot;nodelay&quot;: 0,</div><div class="line">&quot;interval&quot;: 20,</div><div class="line">&quot;resend&quot;: 2,</div><div class="line">&quot;nc&quot;: 1,</div><div class="line">&quot;sockbuf&quot;: 4194304,</div><div class="line">&quot;keepalive&quot;: 10</div></pre></td></tr></table></figure></p>
+<h2 id="5-测试网速"><a href="#5-测试网速" class="headerlink" title="5.测试网速"></a>5.测试网速</h2><p>运行kcptun-darwin中的start.sh文件，ShadowSocks客户端开启，然后就可以进行科学上网了。<br>可以看到打开youtube视频可一秒开1080P。</p>
+<center><img src="http://yeshenlin.com/yelin_image/40.png" width="600"></center>
       
     </div>
     
@@ -118,13 +121,13 @@ Java编译器针对不同的平台将Java文件源文件编译成字节码，JVM
         
   
   <div class="categories">
-    <a href="/categories/Java/">Java</a>
+    <a href="/categories/技能树/">技能树</a>
   </div>
 
         
   
   <div class="tags">
-    <a href="/tags/Java/">Java</a>, <a href="/tags/JVM/">JVM</a>
+    <a href="/tags/翻墙/">翻墙</a>
   </div>
 
         <!-- partial('post/share') -->
