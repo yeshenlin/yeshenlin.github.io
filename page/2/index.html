@@ -48,23 +48,23 @@
     
       <li><a href="/archives/">所有文章</a></li>
     
-      <li><a href="/categories/编程感悟">编程感悟</a></li>
+      <li><a href="/categories/coding">编程感悟</a></li>
     
-      <li><a href="/categories/算法">算法之道</a></li>
+      <li><a href="/categories/algorithm">算法之道</a></li>
     
-      <li><a href="/categories/Java">Java</a></li>
+      <li><a href="/categories/java">Java</a></li>
     
-      <li><a href="/categories/Python">Python</a></li>
+      <li><a href="/categories/python">Python</a></li>
     
-      <li><a href="/categories/Linux">Linux</a></li>
+      <li><a href="/categories/linux">Linux</a></li>
     
-      <li><a href="/categories/机器学习">机器学习</a></li>
+      <li><a href="/categories/ml">机器学习</a></li>
     
-      <li><a href="/categories/技能树">Other</a></li>
+      <li><a href="/categories/skilltree">Other</a></li>
     
-      <li><a href="/categories/兴趣爱好">兴趣爱好</a></li>
+      <li><a href="/categories/hobby">兴趣爱好</a></li>
     
-      <li><a href="/categories/个人生活">我的生活</a></li>
+      <li><a href="/categories/mylife">我的生活</a></li>
     
   </ul>
   <div class="clearfix"></div>
@@ -78,11 +78,11 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2017-10-20T01:55:36.000Z"><a href="/2017/10/20/算法/LeetCode_71/">2017-10-20</a></time>
+        <time datetime="2017-10-20T01:55:36.000Z"><a href="/2017/10/20/algorithm/LeetCode_71/">2017-10-20</a></time>
       
       
   
-    <h1 class="title"><a href="/2017/10/20/算法/LeetCode_71/">LeetCode_71 Climbing Staris</a></h1>
+    <h1 class="title"><a href="/2017/10/20/algorithm/LeetCode_71/">LeetCode_71 Climbing Staris</a></h1>
   
 
     </header>
@@ -102,7 +102,7 @@
         
   
   <div class="categories">
-    <a href="/categories/算法/">算法</a>
+    <a href="/categories/algorithm/">algorithm</a>
   </div>
 
         
@@ -127,11 +127,11 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2017-10-19T12:34:36.000Z"><a href="/2017/10/19/算法/LeetCode_62/">2017-10-19</a></time>
+        <time datetime="2017-10-19T12:34:36.000Z"><a href="/2017/10/19/algorithm/LeetCode_62/">2017-10-19</a></time>
       
       
   
-    <h1 class="title"><a href="/2017/10/19/算法/LeetCode_62/">LeetCode_62 Unique Paths</a></h1>
+    <h1 class="title"><a href="/2017/10/19/algorithm/LeetCode_62/">LeetCode_62 Unique Paths</a></h1>
   
 
     </header>
@@ -140,6 +140,7 @@
         <p>题目：一个m * n大小的地图，从地图左上角走到地图右下角,计算一共有多少种走法。</p>
 <p>思路:题目的目的就是寻找多少种做法，很容易想到就是使用DP来解决。第一步：设计f[]，设计比较适合的f[]；第二步：初始化矩阵边缘；第三部：设计转移方程。<br>点出了向下就是向右，所以sum[i][j] = sum[i][j - 1] + sum[i - 1][j]</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">public int uniquePaths(int m, int n) &#123;</div><div class="line">    if(m == 0 || n == 0)&#123;</div><div class="line">        return -1;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    int[][] sum = new int[m][n];</div><div class="line">    </div><div class="line">    for(int i = 0; i &lt; m; i++)&#123;</div><div class="line">        sum[i][0] = 1;</div><div class="line">    &#125;</div><div class="line">    for(int i = 0; i &lt; n; i++)&#123;</div><div class="line">        sum[0][i] = 1;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    for(int i = 1; i &lt; m; i++)&#123;</div><div class="line">        for(int j = 1; j &lt; n; j++)&#123;</div><div class="line">            sum[i][j] = sum[i][j - 1] + sum[i - 1][j];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    return sum[m - 1][n - 1];</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -151,7 +152,7 @@
         
   
   <div class="categories">
-    <a href="/categories/算法/">算法</a>
+    <a href="/categories/algorithm/">algorithm</a>
   </div>
 
         
@@ -176,11 +177,11 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2017-10-16T08:24:08.000Z"><a href="/2017/10/16/算法/DP总结/">2017-10-16</a></time>
+        <time datetime="2017-10-16T08:24:08.000Z"><a href="/2017/10/16/algorithm/DP总结/">2017-10-16</a></time>
       
       
   
-    <h1 class="title"><a href="/2017/10/16/算法/DP总结/">动态规划总结</a></h1>
+    <h1 class="title"><a href="/2017/10/16/algorithm/DP总结/">About DP</a></h1>
   
 
     </header>
@@ -229,7 +230,7 @@
         
   
   <div class="categories">
-    <a href="/categories/算法/">算法</a>
+    <a href="/categories/algorithm/">algorithm</a>
   </div>
 
         
@@ -254,11 +255,11 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2017-10-15T12:18:06.000Z"><a href="/2017/10/15/Java/关于suspend和resume的讨论/">2017-10-15</a></time>
+        <time datetime="2017-10-15T12:18:06.000Z"><a href="/2017/10/15/java/关于suspend和resume的讨论/">2017-10-15</a></time>
       
       
   
-    <h1 class="title"><a href="/2017/10/15/Java/关于suspend和resume的讨论/">为什么不推荐使用suspend()、resume()、stop()?</a></h1>
+    <h1 class="title"><a href="/2017/10/15/java/关于suspend和resume的讨论/">为什么不推荐使用suspend()、resume()、stop()?</a></h1>
   
 
     </header>
@@ -270,7 +271,7 @@
     
     <footer>
       <div class="alignleft">
-        <a href="/2017/10/15/Java/关于suspend和resume的讨论/#more" class="more-link">更多内容</a>
+        <a href="/2017/10/15/java/关于suspend和resume的讨论/#more" class="more-link">更多内容</a>
       </div>
     </footer>
     
@@ -282,7 +283,7 @@
         
   
   <div class="categories">
-    <a href="/categories/Java/">Java</a>
+    <a href="/categories/java/">java</a>
   </div>
 
         
@@ -307,11 +308,11 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2017-10-15T04:03:25.000Z"><a href="/2017/10/15/Java/Java多线程/">2017-10-15</a></time>
+        <time datetime="2017-10-15T04:03:25.000Z"><a href="/2017/10/15/java/Java多线程/">2017-10-15</a></time>
       
       
   
-    <h1 class="title"><a href="/2017/10/15/Java/Java多线程/">Java多线程</a></h1>
+    <h1 class="title"><a href="/2017/10/15/java/Java多线程/">Java多线程</a></h1>
   
 
     </header>
@@ -324,7 +325,7 @@
     
     <footer>
       <div class="alignleft">
-        <a href="/2017/10/15/Java/Java多线程/#more" class="more-link">更多内容</a>
+        <a href="/2017/10/15/java/Java多线程/#more" class="more-link">更多内容</a>
       </div>
     </footer>
     
@@ -336,7 +337,7 @@
         
   
   <div class="categories">
-    <a href="/categories/Java/">Java</a>
+    <a href="/categories/java/">java</a>
   </div>
 
         
@@ -361,11 +362,11 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2017-10-15T02:58:19.000Z"><a href="/2017/10/15/日记/这可怎么办/">2017-10-15</a></time>
+        <time datetime="2017-10-15T02:58:19.000Z"><a href="/2017/10/15/mylife/这可怎么办/">2017-10-15</a></time>
       
       
   
-    <h1 class="title"><a href="/2017/10/15/日记/这可怎么办/">这可怎么办？</a></h1>
+    <h1 class="title"><a href="/2017/10/15/mylife/这可怎么办/">这可怎么办？</a></h1>
   
 
     </header>
@@ -388,7 +389,7 @@
         
   
   <div class="categories">
-    <a href="/categories/个人生活/">个人生活</a>
+    <a href="/categories/mylife/">mylife</a>
   </div>
 
         
@@ -413,11 +414,11 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2017-10-14T15:07:23.000Z"><a href="/2017/10/14/日记/我做的菜/">2017-10-14</a></time>
+        <time datetime="2017-10-14T15:07:23.000Z"><a href="/2017/10/14/mylife/我做的菜/">2017-10-14</a></time>
       
       
   
-    <h1 class="title"><a href="/2017/10/14/日记/我做的菜/">我做的菜</a></h1>
+    <h1 class="title"><a href="/2017/10/14/mylife/我做的菜/">我做的菜</a></h1>
   
 
     </header>
@@ -440,6 +441,7 @@
 <h2 id="8-红烧花甲"><a href="#8-红烧花甲" class="headerlink" title="8. 红烧花甲"></a>8. 红烧花甲</h2><center><img src="http://yeshenlin.com/yelin_image/21.jpg" width="600"></center>
 
 <h2 id="9-红烧鱼"><a href="#9-红烧鱼" class="headerlink" title="9. 红烧鱼"></a>9. 红烧鱼</h2><center><img src="http://yeshenlin.com/yelin_image/20.jpg" width="600"></center>
+
       
     </div>
     
@@ -451,7 +453,7 @@
         
   
   <div class="categories">
-    <a href="/categories/个人生活/">个人生活</a>
+    <a href="/categories/mylife/">mylife</a>
   </div>
 
         
@@ -476,11 +478,11 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2017-10-12T13:30:26.000Z"><a href="/2017/10/12/算法/商汤科技笔试题/">2017-10-12</a></time>
+        <time datetime="2017-10-12T13:30:26.000Z"><a href="/2017/10/12/algorithm/商汤科技笔试题/">2017-10-12</a></time>
       
       
   
-    <h1 class="title"><a href="/2017/10/12/算法/商汤科技笔试题/">商汤科技笔试题（求大陆的面积）</a></h1>
+    <h1 class="title"><a href="/2017/10/12/algorithm/商汤科技笔试题/">商汤科技笔试题（求大陆的面积）</a></h1>
   
 
     </header>
@@ -495,7 +497,7 @@
     
     <footer>
       <div class="alignleft">
-        <a href="/2017/10/12/算法/商汤科技笔试题/#more" class="more-link">更多内容</a>
+        <a href="/2017/10/12/algorithm/商汤科技笔试题/#more" class="more-link">更多内容</a>
       </div>
     </footer>
     
@@ -507,7 +509,7 @@
         
   
   <div class="categories">
-    <a href="/categories/算法/">算法</a>
+    <a href="/categories/algorithm/">algorithm</a>
   </div>
 
         
@@ -532,11 +534,11 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2017-10-12T02:53:51.000Z"><a href="/2017/10/12/技能树/那些值得学习的人的博客/">2017-10-12</a></time>
+        <time datetime="2017-10-12T02:53:51.000Z"><a href="/2017/10/12/skill_tree/那些值得学习的人的博客/">2017-10-12</a></time>
       
       
   
-    <h1 class="title"><a href="/2017/10/12/技能树/那些值得学习的人的博客/">那些值得学习的人的博客</a></h1>
+    <h1 class="title"><a href="/2017/10/12/skill_tree/那些值得学习的人的博客/">那些值得学习的人的博客</a></h1>
   
 
     </header>
@@ -561,7 +563,7 @@
         
   
   <div class="categories">
-    <a href="/categories/技能树/">技能树</a>
+    <a href="/categories/skilltree/">skilltree</a>
   </div>
 
         
@@ -586,11 +588,11 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2017-10-11T12:38:57.000Z"><a href="/2017/10/11/Python/Python高级特性/">2017-10-11</a></time>
+        <time datetime="2017-10-11T12:38:57.000Z"><a href="/2017/10/11/python/Python高级特性/">2017-10-11</a></time>
       
       
   
-    <h1 class="title"><a href="/2017/10/11/Python/Python高级特性/">Python高级特性</a></h1>
+    <h1 class="title"><a href="/2017/10/11/python/Python高级特性/">Python高级特性</a></h1>
   
 
     </header>
@@ -636,7 +638,7 @@
         
   
   <div class="categories">
-    <a href="/categories/Python/">Python</a>
+    <a href="/categories/python/">python</a>
   </div>
 
         
@@ -677,19 +679,33 @@
   <h3 class="title">分类</h3>
   <ul class="entry">
   
-    <li><a href="/categories/Java/">Java</a><small>7</small></li>
+    <li><a href="/categories/Java/">Java</a><small>0</small></li>
   
-    <li><a href="/categories/Python/">Python</a><small>6</small></li>
+    <li><a href="/categories/Python/">Python</a><small>0</small></li>
   
-    <li><a href="/categories/个人生活/">个人生活</a><small>7</small></li>
+    <li><a href="/categories/algorithm/">algorithm</a><small>10</small></li>
   
-    <li><a href="/categories/兴趣爱好/">兴趣爱好</a><small>4</small></li>
+    <li><a href="/categories/coding/">coding</a><small>1</small></li>
   
-    <li><a href="/categories/技能树/">技能树</a><small>4</small></li>
+    <li><a href="/categories/hobby/">hobby</a><small>4</small></li>
   
-    <li><a href="/categories/算法/">算法</a><small>11</small></li>
+    <li><a href="/categories/java/">java</a><small>7</small></li>
   
-    <li><a href="/categories/编程感悟/">编程感悟</a><small>1</small></li>
+    <li><a href="/categories/mylife/">mylife</a><small>7</small></li>
+  
+    <li><a href="/categories/python/">python</a><small>6</small></li>
+  
+    <li><a href="/categories/skilltree/">skilltree</a><small>4</small></li>
+  
+    <li><a href="/categories/个人生活/">个人生活</a><small>0</small></li>
+  
+    <li><a href="/categories/兴趣爱好/">兴趣爱好</a><small>0</small></li>
+  
+    <li><a href="/categories/技能树/">技能树</a><small>0</small></li>
+  
+    <li><a href="/categories/算法/">算法</a><small>1</small></li>
+  
+    <li><a href="/categories/编程感悟/">编程感悟</a><small>0</small></li>
   
   </ul>
 </div>
@@ -701,23 +717,23 @@
   <ul class="entry">
     
       <li>
-        <a href="/2018/05/02/技能树/Eigen API 使用/">Eigen API 使用</a>
+        <a href="/2018/05/02/skill_tree/Eigen API 使用/">Eigen API 使用</a>
       </li>
     
       <li>
-        <a href="/2018/03/05/技能树/搭建VPS并加速翻墙/">Mac搭建VPS并加速翻墙</a>
+        <a href="/2018/03/05/skill_tree/搭建VPS并加速翻墙/">Mac搭建VPS并加速翻墙</a>
       </li>
     
       <li>
-        <a href="/2018/01/12/算法/每日一道算法题/字符串查找/">字符串查找</a>
+        <a href="/2018/01/12/algorithm/每日一道算法题/字符串查找/">Search string</a>
       </li>
     
       <li>
-        <a href="/2018/01/12/Python/Python API备忘/">python API 备忘</a>
+        <a href="/2018/01/12/python/Python API备忘/">python API 备忘</a>
       </li>
     
       <li>
-        <a href="/2017/12/26/日记/听见/">听见</a>
+        <a href="/2017/12/26/mylife/听见/">听见</a>
       </li>
     
   </ul>
@@ -741,7 +757,9 @@
   
     <li><a href="/tags/Python/">Python</a><small>4</small></li>
   
-    <li><a href="/tags/Str/">Str</a><small>1</small></li>
+    <li><a href="/tags/Str/">Str</a><small>0</small></li>
+  
+    <li><a href="/tags/String/">String</a><small>1</small></li>
   
     <li><a href="/tags/coding/">coding</a><small>1</small></li>
   
@@ -803,7 +821,7 @@
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/DP/" style="font-size: 17.5px;">DP</a> <a href="/tags/Eigen/" style="font-size: 10px;">Eigen</a> <a href="/tags/JVM/" style="font-size: 15px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Python/" style="font-size: 17.5px;">Python</a> <a href="/tags/Str/" style="font-size: 10px;">Str</a> <a href="/tags/coding/" style="font-size: 10px;">coding</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/string/" style="font-size: 10px;">string</a> <a href="/tags/三毛/" style="font-size: 10px;">三毛</a> <a href="/tags/切片/" style="font-size: 10px;">切片</a> <a href="/tags/列表生成式/" style="font-size: 10px;">列表生成式</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/字符串/" style="font-size: 12.5px;">字符串</a> <a href="/tags/张若水/" style="font-size: 10px;">张若水</a> <a href="/tags/徐志摩/" style="font-size: 10px;">徐志摩</a> <a href="/tags/所线程/" style="font-size: 10px;">所线程</a> <a href="/tags/排序/" style="font-size: 10px;">排序</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/日记/" style="font-size: 17.5px;">日记</a> <a href="/tags/杨绛/" style="font-size: 10px;">杨绛</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/深拷贝/" style="font-size: 10px;">深拷贝</a> <a href="/tags/生成器/" style="font-size: 10px;">生成器</a> <a href="/tags/生活/" style="font-size: 12.5px;">生活</a> <a href="/tags/网课/" style="font-size: 10px;">网课</a> <a href="/tags/美食/" style="font-size: 10px;">美食</a> <a href="/tags/翻墙/" style="font-size: 10px;">翻墙</a> <a href="/tags/迭代/" style="font-size: 10px;">迭代</a> <a href="/tags/链接/" style="font-size: 10px;">链接</a> <a href="/tags/链表/" style="font-size: 10px;">链表</a>
+    <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/DP/" style="font-size: 17.5px;">DP</a> <a href="/tags/Eigen/" style="font-size: 10px;">Eigen</a> <a href="/tags/JVM/" style="font-size: 15px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Python/" style="font-size: 17.5px;">Python</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/coding/" style="font-size: 10px;">coding</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/string/" style="font-size: 10px;">string</a> <a href="/tags/三毛/" style="font-size: 10px;">三毛</a> <a href="/tags/切片/" style="font-size: 10px;">切片</a> <a href="/tags/列表生成式/" style="font-size: 10px;">列表生成式</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/字符串/" style="font-size: 12.5px;">字符串</a> <a href="/tags/张若水/" style="font-size: 10px;">张若水</a> <a href="/tags/徐志摩/" style="font-size: 10px;">徐志摩</a> <a href="/tags/所线程/" style="font-size: 10px;">所线程</a> <a href="/tags/排序/" style="font-size: 10px;">排序</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/日记/" style="font-size: 17.5px;">日记</a> <a href="/tags/杨绛/" style="font-size: 10px;">杨绛</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/深拷贝/" style="font-size: 10px;">深拷贝</a> <a href="/tags/生成器/" style="font-size: 10px;">生成器</a> <a href="/tags/生活/" style="font-size: 12.5px;">生活</a> <a href="/tags/网课/" style="font-size: 10px;">网课</a> <a href="/tags/美食/" style="font-size: 10px;">美食</a> <a href="/tags/翻墙/" style="font-size: 10px;">翻墙</a> <a href="/tags/迭代/" style="font-size: 10px;">迭代</a> <a href="/tags/链接/" style="font-size: 10px;">链接</a> <a href="/tags/链表/" style="font-size: 10px;">链表</a>
   </div>
 </div>
 
