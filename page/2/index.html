@@ -78,6 +78,54 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2017-10-29T13:29:24.000Z"><a href="/2017/10/29/java/数据库原理/">2017-10-29</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/10/29/java/数据库原理/">数据库原理</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="数据库基本原理"><a href="#数据库基本原理" class="headerlink" title="数据库基本原理"></a>数据库基本原理</h2><p>谈到存储与实例，实例是程序，用于将物理上的关系转为逻辑上的关系，将复杂的问题简单化。<br>（1）块与页<br>数据库通常不以行(hang)为单位加载数据，因为行的粒度太小（几百字节甚至更低），如果每次IO只读取这点数据，那么IO会很频繁。我们希望程序读取一行数据时再读取连续的许多行数据到内存中，提高击中率。<br>数据库通常对数据做物理大小的划分，例如以4KB，8KB，16KB等大小为基本单位，称之为块。每个块会存储多行数据，数据库给每个块一个标识符，块内部的每行数据都有自己的行号。数据库使用数据字典来记录数据库中各数据块的偏移量，便于访问。<br>（2）多个连续块<br>一个表要存储许多数据，随着数据量的增加肯定不止一个块来存放。然而，磁盘IO是串行化，很多时候我们一次寻道能够读取更多的数据，此时将多个块的数据连续放在一起组成一组数据，可以提高设备性能。<br>由于内存空间的限制，数据库会以LRU算法管理块，让某些击中率较高的块留在内存，某些击中率较低的块从内存释放掉。如果一个连续的数据块加载后，中间有部分块没有被访问，那么就会被写回磁盘，这些连续加载的顺序快中间就会存在间隙，当再次加载这样的块时，数据库通常不会再一次加载这些块，而是加载空隙中没有的块，这样会造成了多次IO。<br>（3）修改表<br>如果一个表中的每一个数据块都存储了数据，此时要向一个表中添加一个字段，并马上向这个字段写值，会发生什么呢？<br>某些数据库会事先在写入每个块时给它们预留少量的空间，也就是每个块都不会写满，以便于添加字段时来用。如果添加的是超长字段，那么预留的空间也不够，数据的某个部分会存在另一个块中，一次IO变成了多次IO。所以线上数据库加字段不是一件很随意的事情。<br>当表结构发生改变时，通常会创建一个新表，并将原表中的数据全部拷贝到新表中，在拷贝过程中会“锁表”。这种操作对于小表的操作还行，对于大表就会很耗时。因此对于大数据的存储，通常采用所谓的“分库分表”策略。<br>（4）删除表</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/java/">java</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/数据库/">数据库</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2017-10-23T12:16:23.000Z"><a href="/2017/10/23/python/九章算法第一课/">2017-10-23</a></time>
       
       
@@ -586,62 +634,6 @@
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2017-10-12T13:30:26.000Z"><a href="/2017/10/12/algorithm/商汤科技笔试题/">2017-10-12</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2017/10/12/algorithm/商汤科技笔试题/">商汤科技笔试题（求大陆的面积）</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>题目描述：</p>
-<blockquote>
-<blockquote>
-<p>输入：两个整数（矩阵行数，矩阵列数）<br>矩阵（0、1组成）<br>
-      
-    </div>
-    
-    <footer>
-      <div class="alignleft">
-        <a href="/2017/10/12/algorithm/商汤科技笔试题/#more" class="more-link">更多内容</a>
-      </div>
-    </footer>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-  
-  <div class="categories">
-    <a href="/categories/algorithm/">algorithm</a>
-  </div>
-
-        
-  
-  <div class="tags">
-    <a href="/tags/BFS/">BFS</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
 
 <nav id="pagination">
   
@@ -668,7 +660,7 @@
   
     <li><a href="/categories/Python/">Python</a><small>0</small></li>
   
-    <li><a href="/categories/algorithm/">algorithm</a><small>12</small></li>
+    <li><a href="/categories/algorithm/">algorithm</a><small>13</small></li>
   
     <li><a href="/categories/coding/">coding</a><small>1</small></li>
   
@@ -704,6 +696,10 @@
   <ul class="entry">
     
       <li>
+        <a href="/2018/06/02/algorithm/LeetCode_01/">LeetCode_35 Two Sum</a>
+      </li>
+    
+      <li>
         <a href="/2018/06/02/algorithm/LeetCode_74/">LeetCode_35 Search a 2D Matrix</a>
       </li>
     
@@ -717,10 +713,6 @@
     
       <li>
         <a href="/2018/03/05/skill_tree/搭建VPS并加速翻墙/">Mac搭建VPS并加速翻墙</a>
-      </li>
-    
-      <li>
-        <a href="/2018/01/12/algorithm/每日一道算法题/字符串查找/">Search string</a>
       </li>
     
   </ul>
@@ -748,7 +740,7 @@
   
     <li><a href="/tags/String/">String</a><small>1</small></li>
   
-    <li><a href="/tags/array/">array</a><small>2</small></li>
+    <li><a href="/tags/array/">array</a><small>3</small></li>
   
     <li><a href="/tags/coding/">coding</a><small>1</small></li>
   
@@ -810,7 +802,7 @@
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/DP/" style="font-size: 17.5px;">DP</a> <a href="/tags/Eigen/" style="font-size: 10px;">Eigen</a> <a href="/tags/JVM/" style="font-size: 15px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Python/" style="font-size: 17.5px;">Python</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/array/" style="font-size: 12.5px;">array</a> <a href="/tags/coding/" style="font-size: 10px;">coding</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/string/" style="font-size: 10px;">string</a> <a href="/tags/三毛/" style="font-size: 10px;">三毛</a> <a href="/tags/切片/" style="font-size: 10px;">切片</a> <a href="/tags/列表生成式/" style="font-size: 10px;">列表生成式</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/字符串/" style="font-size: 12.5px;">字符串</a> <a href="/tags/张若水/" style="font-size: 10px;">张若水</a> <a href="/tags/徐志摩/" style="font-size: 10px;">徐志摩</a> <a href="/tags/所线程/" style="font-size: 10px;">所线程</a> <a href="/tags/排序/" style="font-size: 10px;">排序</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/日记/" style="font-size: 17.5px;">日记</a> <a href="/tags/杨绛/" style="font-size: 10px;">杨绛</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/深拷贝/" style="font-size: 10px;">深拷贝</a> <a href="/tags/生成器/" style="font-size: 10px;">生成器</a> <a href="/tags/生活/" style="font-size: 12.5px;">生活</a> <a href="/tags/网课/" style="font-size: 10px;">网课</a> <a href="/tags/美食/" style="font-size: 10px;">美食</a> <a href="/tags/翻墙/" style="font-size: 10px;">翻墙</a> <a href="/tags/迭代/" style="font-size: 10px;">迭代</a> <a href="/tags/链接/" style="font-size: 10px;">链接</a> <a href="/tags/链表/" style="font-size: 10px;">链表</a>
+    <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/DP/" style="font-size: 17.5px;">DP</a> <a href="/tags/Eigen/" style="font-size: 10px;">Eigen</a> <a href="/tags/JVM/" style="font-size: 15px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Python/" style="font-size: 17.5px;">Python</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/array/" style="font-size: 15px;">array</a> <a href="/tags/coding/" style="font-size: 10px;">coding</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/string/" style="font-size: 10px;">string</a> <a href="/tags/三毛/" style="font-size: 10px;">三毛</a> <a href="/tags/切片/" style="font-size: 10px;">切片</a> <a href="/tags/列表生成式/" style="font-size: 10px;">列表生成式</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/字符串/" style="font-size: 12.5px;">字符串</a> <a href="/tags/张若水/" style="font-size: 10px;">张若水</a> <a href="/tags/徐志摩/" style="font-size: 10px;">徐志摩</a> <a href="/tags/所线程/" style="font-size: 10px;">所线程</a> <a href="/tags/排序/" style="font-size: 10px;">排序</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/日记/" style="font-size: 17.5px;">日记</a> <a href="/tags/杨绛/" style="font-size: 10px;">杨绛</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/深拷贝/" style="font-size: 10px;">深拷贝</a> <a href="/tags/生成器/" style="font-size: 10px;">生成器</a> <a href="/tags/生活/" style="font-size: 12.5px;">生活</a> <a href="/tags/网课/" style="font-size: 10px;">网课</a> <a href="/tags/美食/" style="font-size: 10px;">美食</a> <a href="/tags/翻墙/" style="font-size: 10px;">翻墙</a> <a href="/tags/迭代/" style="font-size: 10px;">迭代</a> <a href="/tags/链接/" style="font-size: 10px;">链接</a> <a href="/tags/链表/" style="font-size: 10px;">链表</a>
   </div>
 </div>
 

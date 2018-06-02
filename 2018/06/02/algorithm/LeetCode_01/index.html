@@ -3,18 +3,18 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8" />
   
-  <title>我不想水群了 | 一只咸鱼的池塘</title>
+  <title>LeetCode_35 Two Sum | 一只咸鱼的池塘</title>
   <meta name="author" content="一只咸鱼的池塘" />
 
   
-  <meta name="description" content="我有一群很要好的朋友，都是一些相处好过了10年的人。在家乡，我们一起度过初中、高中，然后各自在不同的城市度过大学，或许我们一年只能见一两次面，但是我们从QQ群到微信群永远都是联系得非常火热。大概就是这8个男生，对我的青少年时光起着至关重要的作用，因为他们是这样一群无论是家庭还是三观上都与你非常相近的" />
+  <meta name="description" content="题目描述：12Given an array of integers, return indices of the two numbers such that they add up to a specific target.You may assume that each input would h" />
   
 
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  <meta property="og:title" content="我不想水群了" />
+  <meta property="og:title" content="LeetCode_35 Two Sum" />
   <meta property="og:site_name" content="一只咸鱼的池塘" />
 
   
@@ -79,19 +79,20 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2017-10-06T08:21:34.000Z"><a href="/2017/10/06/mylife/我不想水群了/">2017-10-06</a></time>
+        <time datetime="2018-06-02T09:51:59.000Z"><a href="/2018/06/02/algorithm/LeetCode_01/">2018-06-02</a></time>
       
       
   
-    <h1 class="title">我不想水群了</h1>
+    <h1 class="title">LeetCode_35 Two Sum</h1>
   
 
     </header>
     <div class="entry">
       
-        <p>我有一群很要好的朋友，都是一些相处好过了10年的人。在家乡，我们一起度过初中、高中，然后各自在不同的城市度过大学，或许我们一年只能见一两次面，但是我们从QQ群到微信群永远都是联系得非常火热。大概就是这8个男生，对我的青少年时光起着至关重要的作用，因为他们是这样一群无论是家庭还是三观上都与你非常相近的人。平常心里面有任何事情都可以毫无忌惮地跟他们讲一讲，开心的或者不开心的，常见的还是离奇的，只要是比屁大一点的事情，他们都会在群里瓜子板凳前排。</p>
-<p>但是，时间越过越快，他们有些人已经工作两三年，有些人已经结婚生子。而我还在上海读着研究生，我们的生活观念渐渐地开始有了差距。不知道是从什么时候开始，我们的话题从打球、八卦、梦想转移到买房、买车、娶妻生子上了。我感觉自己有时候只能在群里看他们讨论订婚、结婚买房等事情，但是这些事情离我太遥远。有时候我甚至感觉到有人对于生活的妥协，能够接受交易式的婚姻，能够忍受满面疮痍的爱情。是不是他们已经成熟了，而我的思想还是处于幼稚阶段。慢慢的，有很多我无法理解的事情。</p>
-<p>25岁左右，我们就已经老了吗？是内心开始提前衰老吗？生活该是什么样子的呢？这些问题我总会禁不住开始思考。生活不仅仅只是为了生而活着，虽然我有时候也会在一段时间里远离了自己的梦想，但是我时刻清楚地知道自己的梦想是什么样子？跟梦想结合的生活才是我想要的生活。</p>
+        <p><strong>题目描述：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Given an array of integers, return indices of the two numbers such that they add up to a specific target.</div><div class="line">You may assume that each input would have exactly one solution, and you may not use the same element twice.</div></pre></td></tr></table></figure></p>
+<p><strong>输入样例：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Given nums = [2, 7, 11, 15], target = 9,</div><div class="line"></div><div class="line">Because nums[0] + nums[1] = 2 + 7 = 9,</div><div class="line">return [0, 1].</div></pre></td></tr></table></figure></p>
+<h2 id="解法一："><a href="#解法一：" class="headerlink" title="解法一："></a>解法一：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">def twoSum(self, nums, target):</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    :type nums: List[int]</div><div class="line">    :type target: int</div><div class="line">    :rtype</div><div class="line">    for i in range(len(nums)):</div><div class="line">        num_find = target - nums[i]</div><div class="line">        try:</div><div class="line">            index_find = nums.index(num_find)</div><div class="line">            if index_find != i:</div><div class="line">                return [i, index_find]</div><div class="line">            else:</div><div class="line">                pass</div><div class="line">        except:</div><div class="line">            pass</div></pre></td></tr></table></figure>
+<h2 id="解法二："><a href="#解法二：" class="headerlink" title="解法二："></a>解法二：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">def twoSum(self, nums, target):</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    :type nums: List[int]</div><div class="line">    :type target: int</div><div class="line">    :rtype</div><div class="line">    tmp = &#123;&#125;</div><div class="line">    for i in range(len(nums)):</div><div class="line">        if target - nums[i] in tmp:</div><div class="line">            return [i, tmp[target-nums[i]]]</div><div class="line">        tmp[nums[i]] = i</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -104,13 +105,13 @@
         
   
   <div class="categories">
-    <a href="/categories/mylife/">mylife</a>
+    <a href="/categories/algorithm/">algorithm</a>
   </div>
 
         
   
   <div class="tags">
-    <a href="/tags/生活/">生活</a>
+    <a href="/tags/array/">array</a>
   </div>
 
         <!-- partial('post/share') -->
