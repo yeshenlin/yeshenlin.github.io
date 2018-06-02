@@ -3,18 +3,18 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8" />
   
-  <title>LeetCode_35 Search a 2D Matrix | 一只咸鱼的池塘</title>
+  <title>python API 备忘 | 一只咸鱼的池塘</title>
   <meta name="author" content="一只咸鱼的池塘" />
 
   
-  <meta name="description" content="题目描述：1234Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:Integers in each row are " />
+  <meta name="description" content="Str的APi1231. find() 在一个字符串中搜索另一个字符串    str1.find(str2)    返回-1或str2的起始位置" />
   
 
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  <meta property="og:title" content="LeetCode_35 Search a 2D Matrix" />
+  <meta property="og:title" content="python API 备忘" />
   <meta property="og:site_name" content="一只咸鱼的池塘" />
 
   
@@ -79,21 +79,18 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2018-06-02T00:00:11.000Z"><a href="/2018/06/02/algorithm/LeetCode_74/">2018-06-02</a></time>
+        <time datetime="2018-01-12T01:12:33.000Z"><a href="/2018/01/12/python/Python API备忘/">2018-01-12</a></time>
       
       
   
-    <h1 class="title">LeetCode_35 Search a 2D Matrix</h1>
+    <h1 class="title">python API 备忘</h1>
   
 
     </header>
     <div class="entry">
       
-        <p><strong>题目描述：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:</div><div class="line"></div><div class="line">Integers in each row are sorted from left to right.</div><div class="line">The first integer of each row is greater than the last integer of the previous row.</div></pre></td></tr></table></figure></p>
-<p><strong>输入样例：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line">matrix = [</div><div class="line">  [1,   3,  5,  7],</div><div class="line">  [10, 11, 16, 20],</div><div class="line">  [23, 30, 34, 50]</div><div class="line">]</div><div class="line">target = 3</div><div class="line">Output: true</div><div class="line"></div><div class="line">Input:</div><div class="line">matrix = [</div><div class="line">  [1,   3,  5,  7],</div><div class="line">  [10, 11, 16, 20],</div><div class="line">  [23, 30, 34, 50]</div><div class="line">]</div><div class="line">target = 13</div><div class="line">Output: false</div></pre></td></tr></table></figure></p>
-<h2 id="解法一"><a href="#解法一" class="headerlink" title="解法一"></a>解法一</h2><p>由于二维矩阵是有序的，所以可以拉成一维矩阵做二分查找。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">def searchMatrix(self, matrix, target):</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    :type matrix: List[List[int]]</div><div class="line">    :type target: int</div><div class="line">    :rtype: bool</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    if not matrix or target is None:</div><div class="line">        return False</div><div class="line"></div><div class="line">    rows, cols = len(matrix), len(matrix[0])</div><div class="line">    low, high = 0, rows * cols - 1</div><div class="line">    </div><div class="line">    while low &lt;= high:</div><div class="line">        mid = (low + high) / 2</div><div class="line">        num = matrix[mid / cols][mid % cols]</div><div class="line"></div><div class="line">        if num == target:</div><div class="line">            return True</div><div class="line">        elif num &lt; target:</div><div class="line">            low = mid + 1</div><div class="line">        else:</div><div class="line">            high = mid - 1</div><div class="line">    </div><div class="line">    return False</div></pre></td></tr></table></figure></p>
-<h2 id="解法二"><a href="#解法二" class="headerlink" title="解法二"></a>解法二</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">for line in matrix:</div><div class="line">    try:</div><div class="line">        line.index(target)</div><div class="line">        return True</div><div class="line">    except:</div><div class="line">        pass</div><div class="line">return False</div></pre></td></tr></table></figure>
-<h2 id="解法三"><a href="#解法三" class="headerlink" title="解法三"></a>解法三</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import numpy as np</div><div class="line">return np.isin(target, matrix)</div></pre></td></tr></table></figure>
+        <h2 id="Str的APi"><a href="#Str的APi" class="headerlink" title="Str的APi"></a>Str的APi</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1. find() 在一个字符串中搜索另一个字符串</div><div class="line">    str1.find(str2)</div><div class="line">    返回-1或str2的起始位置</div></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -105,13 +102,13 @@
         
   
   <div class="categories">
-    <a href="/categories/algorithm/">algorithm</a>
+    <a href="/categories/py/">py</a>
   </div>
 
         
   
   <div class="tags">
-    <a href="/tags/array/">array</a>
+    <a href="/tags/Python/">Python</a>
   </div>
 
         <!-- partial('post/share') -->

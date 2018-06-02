@@ -3,18 +3,18 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8" />
   
-  <title>LeetCode_35 Search a 2D Matrix | 一只咸鱼的池塘</title>
+  <title>数据库原理 | 一只咸鱼的池塘</title>
   <meta name="author" content="一只咸鱼的池塘" />
 
   
-  <meta name="description" content="题目描述：1234Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:Integers in each row are " />
+  <meta name="description" content="数据库基本原理谈到存储与实例，实例是程序，用于将物理上的关系转为逻辑上的关系，将复杂的问题简单化。（1）块与页数据库通常不以行(hang)为单位加载数据，因为行的粒度太小（几百字节甚至更低），如果每次IO只读取这点数据，那么IO会很频繁。我们希望程序读取一行数据时再读取连续的许多行数据到内存中，提高" />
   
 
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  <meta property="og:title" content="LeetCode_35 Search a 2D Matrix" />
+  <meta property="og:title" content="数据库原理" />
   <meta property="og:site_name" content="一只咸鱼的池塘" />
 
   
@@ -79,21 +79,18 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2018-06-02T00:00:11.000Z"><a href="/2018/06/02/algorithm/LeetCode_74/">2018-06-02</a></time>
+        <time datetime="2017-10-29T13:29:24.000Z"><a href="/2017/10/29/java/数据库原理/">2017-10-29</a></time>
       
       
   
-    <h1 class="title">LeetCode_35 Search a 2D Matrix</h1>
+    <h1 class="title">数据库原理</h1>
   
 
     </header>
     <div class="entry">
       
-        <p><strong>题目描述：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:</div><div class="line"></div><div class="line">Integers in each row are sorted from left to right.</div><div class="line">The first integer of each row is greater than the last integer of the previous row.</div></pre></td></tr></table></figure></p>
-<p><strong>输入样例：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line">matrix = [</div><div class="line">  [1,   3,  5,  7],</div><div class="line">  [10, 11, 16, 20],</div><div class="line">  [23, 30, 34, 50]</div><div class="line">]</div><div class="line">target = 3</div><div class="line">Output: true</div><div class="line"></div><div class="line">Input:</div><div class="line">matrix = [</div><div class="line">  [1,   3,  5,  7],</div><div class="line">  [10, 11, 16, 20],</div><div class="line">  [23, 30, 34, 50]</div><div class="line">]</div><div class="line">target = 13</div><div class="line">Output: false</div></pre></td></tr></table></figure></p>
-<h2 id="解法一"><a href="#解法一" class="headerlink" title="解法一"></a>解法一</h2><p>由于二维矩阵是有序的，所以可以拉成一维矩阵做二分查找。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">def searchMatrix(self, matrix, target):</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    :type matrix: List[List[int]]</div><div class="line">    :type target: int</div><div class="line">    :rtype: bool</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    if not matrix or target is None:</div><div class="line">        return False</div><div class="line"></div><div class="line">    rows, cols = len(matrix), len(matrix[0])</div><div class="line">    low, high = 0, rows * cols - 1</div><div class="line">    </div><div class="line">    while low &lt;= high:</div><div class="line">        mid = (low + high) / 2</div><div class="line">        num = matrix[mid / cols][mid % cols]</div><div class="line"></div><div class="line">        if num == target:</div><div class="line">            return True</div><div class="line">        elif num &lt; target:</div><div class="line">            low = mid + 1</div><div class="line">        else:</div><div class="line">            high = mid - 1</div><div class="line">    </div><div class="line">    return False</div></pre></td></tr></table></figure></p>
-<h2 id="解法二"><a href="#解法二" class="headerlink" title="解法二"></a>解法二</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">for line in matrix:</div><div class="line">    try:</div><div class="line">        line.index(target)</div><div class="line">        return True</div><div class="line">    except:</div><div class="line">        pass</div><div class="line">return False</div></pre></td></tr></table></figure>
-<h2 id="解法三"><a href="#解法三" class="headerlink" title="解法三"></a>解法三</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import numpy as np</div><div class="line">return np.isin(target, matrix)</div></pre></td></tr></table></figure>
+        <h2 id="数据库基本原理"><a href="#数据库基本原理" class="headerlink" title="数据库基本原理"></a>数据库基本原理</h2><p>谈到存储与实例，实例是程序，用于将物理上的关系转为逻辑上的关系，将复杂的问题简单化。<br>（1）块与页<br>数据库通常不以行(hang)为单位加载数据，因为行的粒度太小（几百字节甚至更低），如果每次IO只读取这点数据，那么IO会很频繁。我们希望程序读取一行数据时再读取连续的许多行数据到内存中，提高击中率。<br>数据库通常对数据做物理大小的划分，例如以4KB，8KB，16KB等大小为基本单位，称之为块。每个块会存储多行数据，数据库给每个块一个标识符，块内部的每行数据都有自己的行号。数据库使用数据字典来记录数据库中各数据块的偏移量，便于访问。<br>（2）多个连续块<br>一个表要存储许多数据，随着数据量的增加肯定不止一个块来存放。然而，磁盘IO是串行化，很多时候我们一次寻道能够读取更多的数据，此时将多个块的数据连续放在一起组成一组数据，可以提高设备性能。<br>由于内存空间的限制，数据库会以LRU算法管理块，让某些击中率较高的块留在内存，某些击中率较低的块从内存释放掉。如果一个连续的数据块加载后，中间有部分块没有被访问，那么就会被写回磁盘，这些连续加载的顺序快中间就会存在间隙，当再次加载这样的块时，数据库通常不会再一次加载这些块，而是加载空隙中没有的块，这样会造成了多次IO。<br>（3）修改表<br>如果一个表中的每一个数据块都存储了数据，此时要向一个表中添加一个字段，并马上向这个字段写值，会发生什么呢？<br>某些数据库会事先在写入每个块时给它们预留少量的空间，也就是每个块都不会写满，以便于添加字段时来用。如果添加的是超长字段，那么预留的空间也不够，数据的某个部分会存在另一个块中，一次IO变成了多次IO。所以线上数据库加字段不是一件很随意的事情。<br>当表结构发生改变时，通常会创建一个新表，并将原表中的数据全部拷贝到新表中，在拷贝过程中会“锁表”。这种操作对于小表的操作还行，对于大表就会很耗时。因此对于大数据的存储，通常采用所谓的“分库分表”策略。<br>（4）删除表</p>
+
       
     </div>
     
@@ -105,13 +102,13 @@
         
   
   <div class="categories">
-    <a href="/categories/algorithm/">algorithm</a>
+    <a href="/categories/java/">java</a>
   </div>
 
         
   
   <div class="tags">
-    <a href="/tags/array/">array</a>
+    <a href="/tags/数据库/">数据库</a>
   </div>
 
         <!-- partial('post/share') -->

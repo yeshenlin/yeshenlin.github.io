@@ -3,18 +3,18 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8" />
   
-  <title>LeetCode_35 Search a 2D Matrix | 一只咸鱼的池塘</title>
+  <title>为什么不推荐使用suspend()、resume()、stop()? | 一只咸鱼的池塘</title>
   <meta name="author" content="一只咸鱼的池塘" />
 
   
-  <meta name="description" content="题目描述：1234Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:Integers in each row are " />
+  <meta name="description" content="suspend()、resume()、stop()这些API虽然Java一直保留着，但在代码中使用时会发现JVM已经不推荐使用了，它们都被加上了@Deprecated注解，表示它们已经过时了，保留只是为了兼容。" />
   
 
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  <meta property="og:title" content="LeetCode_35 Search a 2D Matrix" />
+  <meta property="og:title" content="为什么不推荐使用suspend()、resume()、stop()?" />
   <meta property="og:site_name" content="一只咸鱼的池塘" />
 
   
@@ -79,21 +79,27 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2018-06-02T00:00:11.000Z"><a href="/2018/06/02/algorithm/LeetCode_74/">2018-06-02</a></time>
+        <time datetime="2017-10-15T12:18:06.000Z"><a href="/2017/10/15/java/关于suspend和resume的讨论/">2017-10-15</a></time>
       
       
   
-    <h1 class="title">LeetCode_35 Search a 2D Matrix</h1>
+    <h1 class="title">为什么不推荐使用suspend()、resume()、stop()?</h1>
   
 
     </header>
     <div class="entry">
       
-        <p><strong>题目描述：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:</div><div class="line"></div><div class="line">Integers in each row are sorted from left to right.</div><div class="line">The first integer of each row is greater than the last integer of the previous row.</div></pre></td></tr></table></figure></p>
-<p><strong>输入样例：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line">matrix = [</div><div class="line">  [1,   3,  5,  7],</div><div class="line">  [10, 11, 16, 20],</div><div class="line">  [23, 30, 34, 50]</div><div class="line">]</div><div class="line">target = 3</div><div class="line">Output: true</div><div class="line"></div><div class="line">Input:</div><div class="line">matrix = [</div><div class="line">  [1,   3,  5,  7],</div><div class="line">  [10, 11, 16, 20],</div><div class="line">  [23, 30, 34, 50]</div><div class="line">]</div><div class="line">target = 13</div><div class="line">Output: false</div></pre></td></tr></table></figure></p>
-<h2 id="解法一"><a href="#解法一" class="headerlink" title="解法一"></a>解法一</h2><p>由于二维矩阵是有序的，所以可以拉成一维矩阵做二分查找。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">def searchMatrix(self, matrix, target):</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    :type matrix: List[List[int]]</div><div class="line">    :type target: int</div><div class="line">    :rtype: bool</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    if not matrix or target is None:</div><div class="line">        return False</div><div class="line"></div><div class="line">    rows, cols = len(matrix), len(matrix[0])</div><div class="line">    low, high = 0, rows * cols - 1</div><div class="line">    </div><div class="line">    while low &lt;= high:</div><div class="line">        mid = (low + high) / 2</div><div class="line">        num = matrix[mid / cols][mid % cols]</div><div class="line"></div><div class="line">        if num == target:</div><div class="line">            return True</div><div class="line">        elif num &lt; target:</div><div class="line">            low = mid + 1</div><div class="line">        else:</div><div class="line">            high = mid - 1</div><div class="line">    </div><div class="line">    return False</div></pre></td></tr></table></figure></p>
-<h2 id="解法二"><a href="#解法二" class="headerlink" title="解法二"></a>解法二</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">for line in matrix:</div><div class="line">    try:</div><div class="line">        line.index(target)</div><div class="line">        return True</div><div class="line">    except:</div><div class="line">        pass</div><div class="line">return False</div></pre></td></tr></table></figure>
-<h2 id="解法三"><a href="#解法三" class="headerlink" title="解法三"></a>解法三</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import numpy as np</div><div class="line">return np.isin(target, matrix)</div></pre></td></tr></table></figure>
+        <p>suspend()、resume()、stop()这些API虽然Java一直保留着，但在代码中使用时会发现JVM已经不推荐使用了，它们都被加上了@Deprecated注解，表示它们已经过时了，保留只是为了兼容。<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">@Deprecated</div><div class="line">public final void suspend() &#123;</div><div class="line">    checkAccess();</div><div class="line">    suspend0();</div><div class="line">&#125;</div><div class="line"></div><div class="line">@Deprecated</div><div class="line">public final void resume() &#123;</div><div class="line">    checkAccess();</div><div class="line">    resume0();</div><div class="line">&#125;</div><div class="line"></div><div class="line">@Deprecated</div><div class="line">public final void stop() &#123;</div><div class="line">    //...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>关于suspend()/resume()这两个方法类似于wait()/notify(),但是它们不是等待和唤醒线程。通过对它们的实验会发现，suspend()后的线程处于RUNNING状态，而不死WAITING状态，但是线程本身在这里已经挂起了，线程本身的状态就开始对不上号了。</p>
+<p>如果是在synchronized区域内部发生suspend()操作，那么它并不会像发生wait()那样把锁释放出来，因为它自己还在运行中。而当发生resume()时，程序就正常结束了，其实如果代码正常走过synchronzied区域，锁也会释放的。但是很多资料讲解的是没有释放资源，从下面代码来分一下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">public class SuspendAndResume &#123;</div><div class="line">    private final static Object object = new Object();</div><div class="line"></div><div class="line">    static  class ThreadA extends Thread&#123;</div><div class="line">        @Override</div><div class="line">        public void run() &#123;</div><div class="line">            synchronized (object)&#123;</div><div class="line">                System.out.println(Thread.currentThread().getName() + &quot;: strat...&quot;);</div><div class="line">                Thread.currentThread().suspend();</div><div class="line">                System.out.println(Thread.currentThread().getName() + &quot;: thread end ...&quot;);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void main(String[] args) throws InterruptedException&#123;</div><div class="line">        Thread t1 = new ThreadA();</div><div class="line">        t1.setName(&quot;t1&quot;);</div><div class="line">        Thread t2 = new ThreadA();</div><div class="line">        t2.setName(&quot;t2&quot;);</div><div class="line">        t1.start();</div><div class="line">        t2.start();</div><div class="line">        Thread.sleep(100);</div><div class="line">        System.out.println(&quot;t1:&quot; + t1.getState());</div><div class="line">        System.out.println(&quot;t2:&quot; + t2.getState());</div><div class="line">        t1.resume();</div><div class="line">        t2.resume();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">t1: strat...</div><div class="line">t1:RUNNABLE</div><div class="line">t2:BLOCKED</div><div class="line">t1: thread end ...</div><div class="line">t2: strat...</div></pre></td></tr></table></figure></p>
+<p>去掉synichronized的输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">t2: strat...</div><div class="line">t1: strat...</div><div class="line">t1:RUNNABLE</div><div class="line">t2:RUNNABLE</div><div class="line">t2: thread end ...</div><div class="line">t1: thread end ...</div></pre></td></tr></table></figure></p>
+<p>从输出可以看出：t1先进入synchronized区域，调用suspend()状态变为了RUNNABLE,t2在synichronized区域被阻塞，状态为BLOCKED。<br>去掉synichronized两个线程状态RUNNABLE，两个线程都在调用suspend()后停止执行。说明suspend()/resume()并不需要synchronized的支持，因此不需要对象。<br>只有t1输出”thread end…”，t2为什么没有输出呢？说明resume()可能发生在t2进入synichronized区域之前，也自然发生在它调用suspend()方法之前，在线程没有调用suspend()方法之前调用resume()是无效的。<br>总的来说，问题应当出现在线程状态对外看到的是RUNNING状态，外部程序并不知道这个线程挂起了需要去做resume()操作。</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ol>
+<li><a href="https://book.douban.com/subject/25959139/" target="_blank" rel="external">《Java特种兵》第五章Java并发</a></li>
+</ol>
+
       
     </div>
     
@@ -105,13 +111,13 @@
         
   
   <div class="categories">
-    <a href="/categories/algorithm/">algorithm</a>
+    <a href="/categories/java/">java</a>
   </div>
 
         
   
   <div class="tags">
-    <a href="/tags/array/">array</a>
+    <a href="/tags/所线程/">所线程</a>
   </div>
 
         <!-- partial('post/share') -->

@@ -3,18 +3,18 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8" />
   
-  <title>LeetCode_35 Search a 2D Matrix | 一只咸鱼的池塘</title>
+  <title>Python的Dict和Set | 一只咸鱼的池塘</title>
   <meta name="author" content="一只咸鱼的池塘" />
 
   
-  <meta name="description" content="题目描述：1234Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:Integers in each row are " />
+  <meta name="description" content="DictPython字典，其它语言称之为Map，即key-value pair。1234d = &amp;#123;&amp;quot;Michael&amp;quot;:95, &amp;apos;Bob&amp;apos;: 75, &amp;apos;Tracy&amp;apos;:85&amp;#125;print d[&amp;apos;Bob&amp;apos;]9" />
   
 
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  <meta property="og:title" content="LeetCode_35 Search a 2D Matrix" />
+  <meta property="og:title" content="Python的Dict和Set" />
   <meta property="og:site_name" content="一只咸鱼的池塘" />
 
   
@@ -79,21 +79,40 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2018-06-02T00:00:11.000Z"><a href="/2018/06/02/algorithm/LeetCode_74/">2018-06-02</a></time>
+        <time datetime="2017-10-11T06:28:05.000Z"><a href="/2017/10/11/python/Python的Dict和Set/">2017-10-11</a></time>
       
       
   
-    <h1 class="title">LeetCode_35 Search a 2D Matrix</h1>
+    <h1 class="title">Python的Dict和Set</h1>
   
 
     </header>
     <div class="entry">
       
-        <p><strong>题目描述：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:</div><div class="line"></div><div class="line">Integers in each row are sorted from left to right.</div><div class="line">The first integer of each row is greater than the last integer of the previous row.</div></pre></td></tr></table></figure></p>
-<p><strong>输入样例：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line">matrix = [</div><div class="line">  [1,   3,  5,  7],</div><div class="line">  [10, 11, 16, 20],</div><div class="line">  [23, 30, 34, 50]</div><div class="line">]</div><div class="line">target = 3</div><div class="line">Output: true</div><div class="line"></div><div class="line">Input:</div><div class="line">matrix = [</div><div class="line">  [1,   3,  5,  7],</div><div class="line">  [10, 11, 16, 20],</div><div class="line">  [23, 30, 34, 50]</div><div class="line">]</div><div class="line">target = 13</div><div class="line">Output: false</div></pre></td></tr></table></figure></p>
-<h2 id="解法一"><a href="#解法一" class="headerlink" title="解法一"></a>解法一</h2><p>由于二维矩阵是有序的，所以可以拉成一维矩阵做二分查找。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">def searchMatrix(self, matrix, target):</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    :type matrix: List[List[int]]</div><div class="line">    :type target: int</div><div class="line">    :rtype: bool</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    if not matrix or target is None:</div><div class="line">        return False</div><div class="line"></div><div class="line">    rows, cols = len(matrix), len(matrix[0])</div><div class="line">    low, high = 0, rows * cols - 1</div><div class="line">    </div><div class="line">    while low &lt;= high:</div><div class="line">        mid = (low + high) / 2</div><div class="line">        num = matrix[mid / cols][mid % cols]</div><div class="line"></div><div class="line">        if num == target:</div><div class="line">            return True</div><div class="line">        elif num &lt; target:</div><div class="line">            low = mid + 1</div><div class="line">        else:</div><div class="line">            high = mid - 1</div><div class="line">    </div><div class="line">    return False</div></pre></td></tr></table></figure></p>
-<h2 id="解法二"><a href="#解法二" class="headerlink" title="解法二"></a>解法二</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">for line in matrix:</div><div class="line">    try:</div><div class="line">        line.index(target)</div><div class="line">        return True</div><div class="line">    except:</div><div class="line">        pass</div><div class="line">return False</div></pre></td></tr></table></figure>
-<h2 id="解法三"><a href="#解法三" class="headerlink" title="解法三"></a>解法三</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import numpy as np</div><div class="line">return np.isin(target, matrix)</div></pre></td></tr></table></figure>
+        <h2 id="Dict"><a href="#Dict" class="headerlink" title="Dict"></a>Dict</h2><p>Python字典，其它语言称之为Map，即key-value pair。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">d = &#123;&quot;Michael&quot;:95, &apos;Bob&apos;: 75, &apos;Tracy&apos;:85&#125;</div><div class="line">print d[&apos;Bob&apos;]</div><div class="line"></div><div class="line">95</div></pre></td></tr></table></figure></p>
+<p>对字典中添加一个新的key-value<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">d[&apos;yelin&apos;] = 100</div><div class="line">print d</div><div class="line"></div><div class="line">&#123;&apos;yelin&apos;: 100, &apos;Bob&apos;: 75, &apos;Michael&apos;: 95, &apos;Tracy&apos;: 85&#125;</div></pre></td></tr></table></figure></p>
+<p>如果在添加kay-value之前，当前的key已经存在，那么value就会被冲掉<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">d[&apos;yelin&apos;] = 99</div><div class="line">print d</div><div class="line"></div><div class="line">&#123;&apos;yelin&apos;: 99, &apos;Bob&apos;: 75, &apos;Michael&apos;: 95, &apos;Tracy&apos;: 85&#125;</div></pre></td></tr></table></figure></p>
+<p>若取value的时候使用的kay不存在字典中，那么就会报错。</p>
+<p>比较推荐的取值方法：<br>使用get进行取值，如果key不存在，可以返回None，也可以指定返回的value：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">print d.get(&apos;zhangsan&apos;,-1)</div><div class="line"></div><div class="line">-1</div></pre></td></tr></table></figure></p>
+<p>删除一个key，使用pop(key), 此时会弹出一个value：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">d.pop(&apos;yelin&apos;)</div><div class="line"></div><div class="line">99</div></pre></td></tr></table></figure></p>
+<p>Dict的特点：</p>
+<ol>
+<li>查找和插入的速度极快，不对key值增加而增加；</li>
+<li>需要占用大量内存，内存浪费大。</li>
+</ol>
+<p>list的特点：</p>
+<ol>
+<li>查找和插入的时间随着元素的增加而增加；</li>
+<li>占用空间小，浪费内存很少。</li>
+</ol>
+<p>注意：由于Dict的底层原理是Hash算法，为了保证hash的正确性，Dict的key值必须是不可变类型，Python中的str、int、tuple是不可变的，list是可变的。因此使用list做key会报错。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">key = [1,2,3]</div><div class="line">d[key] = &apos;a list&apos;</div><div class="line">&gt;&gt; TypeError: unhashable type: &apos;list&apos;</div></pre></td></tr></table></figure></p>
+<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><p>set和dict类似，也是一组key的集合，但是set不存储value。set中的key不重复。set具有去重的功能。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">s = set([1,2,3,3])</div><div class="line">print s</div><div class="line"></div><div class="line">set([1,2,3])</div></pre></td></tr></table></figure></p>
+<p>添加和删除新key：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">s = set([1,2,3])</div><div class="line">s.add(3)</div><div class="line">print s</div><div class="line">//添加重复的key，没有任何效果</div><div class="line">set([1,2,3])</div><div class="line"></div><div class="line">s.remove(2)</div><div class="line">print s</div><div class="line"></div><div class="line">set([1,3])</div></pre></td></tr></table></figure></p>
+<p>对于setk可以实现数学意义上的交集、并集操作：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">s1 = set([1,2,3])</div><div class="line">s2 = set([2,3,4])</div><div class="line">print s1 &amp; s2</div><div class="line">print s1 | s2</div><div class="line"></div><div class="line">set([2,3])</div><div class="line">set([1,2,3,4])</div></pre></td></tr></table></figure></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ol>
+<li><a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/00143167793538255adf33371774853a0ef943280573f4d000" target="_blank" rel="external">廖雪峰Python教程Dict和set</a></li>
+</ol>
+
       
     </div>
     
@@ -105,13 +124,13 @@
         
   
   <div class="categories">
-    <a href="/categories/algorithm/">algorithm</a>
+    <a href="/categories/py/">py</a>
   </div>
 
         
   
   <div class="tags">
-    <a href="/tags/array/">array</a>
+    <a href="/tags/Python/">Python</a>
   </div>
 
         <!-- partial('post/share') -->

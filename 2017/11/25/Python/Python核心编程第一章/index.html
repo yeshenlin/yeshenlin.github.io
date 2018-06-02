@@ -3,18 +3,18 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8" />
   
-  <title>LeetCode_35 Search a 2D Matrix | 一只咸鱼的池塘</title>
+  <title>《Python核心编程》第一章习题-正则表达式 | 一只咸鱼的池塘</title>
   <meta name="author" content="一只咸鱼的池塘" />
 
   
-  <meta name="description" content="题目描述：1234Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:Integers in each row are " />
+  <meta name="description" content="1-1识别后续的字符串： “bat” 、 “bit” 、 “but” 、 “hat” 、 “hit”或者“hut”123strList = [&amp;apos;bat&amp;apos;,&amp;apos;bit&amp;apos;,&amp;apos;but&amp;apos;,&amp;apos;hat&amp;apos;,&amp;apos;hit&amp;apos;" />
   
 
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  <meta property="og:title" content="LeetCode_35 Search a 2D Matrix" />
+  <meta property="og:title" content="《Python核心编程》第一章习题-正则表达式" />
   <meta property="og:site_name" content="一只咸鱼的池塘" />
 
   
@@ -79,21 +79,33 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2018-06-02T00:00:11.000Z"><a href="/2018/06/02/algorithm/LeetCode_74/">2018-06-02</a></time>
+        <time datetime="2017-11-25T03:05:00.000Z"><a href="/2017/11/25/python/Python核心编程第一章/">2017-11-25</a></time>
       
       
   
-    <h1 class="title">LeetCode_35 Search a 2D Matrix</h1>
+    <h1 class="title">《Python核心编程》第一章习题-正则表达式</h1>
   
 
     </header>
     <div class="entry">
       
-        <p><strong>题目描述：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:</div><div class="line"></div><div class="line">Integers in each row are sorted from left to right.</div><div class="line">The first integer of each row is greater than the last integer of the previous row.</div></pre></td></tr></table></figure></p>
-<p><strong>输入样例：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line">matrix = [</div><div class="line">  [1,   3,  5,  7],</div><div class="line">  [10, 11, 16, 20],</div><div class="line">  [23, 30, 34, 50]</div><div class="line">]</div><div class="line">target = 3</div><div class="line">Output: true</div><div class="line"></div><div class="line">Input:</div><div class="line">matrix = [</div><div class="line">  [1,   3,  5,  7],</div><div class="line">  [10, 11, 16, 20],</div><div class="line">  [23, 30, 34, 50]</div><div class="line">]</div><div class="line">target = 13</div><div class="line">Output: false</div></pre></td></tr></table></figure></p>
-<h2 id="解法一"><a href="#解法一" class="headerlink" title="解法一"></a>解法一</h2><p>由于二维矩阵是有序的，所以可以拉成一维矩阵做二分查找。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">def searchMatrix(self, matrix, target):</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    :type matrix: List[List[int]]</div><div class="line">    :type target: int</div><div class="line">    :rtype: bool</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    if not matrix or target is None:</div><div class="line">        return False</div><div class="line"></div><div class="line">    rows, cols = len(matrix), len(matrix[0])</div><div class="line">    low, high = 0, rows * cols - 1</div><div class="line">    </div><div class="line">    while low &lt;= high:</div><div class="line">        mid = (low + high) / 2</div><div class="line">        num = matrix[mid / cols][mid % cols]</div><div class="line"></div><div class="line">        if num == target:</div><div class="line">            return True</div><div class="line">        elif num &lt; target:</div><div class="line">            low = mid + 1</div><div class="line">        else:</div><div class="line">            high = mid - 1</div><div class="line">    </div><div class="line">    return False</div></pre></td></tr></table></figure></p>
-<h2 id="解法二"><a href="#解法二" class="headerlink" title="解法二"></a>解法二</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">for line in matrix:</div><div class="line">    try:</div><div class="line">        line.index(target)</div><div class="line">        return True</div><div class="line">    except:</div><div class="line">        pass</div><div class="line">return False</div></pre></td></tr></table></figure>
-<h2 id="解法三"><a href="#解法三" class="headerlink" title="解法三"></a>解法三</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import numpy as np</div><div class="line">return np.isin(target, matrix)</div></pre></td></tr></table></figure>
+        <h2 id="1-1"><a href="#1-1" class="headerlink" title="1-1"></a>1-1</h2><p>识别后续的字符串： “bat” 、 “bit” 、 “but” 、 “hat” 、 “hit”或者“hut”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">strList = [&apos;bat&apos;,&apos;bit&apos;,&apos;but&apos;,&apos;hat&apos;,&apos;hit&apos;,&apos;hut&apos;]</div><div class="line">for c in strList:</div><div class="line">    print re.match(r&apos;[bh][aiu]t&apos;, c).group()</div></pre></td></tr></table></figure></p>
+<h2 id="1-2"><a href="#1-2" class="headerlink" title="1-2"></a>1-2</h2><p>匹配由单个空格分隔的任意单词对，也就是姓和名。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print re.match(r&apos;[A-Za-z]+\s[A-Za-z]+&apos;, &apos;Lin Ye&apos;).group()</div></pre></td></tr></table></figure></p>
+<h2 id="1-3"><a href="#1-3" class="headerlink" title="1-3"></a>1-3</h2><p>匹配由单个逗号和单个空白符分隔的任何单词和单个字母，如姓氏的首字母。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">result = re.match(r&apos;([A-Za-z]\.)+?\s[A-Za-z]+&apos;, &apos;J. q&apos;)</div></pre></td></tr></table></figure></p>
+<h2 id="1-4"><a href="#1-4" class="headerlink" title="1-4"></a>1-4</h2><p>匹配所有有效 Python 标识符的集合。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">result = re.match(r&apos;[A-Za-z_][\w_]+&apos;, &apos;_abc&apos;)</div></pre></td></tr></table></figure></p>
+<h2 id="1-5"><a href="#1-5" class="headerlink" title="1-5"></a>1-5</h2><p>例如，美国街道地址使用如下格式：1180 Bordeaux Drive。使你的正则表达式足够灵活，以支持多单词的街道名称，如 3120 De la Cruz Boulevard。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">result = re.match(r&apos;\d+\s([a-zA-Z]+\s*)+&apos;, &apos;3120 De la Cruz Boulevard&apos;)</div></pre></td></tr></table></figure></p>
+<h2 id="1-6"><a href="#1-6" class="headerlink" title="1-6"></a>1-6</h2><p>匹配以 “www” 起始且以 “.com” 结尾的简单Web 域名； 例如， www://www. yahoo.com/。选做题：你的正则表达式也可以支持其他高级域名，如.edu、.net 等（例如， <a href="http://www.foothill.edu）" target="_blank" rel="external">http://www.foothill.edu）</a> 。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">result = re.match(r&apos;^www\..*\.(com|net|edu)$&apos;, &apos;www.foothill.edu&apos;)</div></pre></td></tr></table></figure></p>
+<h2 id="1-7"><a href="#1-7" class="headerlink" title="1-7"></a>1-7</h2><p>匹配所有能够表示 Python 整数的字符串集。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">result = re.match(r&apos;[-+]?\d+&apos;, &apos;753965&apos;)</div></pre></td></tr></table></figure></p>
+<h2 id="1-8"><a href="#1-8" class="headerlink" title="1-8"></a>1-8</h2><p>匹配所有能够表示 Python 长整数的字符串集<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">result = re.match(r&apos;[-+]?\d+[lL]&apos;, &apos;753965L&apos;)</div></pre></td></tr></table></figure></p>
+<h2 id="1-9"><a href="#1-9" class="headerlink" title="1-9"></a>1-9</h2><p>匹配所有能够表示 Python 浮点数的字符串集。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">result = re.search(r&apos;\d+(\.\d*)?&apos;, &apos;1.&apos;)</div></pre></td></tr></table></figure></p>
+<h2 id="1-10"><a href="#1-10" class="headerlink" title="1-10"></a>1-10</h2><p>匹配所有能够表示 Python 复数的字符串集。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">result = re.search(r&apos;[-]?\d+(\.\d*)?[+-][-]?\d+(\.\d*)?[Jj]&apos;, &apos;-1-1j&apos;)</div></pre></td></tr></table></figure></p>
+<h2 id="1-11"><a href="#1-11" class="headerlink" title="1-11"></a>1-11</h2><p>匹配所有能够表示有效电子邮件地址的集合（从一个宽松的正则表达式开始，然后尝试使它尽可能严谨，不过要保持正确的功能).<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">result = re.search(r&apos;(\w+\.)?\w+@\w+\.\w+&apos;, &apos;lye.freedom@gmail.com&apos;)</div></pre></td></tr></table></figure></p>
+<h2 id="1-12"><a href="#1-12" class="headerlink" title="1-12"></a>1-12</h2><p>匹配所有能够表示有效的网站地址的集合 （URL）（ ）（从一个宽松的正则表达式开始， 然后尝试使它尽可能严谨，不过要保持正确的功能<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">result = re.search(r&apos;(http://)?(w&#123;3&#125;\.)?\w+.com&apos;,&apos;http://www.baidu.com&apos;)</div></pre></td></tr></table></figure></p>
+<h2 id="1-13"><a href="#1-13" class="headerlink" title="1-13"></a>1-13</h2><p>type()是python的内置函数，写一个正则表达式返回类型<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; type(0)</div><div class="line">&lt;type &apos;int&apos;&gt;</div><div class="line">&gt;&gt;&gt; type(.34)</div><div class="line">&lt;type &apos;float&apos;&gt;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">data = &quot;&lt;type &apos;float&apos;&gt;&quot;</div><div class="line">patt = r&quot;&apos;(\w+)&apos;&quot;</div></pre></td></tr></table></figure>
+<h2 id="1-14"><a href="#1-14" class="headerlink" title="1-14"></a>1-14</h2><p>处理日期。 1.2 节提供了来匹配单个或者两个数字字符串的正则表达式模式， 来表示1～ 9 的月份(0?[1-9])。创建一个正则表达式来表示标准日历中剩余三个月的数字。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">patt = r&apos;1[012]&apos;</div><div class="line">data = &apos;10&apos;</div></pre></td></tr></table></figure></p>
+<h2 id="1-15"><a href="#1-15" class="headerlink" title="1-15"></a>1-15</h2><p>处理信用卡号码。1.2 节还提供了一个能够匹配信用卡（CC）号码([0-9]{15,16}) 的正则表达式模式。然而，该模式不允许使用连字符来分割数字块。创建一个允许使用连字符的正则表达式，但是仅能用于正确的位置。例如，15 位的信用卡号码使用 4-6-5 的模式，表明 4 个数字-连字符-6 个数字-连字符-5 个数字；16 位的信用卡号码使用 4-4-4-4 的模式。 记住， 要对整个字符串进行合适的分组。 选做题： 有一个判断信用卡号码是否有效的标准算法。编写一些代码，这些代码不但能够识别具有正确格式的号码，而且能够识别有效的信用卡号码。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">patt = r&apos;\d&#123;4&#125;-\d&#123;6&#125;-\d&#123;5&#125;|\d&#123;4&#125;-\d&#123;4&#125;-\d&#123;4&#125;-\d&#123;4&#125;&apos;</div></pre></td></tr></table></figure></p>
+
       
     </div>
     
@@ -105,13 +117,13 @@
         
   
   <div class="categories">
-    <a href="/categories/algorithm/">algorithm</a>
+    <a href="/categories/py/">py</a>
   </div>
 
         
   
   <div class="tags">
-    <a href="/tags/array/">array</a>
+    <a href="/tags/Python/">Python</a>, <a href="/tags/正则表达式/">正则表达式</a>
   </div>
 
         <!-- partial('post/share') -->

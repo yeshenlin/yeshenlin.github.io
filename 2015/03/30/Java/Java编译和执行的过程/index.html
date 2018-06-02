@@ -3,18 +3,31 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8" />
   
-  <title>LeetCode_35 Search a 2D Matrix | 一只咸鱼的池塘</title>
+  <title>Java编译和执行的过程 | 一只咸鱼的池塘</title>
   <meta name="author" content="一只咸鱼的池塘" />
 
   
-  <meta name="description" content="题目描述：1234Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:Integers in each row are " />
+  <meta name="description" content="Java的编译过程由Java编译器执行，Java的运行过程由JVM执行引擎执行。
+
+
+Java的编译和执行过程主要包含三个机制
+
+Java源码编译机制
+类加载机制
+类执行机制
+
+Java源码编译机制Java源码编译机制由一下三个过程组成：
+
+分析和输入到符号表
+注解处理
+语法分析和生成class文件" />
   
 
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  <meta property="og:title" content="LeetCode_35 Search a 2D Matrix" />
+  <meta property="og:title" content="Java编译和执行的过程" />
   <meta property="og:site_name" content="一只咸鱼的池塘" />
 
   
@@ -79,21 +92,42 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2018-06-02T00:00:11.000Z"><a href="/2018/06/02/algorithm/LeetCode_74/">2018-06-02</a></time>
+        <time datetime="2015-03-30T08:27:25.000Z"><a href="/2015/03/30/java/Java编译和执行的过程/">2015-03-30</a></time>
       
       
   
-    <h1 class="title">LeetCode_35 Search a 2D Matrix</h1>
+    <h1 class="title">Java编译和执行的过程</h1>
   
 
     </header>
     <div class="entry">
       
-        <p><strong>题目描述：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:</div><div class="line"></div><div class="line">Integers in each row are sorted from left to right.</div><div class="line">The first integer of each row is greater than the last integer of the previous row.</div></pre></td></tr></table></figure></p>
-<p><strong>输入样例：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line">matrix = [</div><div class="line">  [1,   3,  5,  7],</div><div class="line">  [10, 11, 16, 20],</div><div class="line">  [23, 30, 34, 50]</div><div class="line">]</div><div class="line">target = 3</div><div class="line">Output: true</div><div class="line"></div><div class="line">Input:</div><div class="line">matrix = [</div><div class="line">  [1,   3,  5,  7],</div><div class="line">  [10, 11, 16, 20],</div><div class="line">  [23, 30, 34, 50]</div><div class="line">]</div><div class="line">target = 13</div><div class="line">Output: false</div></pre></td></tr></table></figure></p>
-<h2 id="解法一"><a href="#解法一" class="headerlink" title="解法一"></a>解法一</h2><p>由于二维矩阵是有序的，所以可以拉成一维矩阵做二分查找。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">def searchMatrix(self, matrix, target):</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    :type matrix: List[List[int]]</div><div class="line">    :type target: int</div><div class="line">    :rtype: bool</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    if not matrix or target is None:</div><div class="line">        return False</div><div class="line"></div><div class="line">    rows, cols = len(matrix), len(matrix[0])</div><div class="line">    low, high = 0, rows * cols - 1</div><div class="line">    </div><div class="line">    while low &lt;= high:</div><div class="line">        mid = (low + high) / 2</div><div class="line">        num = matrix[mid / cols][mid % cols]</div><div class="line"></div><div class="line">        if num == target:</div><div class="line">            return True</div><div class="line">        elif num &lt; target:</div><div class="line">            low = mid + 1</div><div class="line">        else:</div><div class="line">            high = mid - 1</div><div class="line">    </div><div class="line">    return False</div></pre></td></tr></table></figure></p>
-<h2 id="解法二"><a href="#解法二" class="headerlink" title="解法二"></a>解法二</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">for line in matrix:</div><div class="line">    try:</div><div class="line">        line.index(target)</div><div class="line">        return True</div><div class="line">    except:</div><div class="line">        pass</div><div class="line">return False</div></pre></td></tr></table></figure>
-<h2 id="解法三"><a href="#解法三" class="headerlink" title="解法三"></a>解法三</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import numpy as np</div><div class="line">return np.isin(target, matrix)</div></pre></td></tr></table></figure>
+        <p>Java的编译过程由Java编译器执行，Java的运行过程由JVM执行引擎执行。</p>
+<center><img src="http://yeshenlin.com/yelin_image/05.gif" alt="Java编译"></center><br><center><img src="http://yeshenlin.com/yelin_image/06.gif" alt="Java执行"></center>
+
+<p>Java的编译和执行过程主要包含三个机制</p>
+<ol>
+<li>Java源码编译机制</li>
+<li>类加载机制</li>
+<li>类执行机制</li>
+</ol>
+<h2 id="Java源码编译机制"><a href="#Java源码编译机制" class="headerlink" title="Java源码编译机制"></a>Java源码编译机制</h2><p>Java源码编译机制由一下三个过程组成：</p>
+<ol>
+<li>分析和输入到符号表</li>
+<li>注解处理</li>
+<li>语法分析和生成class文件</li>
+</ol>
+<p>流程图如下图所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">*.java --------&gt; 分析和注入 ---------&gt; 注解处理 ---------&gt; 语法分析 ---------&gt; *.class </div><div class="line">            |                                      |                            |</div><div class="line">            |______________________________________|                            |</div><div class="line">                                                                                |</div><div class="line">                                                                                ↓</div><div class="line">                                                                    ---------------------------------------------|</div><div class="line">                                                                    \1. 结构信息。包含class文件结构版本号各部分信息;\</div><div class="line">                                                                    \2. 元数据。声明与常量的信息，类、超类、接口的声 \</div><div class="line">                                                                    \   明信息、域和方法声明的信息和常量池；        \</div><div class="line">                                                                    \3. 方法信息。语句和源码表达式的信息。          \</div><div class="line">                                                                    \---------------------------------------------</div></pre></td></tr></table></figure>
+<h2 id="类加载机制"><a href="#类加载机制" class="headerlink" title="类加载机制"></a>类加载机制</h2><p>JVM类的加载是通过ClassLoader及其子类来完成的，类的层次关系和记载顺序可以用一下图来进行描述。</p>
+<p><center><img src="http://yeshenlin.com/yelin_image/07.gif" alt="类加载机制"></center></p>
+<h3 id="BootStrap-ClassLoader"><a href="#BootStrap-ClassLoader" class="headerlink" title="BootStrap ClassLoader"></a>BootStrap ClassLoader</h3><p>负责加载$JAVA_HOME中jre/lib/rt.jar里所有的 class，由 C++ 实现，不是 ClassLoader 子类。</p>
+<h3 id="Extension-ClassLoader"><a href="#Extension-ClassLoader" class="headerlink" title="Extension ClassLoader"></a>Extension ClassLoader</h3><p>负责加载Java平台中的扩展功能的一些jar包</p>
+<h3 id="App-ClassLoader"><a href="#App-ClassLoader" class="headerlink" title="App ClassLoader"></a>App ClassLoader</h3><p>负责加载classpath中指定的jar包及目录中的class</p>
+<h3 id="Custom-ClassLoader"><a href="#Custom-ClassLoader" class="headerlink" title="Custom ClassLoader"></a>Custom ClassLoader</h3><p>应用程序根据自身需要定义的ClassLoader。</p>
+<p>加载过程会先检查自底向上检测类是否被加载，而检查过程是自顶向下的。</p>
+<h2 id="类执行机制"><a href="#类执行机制" class="headerlink" title="类执行机制"></a>类执行机制</h2><p>JVM执行字节码，线程创建，产生计数器（PC）和栈（Stack），程序计数器存放下一条指令在方法内的偏移量，栈中存放一个个栈帧。每个栈帧对应着每个方法的每次调用，而栈帧又是有局部变量和操作数栈两部分组成，局部变量区用于存放方法中的局部变量和参数，操作数栈中用于存放方法执行过程中产生的中间结果。<br>栈的结构如下图所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">        ------------------------</div><div class="line">        |                      |</div><div class="line">    ----------------------     |</div><div class="line">    |                    |     |</div><div class="line">---------------------    |     |</div><div class="line">|   -------------   |    |     |</div><div class="line">|   | 局部变量区 |   |    |     |</div><div class="line">|   -------------   |    |     |</div><div class="line">|                   |    |     |</div><div class="line">|   -------------   |    |     |</div><div class="line">|   |  操作数栈  |   |    |------</div><div class="line">|   -------------   |    |</div><div class="line">|                   |-----</div><div class="line">|       栈帧        |</div><div class="line">---------------------</div></pre></td></tr></table></figure></p>
+
       
     </div>
     
@@ -105,13 +139,13 @@
         
   
   <div class="categories">
-    <a href="/categories/algorithm/">algorithm</a>
+    <a href="/categories/java/">java</a>
   </div>
 
         
   
   <div class="tags">
-    <a href="/tags/array/">array</a>
+    <a href="/tags/Java/">Java</a>, <a href="/tags/JVM/">JVM</a>
   </div>
 
         <!-- partial('post/share') -->
