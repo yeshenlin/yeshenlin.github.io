@@ -3,16 +3,18 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8" />
   
-  <title>一只咸鱼的池塘</title>
+  <title>LeetCode_35 Remove Duplicates from Sorted Array | 一只咸鱼的池塘</title>
   <meta name="author" content="一只咸鱼的池塘" />
 
+  
+  <meta name="description" content="题目描述：123Given a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length.Do not allocate ex" />
   
 
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  
+  <meta property="og:title" content="LeetCode_35 Remove Duplicates from Sorted Array" />
   <meta property="og:site_name" content="一只咸鱼的池塘" />
 
   
@@ -77,17 +79,21 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2018-06-04T14:58:01.679Z"><a href="/2018/06/04/algorithm/LeetCode_26/">2018-06-04</a></time>
+        <time datetime="2018-06-04T14:58:25.000Z"><a href="/2018/06/04/algorithm/LeetCode_26/">2018-06-04</a></time>
       
       
   
-    <h1 class="title"></h1>
+    <h1 class="title">LeetCode_35 Remove Duplicates from Sorted Array</h1>
   
 
     </header>
     <div class="entry">
       
-        
+        <p><strong>题目描述：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Given a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length.</div><div class="line"></div><div class="line">Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory</div></pre></td></tr></table></figure></p>
+<p><strong>输入样例：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Example 1:</div><div class="line"></div><div class="line">Given nums = [1,1,2],</div><div class="line">Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively.</div><div class="line">It doesn&apos;t matter what you leave beyond the returned length.</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Example 2:</div><div class="line"></div><div class="line">Given nums = [0,0,1,1,1,2,2,3,3,4],</div><div class="line">Your function should return length = 5, with the first five elements of nums being modified to 0, 1, 2, 3, and 4 respectively.</div><div class="line">It doesn&apos;t matter what values are set beyond the returned length.</div></pre></td></tr></table></figure>
+<p><strong>思路和code</strong><br>这道题的题意非常地费解，简单理解为数组去重，但是要求只对原数组去重，给入的是nums，去重后的也必须是这个nums，也就是说指针必须不变。因此，重新开辟新的数组来寸去重后的数，最后虽然返回的值一样，但是会报错，因为不是之前的那个nums了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># 错误的做法</div><div class="line">def removeDuplicates(self, nums):</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    :type nums: List[int]</div><div class="line">    :rtype: int</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    return len(set(nums))   #set是比较好用的去重函数，但是内部实现过程不是删除nums种的重复数，</div><div class="line">                            #而是新开的一个数组来存，返回新开的数组</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"># 正确的做法</div><div class="line">def removeDuplicates(self, nums):</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    :type nums: List[int]</div><div class="line">    :rtype: int</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    if not nums or len(nums) == 0:</div><div class="line">        return 0</div><div class="line">    if len(nums) == 1:</div><div class="line">        return len(nums)</div><div class="line"></div><div class="line">    num_len, i = len(nums) - 1, 0</div><div class="line">    while i &lt; num_len - 1:</div><div class="line">        if(nums[i] == nums[i + 1]):</div><div class="line">            nums.pop(i + 1)</div><div class="line">            num_len -= 1</div><div class="line">        else:</div><div class="line">            i += 1</div><div class="line">            </div><div class="line">    if nums[-1] == nums[-2]:</div><div class="line">        nums.pop(-1)</div><div class="line">    return len(nums)</div></pre></td></tr></table></figure>
       
     </div>
     
@@ -97,7 +103,17 @@
           <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
         </div>
         
+  
+  <div class="categories">
+    <a href="/categories/algorithm/">algorithm</a>
+  </div>
+
         
+  
+  <div class="tags">
+    <a href="/tags/array/">array</a>
+  </div>
+
         <!-- partial('post/share') -->
       <div class="clearfix"></div>
     </footer>
@@ -124,7 +140,7 @@
   
     <li><a href="/categories/Python/">Python</a><small>3</small></li>
   
-    <li><a href="/categories/algorithm/">algorithm</a><small>14</small></li>
+    <li><a href="/categories/algorithm/">algorithm</a><small>15</small></li>
   
     <li><a href="/categories/coding/">coding</a><small>1</small></li>
   
@@ -160,7 +176,7 @@
   <ul class="entry">
     
       <li>
-        <a href="/2018/06/04/algorithm/LeetCode_26/"></a>
+        <a href="/2018/06/04/algorithm/LeetCode_26/">LeetCode_35 Remove Duplicates from Sorted Array</a>
       </li>
     
       <li>
@@ -204,7 +220,7 @@
   
     <li><a href="/tags/String/">String</a><small>1</small></li>
   
-    <li><a href="/tags/array/">array</a><small>3</small></li>
+    <li><a href="/tags/array/">array</a><small>4</small></li>
   
     <li><a href="/tags/coding/">coding</a><small>1</small></li>
   
@@ -266,7 +282,7 @@
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/DP/" style="font-size: 17.5px;">DP</a> <a href="/tags/Eigen/" style="font-size: 10px;">Eigen</a> <a href="/tags/JVM/" style="font-size: 15px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Python/" style="font-size: 17.5px;">Python</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/array/" style="font-size: 15px;">array</a> <a href="/tags/coding/" style="font-size: 10px;">coding</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/string/" style="font-size: 12.5px;">string</a> <a href="/tags/三毛/" style="font-size: 10px;">三毛</a> <a href="/tags/切片/" style="font-size: 10px;">切片</a> <a href="/tags/列表生成式/" style="font-size: 10px;">列表生成式</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/字符串/" style="font-size: 12.5px;">字符串</a> <a href="/tags/张若水/" style="font-size: 10px;">张若水</a> <a href="/tags/徐志摩/" style="font-size: 10px;">徐志摩</a> <a href="/tags/所线程/" style="font-size: 10px;">所线程</a> <a href="/tags/排序/" style="font-size: 10px;">排序</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/日记/" style="font-size: 17.5px;">日记</a> <a href="/tags/杨绛/" style="font-size: 10px;">杨绛</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/深拷贝/" style="font-size: 10px;">深拷贝</a> <a href="/tags/生成器/" style="font-size: 10px;">生成器</a> <a href="/tags/生活/" style="font-size: 12.5px;">生活</a> <a href="/tags/网课/" style="font-size: 10px;">网课</a> <a href="/tags/美食/" style="font-size: 10px;">美食</a> <a href="/tags/翻墙/" style="font-size: 10px;">翻墙</a> <a href="/tags/迭代/" style="font-size: 10px;">迭代</a> <a href="/tags/链接/" style="font-size: 10px;">链接</a> <a href="/tags/链表/" style="font-size: 10px;">链表</a>
+    <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/DP/" style="font-size: 17.5px;">DP</a> <a href="/tags/Eigen/" style="font-size: 10px;">Eigen</a> <a href="/tags/JVM/" style="font-size: 15px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Python/" style="font-size: 17.5px;">Python</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/array/" style="font-size: 17.5px;">array</a> <a href="/tags/coding/" style="font-size: 10px;">coding</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/string/" style="font-size: 12.5px;">string</a> <a href="/tags/三毛/" style="font-size: 10px;">三毛</a> <a href="/tags/切片/" style="font-size: 10px;">切片</a> <a href="/tags/列表生成式/" style="font-size: 10px;">列表生成式</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/字符串/" style="font-size: 12.5px;">字符串</a> <a href="/tags/张若水/" style="font-size: 10px;">张若水</a> <a href="/tags/徐志摩/" style="font-size: 10px;">徐志摩</a> <a href="/tags/所线程/" style="font-size: 10px;">所线程</a> <a href="/tags/排序/" style="font-size: 10px;">排序</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/日记/" style="font-size: 17.5px;">日记</a> <a href="/tags/杨绛/" style="font-size: 10px;">杨绛</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/深拷贝/" style="font-size: 10px;">深拷贝</a> <a href="/tags/生成器/" style="font-size: 10px;">生成器</a> <a href="/tags/生活/" style="font-size: 12.5px;">生活</a> <a href="/tags/网课/" style="font-size: 10px;">网课</a> <a href="/tags/美食/" style="font-size: 10px;">美食</a> <a href="/tags/翻墙/" style="font-size: 10px;">翻墙</a> <a href="/tags/迭代/" style="font-size: 10px;">迭代</a> <a href="/tags/链接/" style="font-size: 10px;">链接</a> <a href="/tags/链表/" style="font-size: 10px;">链表</a>
   </div>
 </div>
 
