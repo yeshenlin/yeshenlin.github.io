@@ -151,6 +151,63 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2017-08-29T14:39:48.000Z"><a href="/2017/08/29/algorithm/字符串总结/">2017-08-29</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/08/29/algorithm/字符串总结/">字符串总结</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="1-字符串反转问题"><a href="#1-字符串反转问题" class="headerlink" title="1. 字符串反转问题"></a>1. 字符串反转问题</h2><blockquote>
+<p>牛客最近来了一个新员工Fish，每天早晨总是会拿着一本英文杂志，写些句子在本子上。同事Cat对Fish写的内容颇感兴趣，有一天他向Fish借来翻看，但却读不懂它的意思。例如，“student. a am I”。后来才意识到，这家伙原来把句子单词的顺序翻转了，正确的句子应该是“I am a student.”。Cat对一一的翻转这些单词顺序可不在行，你能帮助他么？</p>
+</blockquote>
+<p><code>思路</code>：先切割单词，后反转句子。注意意外情况就是句子是” “<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">def ReverseSentence(self, s):</div><div class="line">    return &apos; &apos;.join(s.strip().split(&apos; &apos;)[::-1]) or s</div></pre></td></tr></table></figure></p>
+<h2 id="2-求等差数列问题"><a href="#2-求等差数列问题" class="headerlink" title="2. 求等差数列问题"></a>2. 求等差数列问题</h2><blockquote>
+<p>求1+2+3+…+n，要求不能使用乘除法、for、while、if、else、switch、case等关键字及条件判断语句（A?B:C）。</p>
+</blockquote>
+<p><code>思路</code>：这道题显然就是要用递归<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">def Sum_Solution(self, n):</div><div class="line">    return 0 if n &lt; 1 else n + self.Sum_Solution(n - 1)</div></pre></td></tr></table></figure></p>
+<h2 id="3-全排列和子集问题"><a href="#3-全排列和子集问题" class="headerlink" title="3. 全排列和子集问题"></a>3. 全排列和子集问题</h2><h3 id="3-1-不带重复和带重复的的子集问题"><a href="#3-1-不带重复和带重复的的子集问题" class="headerlink" title="3.1 不带重复和带重复的的子集问题"></a>3.1 不带重复和带重复的的子集问题</h3><p><code>思路</code>：数组保持有序可以避免重复。穷举所有的集合，然后每次从当前集合中添加新的那个数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line">input: &#123;1, 2&#125;</div><div class="line">output: &#123;&#125;, &#123;1&#125;, &#123;2&#125;, &#123;1, 2&#125;</div><div class="line"></div><div class="line">                      &#123;&#125;</div><div class="line">                    ↙    ↘</div><div class="line">                  &#123;1&#125;     &#123;2&#125;</div><div class="line">                  ↙</div><div class="line">                &#123;1,2&#125;</div><div class="line"></div><div class="line">public List&lt;List&lt;Integer&gt;&gt; subsets(int[] nums) &#123;</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;List&lt;Integer&gt;&gt;();</div><div class="line">        if(nums == null || nums.length == 0)&#123;</div><div class="line">            return result;</div><div class="line">        &#125;</div><div class="line">        List&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;();</div><div class="line">        Arrays.sort(nums);</div><div class="line">        subsetsHelper(result, list, nums, 0);</div><div class="line">        </div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    //这就是搜索的模板，先加一个数，然后撤销数</div><div class="line">    private void subsetsHelper(List&lt;List&lt;Integer&gt;&gt; result,</div><div class="line">        List&lt;Integer&gt; list, int[] nums, int pos)&#123;</div><div class="line">            </div><div class="line">            result.add(new ArrayList&lt;Integer&gt;(list));</div><div class="line">            </div><div class="line">            for(int i = pos; i &lt; nums.length; i++)&#123;</div><div class="line"></div><div class="line">                *********************************************</div><div class="line">                *   if(i != pos &amp;&amp; num[i] == num[i - 1]&#123;    *</div><div class="line">                *        cintinues;                         *</div><div class="line">                *   &#125;                                       *</div><div class="line">                *                                           *</div><div class="line">                *       pos      i                          *</div><div class="line">                *        ↓       ↓                          *</div><div class="line">                *   1, 1th_2, 2th_2, 3th_2                  *</div><div class="line">                *   ↑                                       *</div><div class="line">                *                                           *</div><div class="line">                *   &#123;1, 1th_2&#125; = &#123;1, 2th_2&#125;                 *</div><div class="line">                *                                           *</div><div class="line">                *   只改动上面这句话就可以解决带重复的问题     *    </div><div class="line">                *   复杂度，有n个数，O(2^n)                  *</div><div class="line">                *********************************************</div><div class="line"></div><div class="line">                list.add(nums[i]);</div><div class="line">                subsetsHelper(result, list, nums, i+1);</div><div class="line">                list.remove(list.size() - 1);   //回溯，每次把尝试加的那个数撤销掉，尝试加另外一个数。比如从空集出发，先加1，然后删掉1，尝试加2</div><div class="line">            &#125;</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
+<h3 id="3-2-不带重复和带重复的全排列"><a href="#3-2-不带重复和带重复的全排列" class="headerlink" title="3.2 不带重复和带重复的全排列"></a>3.2 不带重复和带重复的全排列</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">public List&lt;List&lt;Integer&gt;&gt; permute(int[] nums) &#123;</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; results = new ArrayList();</div><div class="line">        if(nums == null || nums.length == 0)&#123;</div><div class="line">            return results;</div><div class="line">        &#125;</div><div class="line">        List&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;();</div><div class="line">        Helper(results, list, nums);</div><div class="line">        return results;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    // 不带重复的数</div><div class="line">    private void Helper(List&lt;List&lt;Integer&gt;&gt; results, List&lt;Integer&gt; list, int[] nums)</div><div class="line">        if(list.size() == nums.length)&#123;</div><div class="line">            results.add(new ArrayList&lt;Integer&gt;(list));</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        for(int i = 0; i &lt; nums.length; i++)&#123;</div><div class="line">            if(list.contains(nums[i]))&#123;</div><div class="line">                continue;</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">            list.add(nums[i]);</div><div class="line">            Helper(results, list, nums);</div><div class="line">            list.remove(list.size()-1);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    //带重复的数</div><div class="line">    private void Helper(List&lt;List&lt;Integer&gt;&gt; results, int[] nums,</div><div class="line">                        int[] visited, List&lt;Integer&gt; list)&#123;</div><div class="line">        if(list.size() == nums.length)&#123;</div><div class="line">            results.add(new ArrayList&lt;Integer&gt;(list));</div><div class="line">            return ;    //排列一次结束要返回</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        for(int i = 0; i &lt; nums.length; i++)&#123;</div><div class="line">            if (visited[i] == 1 || (i != 0 &amp;&amp; nums[i] == nums[i-1] &amp;&amp; visited[i-1] == 0))&#123;</div><div class="line">                continue;</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">            visited[i] = 1;</div><div class="line">            list.add(nums[i]);</div><div class="line">            Helper(results, nums, visited, list);</div><div class="line">            list.remove(list.size() - 1);</div><div class="line">            visited[i] = 0;</div><div class="line">        &#125; </div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/algorithm/">algorithm</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/字符串/">字符串</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2016-08-30T08:44:02.000Z"><a href="/2016/08/30/java/Java面试常考题/">2016-08-30</a></time>
       
       
@@ -399,7 +456,7 @@
   
     <li><a href="/categories/Python/">Python</a><small>3</small></li>
   
-    <li><a href="/categories/algorithm/">algorithm</a><small>15</small></li>
+    <li><a href="/categories/algorithm/">algorithm</a><small>16</small></li>
   
     <li><a href="/categories/coding/">coding</a><small>1</small></li>
   
@@ -435,6 +492,10 @@
   <ul class="entry">
     
       <li>
+        <a href="/2018/06/05/algorithm/LeetCode_283/">LeetCode_35 Move Zeroes</a>
+      </li>
+    
+      <li>
         <a href="/2018/06/04/algorithm/LeetCode_26/">LeetCode_35 Remove Duplicates from Sorted Array</a>
       </li>
     
@@ -448,10 +509,6 @@
     
       <li>
         <a href="/2018/06/02/algorithm/LeetCode_74/">LeetCode_35 Search a 2D Matrix</a>
-      </li>
-    
-      <li>
-        <a href="/2018/06/01/algorithm/LeetCode_35/">LeetCode_35 Search Insert Position</a>
       </li>
     
   </ul>
@@ -479,7 +536,7 @@
   
     <li><a href="/tags/String/">String</a><small>1</small></li>
   
-    <li><a href="/tags/array/">array</a><small>4</small></li>
+    <li><a href="/tags/array/">array</a><small>5</small></li>
   
     <li><a href="/tags/coding/">coding</a><small>1</small></li>
   
@@ -541,7 +598,7 @@
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/DP/" style="font-size: 17.5px;">DP</a> <a href="/tags/Eigen/" style="font-size: 10px;">Eigen</a> <a href="/tags/JVM/" style="font-size: 15px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Python/" style="font-size: 17.5px;">Python</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/array/" style="font-size: 17.5px;">array</a> <a href="/tags/coding/" style="font-size: 10px;">coding</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/string/" style="font-size: 12.5px;">string</a> <a href="/tags/三毛/" style="font-size: 10px;">三毛</a> <a href="/tags/切片/" style="font-size: 10px;">切片</a> <a href="/tags/列表生成式/" style="font-size: 10px;">列表生成式</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/字符串/" style="font-size: 12.5px;">字符串</a> <a href="/tags/张若水/" style="font-size: 10px;">张若水</a> <a href="/tags/徐志摩/" style="font-size: 10px;">徐志摩</a> <a href="/tags/所线程/" style="font-size: 10px;">所线程</a> <a href="/tags/排序/" style="font-size: 10px;">排序</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/日记/" style="font-size: 17.5px;">日记</a> <a href="/tags/杨绛/" style="font-size: 10px;">杨绛</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/深拷贝/" style="font-size: 10px;">深拷贝</a> <a href="/tags/生成器/" style="font-size: 10px;">生成器</a> <a href="/tags/生活/" style="font-size: 12.5px;">生活</a> <a href="/tags/网课/" style="font-size: 10px;">网课</a> <a href="/tags/美食/" style="font-size: 10px;">美食</a> <a href="/tags/翻墙/" style="font-size: 10px;">翻墙</a> <a href="/tags/迭代/" style="font-size: 10px;">迭代</a> <a href="/tags/链接/" style="font-size: 10px;">链接</a> <a href="/tags/链表/" style="font-size: 10px;">链表</a>
+    <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/DP/" style="font-size: 17.5px;">DP</a> <a href="/tags/Eigen/" style="font-size: 10px;">Eigen</a> <a href="/tags/JVM/" style="font-size: 15px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Python/" style="font-size: 17.5px;">Python</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/array/" style="font-size: 20px;">array</a> <a href="/tags/coding/" style="font-size: 10px;">coding</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/string/" style="font-size: 12.5px;">string</a> <a href="/tags/三毛/" style="font-size: 10px;">三毛</a> <a href="/tags/切片/" style="font-size: 10px;">切片</a> <a href="/tags/列表生成式/" style="font-size: 10px;">列表生成式</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/字符串/" style="font-size: 12.5px;">字符串</a> <a href="/tags/张若水/" style="font-size: 10px;">张若水</a> <a href="/tags/徐志摩/" style="font-size: 10px;">徐志摩</a> <a href="/tags/所线程/" style="font-size: 10px;">所线程</a> <a href="/tags/排序/" style="font-size: 10px;">排序</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/日记/" style="font-size: 17.5px;">日记</a> <a href="/tags/杨绛/" style="font-size: 10px;">杨绛</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/深拷贝/" style="font-size: 10px;">深拷贝</a> <a href="/tags/生成器/" style="font-size: 10px;">生成器</a> <a href="/tags/生活/" style="font-size: 12.5px;">生活</a> <a href="/tags/网课/" style="font-size: 10px;">网课</a> <a href="/tags/美食/" style="font-size: 10px;">美食</a> <a href="/tags/翻墙/" style="font-size: 10px;">翻墙</a> <a href="/tags/迭代/" style="font-size: 10px;">迭代</a> <a href="/tags/链接/" style="font-size: 10px;">链接</a> <a href="/tags/链表/" style="font-size: 10px;">链表</a>
   </div>
 </div>
 
