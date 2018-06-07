@@ -1,0 +1,368 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8" />
+  
+  <title>Python第一课 | 一只咸鱼的池塘</title>
+  <meta name="author" content="一只咸鱼的池塘" />
+
+  
+  <meta name="description" content="1. LintCode_479 数组第二大数题目描述:
+在数组中找到第二大的数
+
+
+ 注意事项你可以假定至少有两个数字" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="Python第一课" />
+  <meta property="og:site_name" content="一只咸鱼的池塘" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="一只咸鱼的池塘" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">一只咸鱼的池塘</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/archives/">所有文章</a></li>
+    
+      <li><a href="/categories/coding">编程感悟</a></li>
+    
+      <li><a href="/categories/algorithm">算法之道</a></li>
+    
+      <li><a href="/categories/Java">Java</a></li>
+    
+      <li><a href="/categories/Python">Python</a></li>
+    
+      <li><a href="/categories/linux">Linux</a></li>
+    
+      <li><a href="/categories/ml">机器学习</a></li>
+    
+      <li><a href="/categories/skilltree">Other</a></li>
+    
+      <li><a href="/categories/hobby">兴趣爱好</a></li>
+    
+      <li><a href="/categories/mylife">我的生活</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-10-23T12:16:23.000Z"><a href="/2017/10/23/python/九章算法第一课/">2017-10-23</a></time>
+      
+      
+  
+    <h1 class="title">Python第一课</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="1-LintCode-479-数组第二大数"><a href="#1-LintCode-479-数组第二大数" class="headerlink" title="1. LintCode_479 数组第二大数"></a>1. LintCode_479 数组第二大数</h2><p><strong>题目描述</strong>:</p>
+<p>在数组中找到第二大的数</p>
+<blockquote>
+<blockquote>
+<p> <strong>注意事项</strong><br>你可以假定至少有两个数字</p>
+</blockquote>
+</blockquote>
+<a id="more"></a>
+<p><strong>样例</strong>:</p>
+<p>给出 [1, 3, 2, 4], 返回 3.<br>给出 [1, 2], 返回 1.</p>
+<p>这道题安按照直观的理解，假如给定的list中没有重复的数，写出的程序LintCode也是AC的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">#solution 1</div><div class="line">def secondMax(self, nums):</div><div class="line">    return sorted(nums)[-2]</div><div class="line"></div><div class="line"></div><div class="line">#solution 2</div><div class="line">def secondMax(self, nums):</div><div class="line">    # write your code here</div><div class="line">    for i in range(2):</div><div class="line">        for j in range(len(nums) - i - 1):</div><div class="line">            if nums[j] &gt; nums[j + 1]:</div><div class="line">                nums[j], nums[j + 1] = nums[j + 1], nums[j]</div><div class="line">    return nums[-2]</div></pre></td></tr></table></figure>
+<p>但是LintCode题目中并没有说明list是不重复的，面对[1,2,2]这样的输入，第二大的数应该是1.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">def secondMax(self, nums):</div><div class="line">    biggestNum = secBigNum = nums[0]</div><div class="line"></div><div class="line">    # Get the biggest Num</div><div class="line">    for num in nums:</div><div class="line">        if biggestNum &lt; num:</div><div class="line">            biggestNum = num</div><div class="line"></div><div class="line">    # Get the sencond big num</div><div class="line">    for num in nums:</div><div class="line">        if secBigNum &lt; num and num != biggestNum:</div><div class="line">            secBigNum = num</div><div class="line">    return secBigNum</div></pre></td></tr></table></figure></p>
+<h2 id="2-LintCode-478-简单计算器"><a href="#2-LintCode-478-简单计算器" class="headerlink" title="2. LintCode_478 简单计算器"></a>2. LintCode_478 简单计算器</h2><p><strong>题目描述</strong><br>给出两个整数 a , b ,以及一个操作符 opeator<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+, -, *, /</div></pre></td></tr></table></figure></p>
+<p>返回结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a&lt;operator&gt;b</div></pre></td></tr></table></figure></p>
+<p>输入样例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">For a = 1, b = 2, operator = +, return 3.</div><div class="line"></div><div class="line">For a = 10, b = 20, operator = *, return 200.</div><div class="line"></div><div class="line">For a = 3, b = 2, operator = /, return 1. (not 1.5)</div><div class="line"></div><div class="line">For a = 10, b = 11, operator = -, return -1.</div></pre></td></tr></table></figure></p>
+<p>Python中没有switch表达式，那么只能用其它办法代替。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"># solution 1</div><div class="line">def calculate(self, a, operator, b):</div><div class="line">    if operator == &apos;+&apos;:</div><div class="line">        return a + b</div><div class="line">    elif operator == &apos;-&apos;:</div><div class="line">        return a - b</div><div class="line">    elif operator == &apos;*&apos;:</div><div class="line">        return a * b</div><div class="line">    else:</div><div class="line">        return a / b</div><div class="line"></div><div class="line"># solution 2</div><div class="line">def calculate(self, a, operator, b):</div><div class="line">    res =  &#123;</div><div class="line">        &apos;+&apos;: lambda x, y: x + y,</div><div class="line">        &apos;-&apos;: lambda x, y: x - y,</div><div class="line">        &apos;*&apos;: lambda x, y: x * y,</div><div class="line">        &apos;/&apos;: lambda x, y: x / y</div><div class="line">    &#125;[operator](a, b)</div><div class="line">    return res</div></pre></td></tr></table></figure></p>
+<h2 id="3-LintCode-283-三数之中的最大值"><a href="#3-LintCode-283-三数之中的最大值" class="headerlink" title="3. LintCode_283 三数之中的最大值"></a>3. LintCode_283 三数之中的最大值</h2><p><strong>描述：</strong><br>给三个整数，求他们中的最大值。</p>
+<p><strong>样例：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Given num1 = 1, num2 = 9, num3 = 0, return 9.</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">def maxOfThreeNumbers(self, num1, num2, num3):</div><div class="line">    # solution 1</div><div class="line">    res = num1</div><div class="line">    if res &lt; num2:</div><div class="line">        res = num2</div><div class="line">    if res &lt; num3:</div><div class="line">        res = num3</div><div class="line">    return res</div><div class="line"></div><div class="line">    &quot;&quot;&quot;</div><div class="line">    # solution 2</div><div class="line">    return max(num1,num2,num3)</div><div class="line">    &quot;&quot;&quot;</div></pre></td></tr></table></figure>
+<h2 id="4-LintCode-145-大小写转换"><a href="#4-LintCode-145-大小写转换" class="headerlink" title="4. LintCode_145 大小写转换"></a>4. LintCode_145 大小写转换</h2><p><strong>描述：</strong><br>将一个字符由小写字母转换为大写字母<br><strong>样例：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">a -&gt; A</div><div class="line"></div><div class="line">b -&gt; B</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">def lowercaseToUppercase(self, character):</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    # solution 1</div><div class="line">    return character.upper()</div><div class="line">    &quot;&quot;&quot;</div><div class="line"></div><div class="line">    # solution 2</div><div class="line">    return chr(ord(&apos;A&apos;) - ord(&apos;a&apos;) + ord(character))</div></pre></td></tr></table></figure>
+<h2 id="5-反转一个三位整数"><a href="#5-反转一个三位整数" class="headerlink" title="5. 反转一个三位整数"></a>5. 反转一个三位整数</h2><p><strong>描述：</strong><br>反转一个只有3位数的整数。</p>
+<p><strong>样例：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">123 反转之后是 321。</div><div class="line">900 反转之后是 9。</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">def reverseInteger(self, number):</div><div class="line">    # solution 1</div><div class="line">    return int(str(number)[::-1])</div><div class="line"></div><div class="line">    &quot;&quot;&quot;</div><div class="line">    # solution 2</div><div class="line">    c = number % 10</div><div class="line">    b = number / 10 % 10</div><div class="line">    a = number / 100</div><div class="line"></div><div class="line">    return c * 100 + b * 10 + a</div><div class="line">    &quot;&quot;&quot;</div></pre></td></tr></table></figure>
+<h2 id="6-LintCode-9-Fizz-Buzz-问题"><a href="#6-LintCode-9-Fizz-Buzz-问题" class="headerlink" title="6. LintCode_9 Fizz Buzz 问题"></a>6. LintCode_9 Fizz Buzz 问题</h2><p><strong>描述：</strong></p>
+<ul>
+<li>如果这个数被3整除，打印fizz.</li>
+<li>如果这个数被5整除，打印buzz.</li>
+<li>如果这个数能同时被3和5整除，打印fizz buzz.</li>
+</ul>
+<p><strong>样例：</strong><br>比如 n = 15, 返回一个字符串数组：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  &quot;1&quot;, &quot;2&quot;, &quot;fizz&quot;,</div><div class="line">  &quot;4&quot;, &quot;buzz&quot;, &quot;fizz&quot;,</div><div class="line">  &quot;7&quot;, &quot;8&quot;, &quot;fizz&quot;,</div><div class="line">  &quot;buzz&quot;, &quot;11&quot;, &quot;fizz&quot;,</div><div class="line">  &quot;13&quot;, &quot;14&quot;, &quot;fizz buzz&quot;</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">def fizzBuzz(self, n):</div><div class="line">    res = []</div><div class="line">    for i in range(1, n + 1):</div><div class="line">        if i % 3 == 0 and i % 5 == 0:</div><div class="line">            res.append(&apos;fizz buzz&apos;)</div><div class="line">        elif i % 3 == 0:</div><div class="line">            res.append(&apos;fizz&apos;)</div><div class="line">        elif i % 5 == 0:</div><div class="line">            res.append(&apos;buzz&apos;)</div><div class="line">        else:</div><div class="line">            res.append(str(i))</div><div class="line"></div><div class="line">    return res</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/Python/">Python</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/网课/">网课</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Java/">Java</a><small>7</small></li>
+  
+    <li><a href="/categories/Python/">Python</a><small>3</small></li>
+  
+    <li><a href="/categories/algorithm/">algorithm</a><small>17</small></li>
+  
+    <li><a href="/categories/coding/">coding</a><small>1</small></li>
+  
+    <li><a href="/categories/hobby/">hobby</a><small>4</small></li>
+  
+    <li><a href="/categories/java/">java</a><small>0</small></li>
+  
+    <li><a href="/categories/mylife/">mylife</a><small>7</small></li>
+  
+    <li><a href="/categories/py/">py</a><small>3</small></li>
+  
+    <li><a href="/categories/python/">python</a><small>0</small></li>
+  
+    <li><a href="/categories/skilltree/">skilltree</a><small>4</small></li>
+  
+    <li><a href="/categories/个人生活/">个人生活</a><small>0</small></li>
+  
+    <li><a href="/categories/兴趣爱好/">兴趣爱好</a><small>0</small></li>
+  
+    <li><a href="/categories/技能树/">技能树</a><small>0</small></li>
+  
+    <li><a href="/categories/算法/">算法</a><small>1</small></li>
+  
+    <li><a href="/categories/编程感悟/">编程感悟</a><small>0</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2018/06/07/algorithm/LeetCode_189/">LeetCode_35 Rotate Array</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/05/algorithm/LeetCode_283/">LeetCode_35 Move Zeroes</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/04/algorithm/LeetCode_26/">LeetCode_35 Remove Duplicates from Sorted Array</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/03/algorithm/LeetCode_07/">LeetCode_35 Reverse Integer</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/02/algorithm/LeetCode_01/">LeetCode_35 Two Sum</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/BFS/">BFS</a><small>1</small></li>
+  
+    <li><a href="/tags/DP/">DP</a><small>4</small></li>
+  
+    <li><a href="/tags/Eigen/">Eigen</a><small>1</small></li>
+  
+    <li><a href="/tags/JVM/">JVM</a><small>3</small></li>
+  
+    <li><a href="/tags/Java/">Java</a><small>5</small></li>
+  
+    <li><a href="/tags/Python/">Python</a><small>4</small></li>
+  
+    <li><a href="/tags/Str/">Str</a><small>0</small></li>
+  
+    <li><a href="/tags/String/">String</a><small>1</small></li>
+  
+    <li><a href="/tags/array/">array</a><small>6</small></li>
+  
+    <li><a href="/tags/coding/">coding</a><small>1</small></li>
+  
+    <li><a href="/tags/docker/">docker</a><small>1</small></li>
+  
+    <li><a href="/tags/string/">string</a><small>2</small></li>
+  
+    <li><a href="/tags/三毛/">三毛</a><small>1</small></li>
+  
+    <li><a href="/tags/切片/">切片</a><small>1</small></li>
+  
+    <li><a href="/tags/列表生成式/">列表生成式</a><small>1</small></li>
+  
+    <li><a href="/tags/多线程/">多线程</a><small>1</small></li>
+  
+    <li><a href="/tags/字符串/">字符串</a><small>2</small></li>
+  
+    <li><a href="/tags/张若水/">张若水</a><small>1</small></li>
+  
+    <li><a href="/tags/徐志摩/">徐志摩</a><small>1</small></li>
+  
+    <li><a href="/tags/所线程/">所线程</a><small>1</small></li>
+  
+    <li><a href="/tags/排序/">排序</a><small>1</small></li>
+  
+    <li><a href="/tags/数据库/">数据库</a><small>1</small></li>
+  
+    <li><a href="/tags/日记/">日记</a><small>4</small></li>
+  
+    <li><a href="/tags/杨绛/">杨绛</a><small>1</small></li>
+  
+    <li><a href="/tags/正则表达式/">正则表达式</a><small>1</small></li>
+  
+    <li><a href="/tags/深拷贝/">深拷贝</a><small>1</small></li>
+  
+    <li><a href="/tags/生成器/">生成器</a><small>1</small></li>
+  
+    <li><a href="/tags/生活/">生活</a><small>2</small></li>
+  
+    <li><a href="/tags/网课/">网课</a><small>1</small></li>
+  
+    <li><a href="/tags/美食/">美食</a><small>1</small></li>
+  
+    <li><a href="/tags/翻墙/">翻墙</a><small>1</small></li>
+  
+    <li><a href="/tags/读书/">读书</a><small>0</small></li>
+  
+    <li><a href="/tags/迭代/">迭代</a><small>1</small></li>
+  
+    <li><a href="/tags/链接/">链接</a><small>1</small></li>
+  
+    <li><a href="/tags/链表/">链表</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/DP/" style="font-size: 16px;">DP</a> <a href="/tags/Eigen/" style="font-size: 10px;">Eigen</a> <a href="/tags/JVM/" style="font-size: 14px;">JVM</a> <a href="/tags/Java/" style="font-size: 18px;">Java</a> <a href="/tags/Python/" style="font-size: 16px;">Python</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/array/" style="font-size: 20px;">array</a> <a href="/tags/coding/" style="font-size: 10px;">coding</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/string/" style="font-size: 12px;">string</a> <a href="/tags/三毛/" style="font-size: 10px;">三毛</a> <a href="/tags/切片/" style="font-size: 10px;">切片</a> <a href="/tags/列表生成式/" style="font-size: 10px;">列表生成式</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/字符串/" style="font-size: 12px;">字符串</a> <a href="/tags/张若水/" style="font-size: 10px;">张若水</a> <a href="/tags/徐志摩/" style="font-size: 10px;">徐志摩</a> <a href="/tags/所线程/" style="font-size: 10px;">所线程</a> <a href="/tags/排序/" style="font-size: 10px;">排序</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/日记/" style="font-size: 16px;">日记</a> <a href="/tags/杨绛/" style="font-size: 10px;">杨绛</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/深拷贝/" style="font-size: 10px;">深拷贝</a> <a href="/tags/生成器/" style="font-size: 10px;">生成器</a> <a href="/tags/生活/" style="font-size: 12px;">生活</a> <a href="/tags/网课/" style="font-size: 10px;">网课</a> <a href="/tags/美食/" style="font-size: 10px;">美食</a> <a href="/tags/翻墙/" style="font-size: 10px;">翻墙</a> <a href="/tags/迭代/" style="font-size: 10px;">迭代</a> <a href="/tags/链接/" style="font-size: 10px;">链接</a> <a href="/tags/链表/" style="font-size: 10px;">链表</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2018 一只咸鱼的池塘
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script></footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
