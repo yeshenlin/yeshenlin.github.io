@@ -78,6 +78,106 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2018-06-10T03:06:52.000Z"><a href="/2018/06/10/algorithm/LeetCode_119/">2018-06-10</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/06/10/algorithm/LeetCode_119/">LeetCode_35 Pascal&#39;s Triangle II</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><strong>题目描述：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Given a non-negative index k where k ≤ 33, return the kth index row of the Pascal&apos;s triangle.</div><div class="line">Note that the row index starts from 0.</div><div class="line"></div><div class="line">1</div><div class="line">1 1</div><div class="line">1 2 1</div><div class="line">1 3 3 1</div><div class="line">1 4 6 4 1</div></pre></td></tr></table></figure></p>
+<p><strong>输入样例：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: 3</div><div class="line">Output: [1,3,3,1]</div></pre></td></tr></table></figure></p>
+<p><strong>Code:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">def getRow(self, rowIndex):</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    :type rowIndex: int</div><div class="line">    :rtype: List[int]</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    res = [1] * (rowIndex + 1)</div><div class="line">    for i in range(1, rowIndex / 2 + 1):</div><div class="line">        res[i] = res[rowIndex - i] = res[i - 1] * (rowIndex - i + 1) / i</div><div class="line">    return res</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/algorithm/">algorithm</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/array/">array</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-06-08T05:07:12.000Z"><a href="/2018/06/08/algorithm/LeetCode_217/">2018-06-08</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/06/08/algorithm/LeetCode_217/">LeetCode_35 Contains Duplicate</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><strong>题目描述：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Given an array of integers, find if the array contains any duplicates.</div><div class="line"></div><div class="line">Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.</div></pre></td></tr></table></figure></p>
+<p><strong>输入样例：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Input: [1,2,3,1]</div><div class="line">Output: true</div><div class="line"></div><div class="line">Input: [1,2,3,4]</div><div class="line">Output: false</div><div class="line"></div><div class="line">Input: [1,1,1,3,3,4,3,2,4,2]</div><div class="line">Output: true</div></pre></td></tr></table></figure></p>
+<p><strong>Code:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">def containsDuplicate(self, nums):</div><div class="line">    return len(nums) != len(set(nums))</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/algorithm/">algorithm</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/array/">array</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2018-06-07T06:34:45.000Z"><a href="/2018/06/07/algorithm/LeetCode_189/">2018-06-07</a></time>
       
       
@@ -486,110 +586,6 @@
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2018-03-05T06:51:44.000Z"><a href="/2018/03/05/skill_tree/搭建VPS并加速翻墙/">2018-03-05</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2018/03/05/skill_tree/搭建VPS并加速翻墙/">Mac搭建VPS并加速翻墙</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="1-付费VPS准备"><a href="#1-付费VPS准备" class="headerlink" title="1.付费VPS准备"></a>1.付费VPS准备</h2><p>1.1 在<a href="https://bandwagonhost.com/" target="_blank" rel="external">搬瓦工官网</a>上选择适合自己的VPS，如果只是平常用于简单翻墙的话，建议选择最便宜的那种类型，因为一个月500GB的流量正常情况下是用不完的。付费后，就可以在自己的My Service中看到自己拥有的VPS。<br>
-      
-    </div>
-    
-    <footer>
-      <div class="alignleft">
-        <a href="/2018/03/05/skill_tree/搭建VPS并加速翻墙/#more" class="more-link">更多内容</a>
-      </div>
-    </footer>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-  
-  <div class="categories">
-    <a href="/categories/skilltree/">skilltree</a>
-  </div>
-
-        
-  
-  <div class="tags">
-    <a href="/tags/翻墙/">翻墙</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2018-01-12T02:05:27.000Z"><a href="/2018/01/12/algorithm/每日一道算法题/字符串查找/">2018-01-12</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2018/01/12/algorithm/每日一道算法题/字符串查找/">Search string</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p><strong>描述：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">对于一个给定的 source 字符串和一个 target 字符串，你应该在 source 字符串中找出 target 字符串出现的第一个位置(从0开始)。如果不存在，则返回 -1。</div></pre></td></tr></table></figure></p>
-<p><strong>样例：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">如果 source = &quot;source&quot; 和 target = &quot;target&quot;，返回 -1。</div><div class="line">如果 source = &quot;abcdabcdefg&quot; 和 target = &quot;bcd&quot;，返回 1。</div></pre></td></tr></table></figure></p>
-<p><strong>我的代码</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">public int strStr(String source, String target) &#123;</div><div class="line">    if(source == null || target == null)&#123;</div><div class="line">        return -1;</div><div class="line">    &#125;</div><div class="line">    if(target.length() == 0)&#123;</div><div class="line">        return 0;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    for(int i = 0; i &lt; source.length(); i++)&#123;</div><div class="line">        if(source.charAt(i) == target.charAt(0))&#123;</div><div class="line">            int j;</div><div class="line">            for(j = 0; j &lt; target.length(); j++)&#123;</div><div class="line">                if(i + j &lt; source.length())&#123;</div><div class="line">                    if(source.charAt(i + j) != target.charAt(j))&#123;</div><div class="line">                        break;</div><div class="line">                    &#125;</div><div class="line">                &#125;else&#123;</div><div class="line">                    return -1;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            if(j == target.length())&#123;</div><div class="line">                return i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    return -1;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>修改后</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public int strStr(String source, String target) &#123;</div><div class="line">    if(source == null || target == null)&#123;</div><div class="line">        return -1;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    for(int i = 0; i &lt; source.length() - target.length() + 1; i++)&#123;</div><div class="line">        int j = 0;</div><div class="line">        for(j = 0; j &lt; target.length(); j++)&#123;</div><div class="line">            if(source.charAt(i + j) != target.charAt(j))&#123;</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        if(j == target.length())&#123;</div><div class="line">            return i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    return -1;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-  
-  <div class="categories">
-    <a href="/categories/algorithm/">algorithm</a>
-  </div>
-
-        
-  
-  <div class="tags">
-    <a href="/tags/String/">String</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
 
 <nav id="pagination">
   
@@ -616,7 +612,7 @@
   
     <li><a href="/categories/Python/">Python</a><small>3</small></li>
   
-    <li><a href="/categories/algorithm/">algorithm</a><small>17</small></li>
+    <li><a href="/categories/algorithm/">algorithm</a><small>19</small></li>
   
     <li><a href="/categories/coding/">coding</a><small>1</small></li>
   
@@ -652,6 +648,14 @@
   <ul class="entry">
     
       <li>
+        <a href="/2018/06/10/algorithm/LeetCode_119/">LeetCode_35 Pascal&#39;s Triangle II</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/08/algorithm/LeetCode_217/">LeetCode_35 Contains Duplicate</a>
+      </li>
+    
+      <li>
         <a href="/2018/06/07/algorithm/LeetCode_189/">LeetCode_35 Rotate Array</a>
       </li>
     
@@ -661,14 +665,6 @@
     
       <li>
         <a href="/2018/06/04/algorithm/LeetCode_26/">LeetCode_35 Remove Duplicates from Sorted Array</a>
-      </li>
-    
-      <li>
-        <a href="/2018/06/03/algorithm/LeetCode_07/">LeetCode_35 Reverse Integer</a>
-      </li>
-    
-      <li>
-        <a href="/2018/06/02/algorithm/LeetCode_01/">LeetCode_35 Two Sum</a>
       </li>
     
   </ul>
@@ -696,7 +692,7 @@
   
     <li><a href="/tags/String/">String</a><small>1</small></li>
   
-    <li><a href="/tags/array/">array</a><small>6</small></li>
+    <li><a href="/tags/array/">array</a><small>8</small></li>
   
     <li><a href="/tags/coding/">coding</a><small>1</small></li>
   

@@ -78,6 +78,134 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2017-10-19T12:34:36.000Z"><a href="/2017/10/19/algorithm/LeetCode_62/">2017-10-19</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/10/19/algorithm/LeetCode_62/">LeetCode_62 Unique Paths</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>题目：一个m * n大小的地图，从地图左上角走到地图右下角,计算一共有多少种走法。</p>
+<p>思路:题目的目的就是寻找多少种做法，很容易想到就是使用DP来解决。第一步：设计f[]，设计比较适合的f[]；第二步：初始化矩阵边缘；第三部：设计转移方程。<br>点出了向下就是向右，所以sum[i][j] = sum[i][j - 1] + sum[i - 1][j]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">public int uniquePaths(int m, int n) &#123;</div><div class="line">    if(m == 0 || n == 0)&#123;</div><div class="line">        return -1;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    int[][] sum = new int[m][n];</div><div class="line">    </div><div class="line">    for(int i = 0; i &lt; m; i++)&#123;</div><div class="line">        sum[i][0] = 1;</div><div class="line">    &#125;</div><div class="line">    for(int i = 0; i &lt; n; i++)&#123;</div><div class="line">        sum[0][i] = 1;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    for(int i = 1; i &lt; m; i++)&#123;</div><div class="line">        for(int j = 1; j &lt; n; j++)&#123;</div><div class="line">            sum[i][j] = sum[i][j - 1] + sum[i - 1][j];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    return sum[m - 1][n - 1];</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/algorithm/">algorithm</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/DP/">DP</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-10-16T08:24:08.000Z"><a href="/2017/10/16/algorithm/DP总结/">2017-10-16</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/10/16/algorithm/DP总结/">About DP</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="从triangle这道题开始"><a href="#从triangle这道题开始" class="headerlink" title="从triangle这道题开始"></a>从triangle这道题开始</h2><p>LeetCode 120. Triangle<br>Given a triangle, find the minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below.For example, given the following triangle<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">     [2],</div><div class="line">    [3,4],</div><div class="line">   [6,5,7],</div><div class="line">  [4,1,8,3]</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>The minimum path sum from top to bottom is 11 (i.e., 2 + 3 + 5 + 1 = 11).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">爬楼梯问题：</div><div class="line"></div><div class="line">int dfs(int x)&#123;</div><div class="line">    if(x == n)&#123;</div><div class="line">        return 1;</div><div class="line">    &#125;</div><div class="line">    if(x &gt;= n)&#123;</div><div class="line">        return 0;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    if(hash[x] != -1)&#123;</div><div class="line">        return hash[x];</div><div class="line">    &#125;</div><div class="line">    hash[x] = def(x + 1) + dfs(x + 2);</div><div class="line">    return hash[x];</div><div class="line">&#125;</div><div class="line"></div><div class="line">这个二维矩阵在计算机的存储格式应该是这样的：</div><div class="line">1</div><div class="line">2 3</div><div class="line">4 5 6</div><div class="line">7 8 9 10</div><div class="line"></div><div class="line">int dfs(int x, int y)&#123;</div><div class="line">    if(x &gt;= n)&#123;</div><div class="line">        return 0;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    //记忆化搜索 Memorize Search.</div><div class="line">    if(minSum[x][y] == Integer.MAX_VALUE)&#123;</div><div class="line">        return minSum[x][y];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    minSum[x][y] = Math.min(dfs(x + 1, y), dfs(x + 1, y + 1)) + a[x][y]</div><div class="line">    return minSum[x][y];</div><div class="line">&#125;</div><div class="line">//O(2^n) -&gt; O(n^2)</div><div class="line"></div><div class="line">dfs[1,1]   //从1,1出发往下走得最短路径(记住当前状态到终点的值，让让这种值可以被重复利用，这是一种经验)</div><div class="line">dfs[x,y]   //表示从x,y出发往下走的最短路径</div><div class="line"></div><div class="line">1,1 -&gt; 2,1 2,2</div><div class="line">2,1 -&gt; (3,2)</div><div class="line">2,2 -&gt; (3,2)</div></pre></td></tr></table></figure>
+<p>动态规划的本质就是记忆化搜索，把上次计算的东西保存下来，可以重复利用。不用每次都从头到尾走一遍，因此动态规划比搜索要快。<br>Advantage： Easy to think and implement.<br>Disadvantage: Expensice memory cost.</p>
+<p>triangle的两种解法：<br>解法一：从上往下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">//sum[i][j]代表从triangle[0][0]走到triangle[i][j]使用的最小路程</div><div class="line">public int minimumTotal(List&lt;List&lt;Integer&gt;&gt; triangle) &#123;</div><div class="line">    if (triangle == null || triangle.size() == 0)&#123;</div><div class="line">        return -1;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    int n = triangle.size();</div><div class="line">    int[][] sum = new int[n][n];</div><div class="line">    </div><div class="line">    //initialize</div><div class="line">    sum[0][0] = triangle.get(0).get(0);</div><div class="line">    for (int i = 1; i &lt; n; i++) &#123;</div><div class="line">        sum[i][0] = sum[i - 1][0] + triangle.get(i).get(0);</div><div class="line">        sum[i][i] = sum[i - 1][i - 1] + triangle.get(i).get(i);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    for (int i = 1; i &lt;= n - 1; i++) &#123;</div><div class="line">        for (int j = 1; j &lt;= i - 1; j++) &#123;</div><div class="line">            sum[i][j] = Math.min(sum[i - 1][j - 1], sum[i - 1][j]) + triangle.get(i).get(j);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    int res = Integer.MAX_VALUE;</div><div class="line">    for(int i = 0; i &lt; n; i++)&#123;</div><div class="line">        </div><div class="line">        res = res &lt; sum[n - 1][i] ? res : sum[n - 1][i];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    return res;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>解法二：从下往上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">//sum[i][j]代表从triangle[i][j]走到triangle最底层的最小距离</div><div class="line">public static int minimumTotal(List&lt;List&lt;Integer&gt;&gt; triangle) &#123;</div><div class="line">    if (triangle == null || triangle.size() == 0) &#123;</div><div class="line">        return -1;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    if (triangle.get(0) == null || triangle.get(0).size() == 0) &#123;</div><div class="line">        return -1;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    int n = triangle.size();</div><div class="line">    int[][] sum = new int[n][n];</div><div class="line"></div><div class="line">    //initialize</div><div class="line">    for (int i = 0; i &lt; n; i++) &#123;</div><div class="line">        sum[n - 1][i] = triangle.get(n - 1).get(i);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    for (int i = n - 2; i &gt;= 0; i--) &#123;</div><div class="line">        for (int j = 0; j &lt;= i; j++) &#123;</div><div class="line">            sum[i][j] = Math.min(sum[i + 1][j], sum[i + 1][j + 1]) + triangle.get(i).get(j);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return sum[0][0];</div></pre></td></tr></table></figure></p>
+<h2 id="动态规划的四种类型"><a href="#动态规划的四种类型" class="headerlink" title="动态规划的四种类型"></a>动态规划的四种类型</h2><ul>
+<li><p>Matrix DP</p>
+</li>
+<li><p>Sequence DP</p>
+</li>
+<li>Two Sequence Dp</li>
+<li>Interval DP</li>
+</ul>
+<p>线索：如何想到使用DP</p>
+<ol>
+<li>找最大最和最小值</li>
+<li>判断一件事情是否可行</li>
+<li>计算所有方案的总数</li>
+</ol>
+<h3 id="Matrix-DP"><a href="#Matrix-DP" class="headerlink" title="Matrix DP"></a>Matrix DP</h3><p>Climbing Stairs</p>
+<p>Decode Ways</p>
+<p>Jump Game I, II</p>
+<p>Palindrome partitoning II</p>
+<p>Word Break</p>
+<h3 id="Two-Sequence-DP"><a href="#Two-Sequence-DP" class="headerlink" title="Two Sequence DP"></a>Two Sequence DP</h3><p>Distinct Subsequences</p>
+<p>Edit Distance</p>
+<p>Interleaving String</p>
+<h3 id="Matirx-DP"><a href="#Matirx-DP" class="headerlink" title="Matirx DP"></a>Matirx DP</h3><p>Minimum Path Sum</p>
+<p>Triangle</p>
+<p>Unique Path I,II</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/algorithm/">algorithm</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/DP/">DP</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2017-10-15T12:18:06.000Z"><a href="/2017/10/15/java/关于suspend和resume的讨论/">2017-10-15</a></time>
       
       
@@ -550,108 +678,6 @@
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2017-10-11T06:13:39.000Z"><a href="/2017/10/11/algorithm/LeetCode_72/">2017-10-11</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2017/10/11/algorithm/LeetCode_72/">LeetCode 72 Edit Distance</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>Given two words word1 and word2, find the minimum number of steps required to convert word1 to word2. (each operation is counted as 1 step.)</p>
-<p>You have the following 3 operations permitted on a word:</p>
-<p>a) Insert a character<br>b) Delete a character<br>c) Replace a character</p>
-<p>主要思路：</p>
-<p>代码实现：</p>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-  
-  <div class="categories">
-    <a href="/categories/algorithm/">algorithm</a>
-  </div>
-
-        
-  
-  <div class="tags">
-    <a href="/tags/DP/">DP</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2017-10-06T08:21:34.000Z"><a href="/2017/10/06/mylife/我不想水群了/">2017-10-06</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2017/10/06/mylife/我不想水群了/">我不想水群了</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>我有一群很要好的朋友，都是一些相处好过了10年的人。在家乡，我们一起度过初中、高中，然后各自在不同的城市度过大学，或许我们一年只能见一两次面，但是我们从QQ群到微信群永远都是联系得非常火热。大概就是这8个男生，对我的青少年时光起着至关重要的作用，因为他们是这样一群无论是家庭还是三观上都与你非常相近的人。平常心里面有任何事情都可以毫无忌惮地跟他们讲一讲，开心的或者不开心的，常见的还是离奇的，只要是比屁大一点的事情，他们都会在群里瓜子板凳前排。</p>
-<p>但是，时间越过越快，他们有些人已经工作两三年，有些人已经结婚生子。而我还在上海读着研究生，我们的生活观念渐渐地开始有了差距。不知道是从什么时候开始，我们的话题从打球、八卦、梦想转移到买房、买车、娶妻生子上了。我感觉自己有时候只能在群里看他们讨论订婚、结婚买房等事情，但是这些事情离我太遥远。有时候我甚至感觉到有人对于生活的妥协，能够接受交易式的婚姻，能够忍受满面疮痍的爱情。是不是他们已经成熟了，而我的思想还是处于幼稚阶段。慢慢的，有很多我无法理解的事情。</p>
-<p>25岁左右，我们就已经老了吗？是内心开始提前衰老吗？生活该是什么样子的呢？这些问题我总会禁不住开始思考。生活不仅仅只是为了生而活着，虽然我有时候也会在一段时间里远离了自己的梦想，但是我时刻清楚地知道自己的梦想是什么样子？跟梦想结合的生活才是我想要的生活。</p>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-  
-  <div class="categories">
-    <a href="/categories/mylife/">mylife</a>
-  </div>
-
-        
-  
-  <div class="tags">
-    <a href="/tags/生活/">生活</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
 
 <nav id="pagination">
   
@@ -678,7 +704,7 @@
   
     <li><a href="/categories/Python/">Python</a><small>3</small></li>
   
-    <li><a href="/categories/algorithm/">algorithm</a><small>17</small></li>
+    <li><a href="/categories/algorithm/">algorithm</a><small>19</small></li>
   
     <li><a href="/categories/coding/">coding</a><small>1</small></li>
   
@@ -714,6 +740,14 @@
   <ul class="entry">
     
       <li>
+        <a href="/2018/06/10/algorithm/LeetCode_119/">LeetCode_35 Pascal&#39;s Triangle II</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/08/algorithm/LeetCode_217/">LeetCode_35 Contains Duplicate</a>
+      </li>
+    
+      <li>
         <a href="/2018/06/07/algorithm/LeetCode_189/">LeetCode_35 Rotate Array</a>
       </li>
     
@@ -723,14 +757,6 @@
     
       <li>
         <a href="/2018/06/04/algorithm/LeetCode_26/">LeetCode_35 Remove Duplicates from Sorted Array</a>
-      </li>
-    
-      <li>
-        <a href="/2018/06/03/algorithm/LeetCode_07/">LeetCode_35 Reverse Integer</a>
-      </li>
-    
-      <li>
-        <a href="/2018/06/02/algorithm/LeetCode_01/">LeetCode_35 Two Sum</a>
       </li>
     
   </ul>
@@ -758,7 +784,7 @@
   
     <li><a href="/tags/String/">String</a><small>1</small></li>
   
-    <li><a href="/tags/array/">array</a><small>6</small></li>
+    <li><a href="/tags/array/">array</a><small>8</small></li>
   
     <li><a href="/tags/coding/">coding</a><small>1</small></li>
   
