@@ -78,6 +78,76 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2017-10-11T06:28:05.000Z"><a href="/2017/10/11/python/Python的Dict和Set/">2017-10-11</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/10/11/python/Python的Dict和Set/">Python的Dict和Set</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="Dict"><a href="#Dict" class="headerlink" title="Dict"></a>Dict</h2><p>Python字典，其它语言称之为Map，即key-value pair。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">d = &#123;&quot;Michael&quot;:95, &apos;Bob&apos;: 75, &apos;Tracy&apos;:85&#125;</div><div class="line">print d[&apos;Bob&apos;]</div><div class="line"></div><div class="line">95</div></pre></td></tr></table></figure></p>
+<p>对字典中添加一个新的key-value<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">d[&apos;yelin&apos;] = 100</div><div class="line">print d</div><div class="line"></div><div class="line">&#123;&apos;yelin&apos;: 100, &apos;Bob&apos;: 75, &apos;Michael&apos;: 95, &apos;Tracy&apos;: 85&#125;</div></pre></td></tr></table></figure></p>
+<p>如果在添加kay-value之前，当前的key已经存在，那么value就会被冲掉<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">d[&apos;yelin&apos;] = 99</div><div class="line">print d</div><div class="line"></div><div class="line">&#123;&apos;yelin&apos;: 99, &apos;Bob&apos;: 75, &apos;Michael&apos;: 95, &apos;Tracy&apos;: 85&#125;</div></pre></td></tr></table></figure></p>
+<p>若取value的时候使用的kay不存在字典中，那么就会报错。</p>
+<p>比较推荐的取值方法：<br>使用get进行取值，如果key不存在，可以返回None，也可以指定返回的value：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">print d.get(&apos;zhangsan&apos;,-1)</div><div class="line"></div><div class="line">-1</div></pre></td></tr></table></figure></p>
+<p>删除一个key，使用pop(key), 此时会弹出一个value：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">d.pop(&apos;yelin&apos;)</div><div class="line"></div><div class="line">99</div></pre></td></tr></table></figure></p>
+<p>Dict的特点：</p>
+<ol>
+<li>查找和插入的速度极快，不对key值增加而增加；</li>
+<li>需要占用大量内存，内存浪费大。</li>
+</ol>
+<p>list的特点：</p>
+<ol>
+<li>查找和插入的时间随着元素的增加而增加；</li>
+<li>占用空间小，浪费内存很少。</li>
+</ol>
+<p>注意：由于Dict的底层原理是Hash算法，为了保证hash的正确性，Dict的key值必须是不可变类型，Python中的str、int、tuple是不可变的，list是可变的。因此使用list做key会报错。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">key = [1,2,3]</div><div class="line">d[key] = &apos;a list&apos;</div><div class="line">&gt;&gt; TypeError: unhashable type: &apos;list&apos;</div></pre></td></tr></table></figure></p>
+<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><p>set和dict类似，也是一组key的集合，但是set不存储value。set中的key不重复。set具有去重的功能。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">s = set([1,2,3,3])</div><div class="line">print s</div><div class="line"></div><div class="line">set([1,2,3])</div></pre></td></tr></table></figure></p>
+<p>添加和删除新key：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">s = set([1,2,3])</div><div class="line">s.add(3)</div><div class="line">print s</div><div class="line">//添加重复的key，没有任何效果</div><div class="line">set([1,2,3])</div><div class="line"></div><div class="line">s.remove(2)</div><div class="line">print s</div><div class="line"></div><div class="line">set([1,3])</div></pre></td></tr></table></figure></p>
+<p>对于setk可以实现数学意义上的交集、并集操作：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">s1 = set([1,2,3])</div><div class="line">s2 = set([2,3,4])</div><div class="line">print s1 &amp; s2</div><div class="line">print s1 | s2</div><div class="line"></div><div class="line">set([2,3])</div><div class="line">set([1,2,3,4])</div></pre></td></tr></table></figure></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ol>
+<li><a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/00143167793538255adf33371774853a0ef943280573f4d000" target="_blank" rel="external">廖雪峰Python教程Dict和set</a></li>
+</ol>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/Python/">Python</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/Python/">Python</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2017-10-11T06:13:39.000Z"><a href="/2017/10/11/algorithm/LeetCode_72/">2017-10-11</a></time>
       
       
@@ -558,64 +628,6 @@
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2017-09-27T09:07:26.000Z"><a href="/2017/09/27/article/小孩子的不快活/">2017-09-27</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2017/09/27/article/小孩子的不快活/">小孩子的不快活</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="作者：徐志摩"><a href="#作者：徐志摩" class="headerlink" title="作者：徐志摩"></a>作者：徐志摩</h2><p>你在小孩时快活不?我，不快活。至少我在回忆中想不起来。</p>
-<p>单看我们孩子的衣着先就可笑。浑身全给裹得紧紧，膊、胫、腿，也不让露在外面，怕着凉。怕着凉，不错；可是裤子是开裆的，孩子一往下蹲，屁股就往外露，肚子也就连带通风——这倒不怕着凉了!</p>
-<p>孩子是不能常洗澡的，洗澡又容易着凉，在我们家乡地方终年不洗澡的孩子并不出奇，我都不知道自己小时候每年洗几回澡。冬天不用说，因为屋子不生火，当然不洗。夏天有时不得不洗，但只浅浅的一只小桶，水又很烫，结果孩子们也就不爱洗。</p>
-<p>我记得孩子时候顶怕两件事：一件是剃头；一件是洗澡。“今天我总得‘捉牢’他来剃头”，“今天我总得‘捉牢’他来洗澡”，我妈总是这么说。他们可不对我讲一个一定得洗澡的理由，他们也不把洗的方法给弄适意些。这影响深极了，我到现在也总把洗澡看做一种必要的麻烦。</p>
-<p>我的受业师父查桐荪先生，因为他出世时父母怕孩子着凉没有给他洗澡，他就把这不洗澡习惯一直带到棺材里去——从生到死五十几年一次都没有洗过身体!不刷牙、不洗头、很少洗脸。</p>
-<p>我们很少想到，品格、性情，乃至思想上的不洁也多半是缘于小时候父母的姑息与颟顸。一般父母心目中的“好孩子”观念是：愈不像孩子的孩子在他们看来是愈好的孩子。</p>
-<p>孩子得听话，不许闹——中国父母顶得意的是孩子听人家吩咐规规矩矩地叫人，绝对机械性地叫人——“伯伯”、“妈妈”。</p>
-<p>因为要强制孩子听话，大人们有时就用种种哄骗恫吓的方法。多少成人作伪与怯懦的品性是在“别哭，老虎来了”、“别嚷，老太太来了”、“不许吃，吃了要长疮的”一类话下养成的!</p>
-<p>不要怪孩子性情不好，或是愁他们身子不好，实际只要你们肯费一点心思，花一点工夫，认清了孩子本能的倾向，治水似的耐心地去疏导它，原来不好的地方很容易变好。</p>
-<p>做父母的都有一个创作的机会，把你们的孩子养成一个健康、活泼、灵敏、慈爱的成人，替社会造一个有用的人才，替自然完成一个有意识的工作，同时也增你们自己的光，添你们的欢喜——这机会还不够大吗?</p>
-<p>现代的成人，为什么都是这么懒、这么脏(尤其在品格上与思想)、这么蠢、这么丑、这么破烂?现代的青年，为什么这么弱、这么多愁多悲哀?这种种的不健康——多是做爹娘的当初不曾尽他们应尽的责任，一半是愚暗，一半是懒怠。</p>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-  
-  <div class="categories">
-    <a href="/categories/hobby/">hobby</a>
-  </div>
-
-        
-  
-  <div class="tags">
-    <a href="/tags/徐志摩/">徐志摩</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
 
 <nav id="pagination">
   
@@ -642,7 +654,7 @@
   
     <li><a href="/categories/Python/">Python</a><small>3</small></li>
   
-    <li><a href="/categories/algorithm/">algorithm</a><small>19</small></li>
+    <li><a href="/categories/algorithm/">algorithm</a><small>20</small></li>
   
     <li><a href="/categories/coding/">coding</a><small>1</small></li>
   
@@ -678,6 +690,10 @@
   <ul class="entry">
     
       <li>
+        <a href="/2018/06/12/algorithm/LeetCode_27/">LeetCode_35 Remove Element</a>
+      </li>
+    
+      <li>
         <a href="/2018/06/10/algorithm/LeetCode_119/">LeetCode_35 Pascal&#39;s Triangle II</a>
       </li>
     
@@ -691,10 +707,6 @@
     
       <li>
         <a href="/2018/06/05/algorithm/LeetCode_283/">LeetCode_35 Move Zeroes</a>
-      </li>
-    
-      <li>
-        <a href="/2018/06/04/algorithm/LeetCode_26/">LeetCode_35 Remove Duplicates from Sorted Array</a>
       </li>
     
   </ul>
@@ -722,7 +734,7 @@
   
     <li><a href="/tags/String/">String</a><small>1</small></li>
   
-    <li><a href="/tags/array/">array</a><small>8</small></li>
+    <li><a href="/tags/array/">array</a><small>9</small></li>
   
     <li><a href="/tags/coding/">coding</a><small>1</small></li>
   

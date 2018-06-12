@@ -78,6 +78,55 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2018-06-12T15:26:44.000Z"><a href="/2018/06/12/algorithm/LeetCode_27/">2018-06-12</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/06/12/algorithm/LeetCode_27/">LeetCode_35 Remove Element</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><strong>输入样例：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Given nums = [3,2,2,3], val = 3,</div><div class="line"></div><div class="line">Your function should return length = 2, with the first two elements of nums being 2.</div><div class="line"></div><div class="line">It doesn&apos;t matter what you leave beyond the returned length.</div></pre></td></tr></table></figure></p>
+<p><strong>chh’s code:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">def removeElement(self, nums, val):</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    :type nums: List[int]</div><div class="line">    :type val: int</div><div class="line">    :rtype: int</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    while val in nums:</div><div class="line">        nums.remove(val)</div><div class="line">    return len(nums)</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/algorithm/">algorithm</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/array/">array</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2018-06-10T03:06:52.000Z"><a href="/2018/06/10/algorithm/LeetCode_119/">2018-06-10</a></time>
       
       
@@ -536,57 +585,6 @@
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2018-05-02T08:05:04.000Z"><a href="/2018/05/02/skill_tree/Eigen API 使用/">2018-05-02</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2018/05/02/skill_tree/Eigen API 使用/">Eigen API 使用</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="1-矩阵定义和初始化"><a href="#1-矩阵定义和初始化" class="headerlink" title="1. 矩阵定义和初始化"></a>1. 矩阵定义和初始化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MatrixXd D; //声明一个double型的矩阵</div><div class="line">MatrixXd D(N, N);   //声明一个N * N的double矩阵</div><div class="line">MatrixXd D = MatrixXD::zero(N, N);  //声明并定义一个N * N的double型的矩阵</div></pre></td></tr></table></figure>
-<p>最推荐的初始化方法是第三种方法</p>
-<h2 id="Eigen-matrix-和-Opencv-mat的相互转换"><a href="#Eigen-matrix-和-Opencv-mat的相互转换" class="headerlink" title="Eigen matrix 和 Opencv mat的相互转换"></a>Eigen matrix 和 Opencv mat的相互转换</h2><p>在Opencv中core/include/opencv2/core/eigen.hpp文件中已经实现了Eigen matrix和Oencv mat之间的相互转换。下面随便列举两个API。详细的代码内容可以从<img src="https://github.com/opencv/opencv/blob/master/modules/core/include/opencv2/core/eigen.hpp" alt="eigen"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">void eigen2cv( const Eigen::Matrix&lt;_Tp, _rows, _cols, _options, _maxRows, _maxCols&gt;&amp; src, Mat&amp; dst )</div><div class="line">&#123;</div><div class="line">    if( !(src.Flags &amp; Eigen::RowMajorBit) )</div><div class="line">    &#123;</div><div class="line">        Mat _src(src.cols(), src.rows(), DataType&lt;_Tp&gt;::type,</div><div class="line">              (void*)src.data(), src.stride()*sizeof(_Tp));</div><div class="line">        transpose(_src, dst);</div><div class="line">    &#125;</div><div class="line">    else</div><div class="line">    &#123;</div><div class="line">        Mat _src(src.rows(), src.cols(), DataType&lt;_Tp&gt;::type,</div><div class="line">                 (void*)src.data(), src.stride()*sizeof(_Tp));</div><div class="line">        _src.copyTo(dst);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void cv2eigen( const Matx&lt;_Tp, _rows, 1&gt;&amp; src,</div><div class="line">               Eigen::Matrix&lt;_Tp, Eigen::Dynamic, 1&gt;&amp; dst )</div><div class="line">&#123;</div><div class="line">    dst.resize(_rows);</div><div class="line"></div><div class="line">    if( !(dst.Flags &amp; Eigen::RowMajorBit) )</div><div class="line">    &#123;</div><div class="line">        const Mat _dst(1, _rows, DataType&lt;_Tp&gt;::type,</div><div class="line">                 dst.data(), (size_t)(dst.stride()*sizeof(_Tp)));</div><div class="line">        transpose(src, _dst);</div><div class="line">    &#125;</div><div class="line">    else</div><div class="line">    &#123;</div><div class="line">        const Mat _dst(_rows, 1, DataType&lt;_Tp&gt;::type,</div><div class="line">                 dst.data(), (size_t)(dst.stride()*sizeof(_Tp)));</div><div class="line">        src.copyTo(_dst);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>这里列举一个使用例子。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Mat im = imread(path);</div><div class="line">cv2eigen(res, b);</div></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-  
-  <div class="categories">
-    <a href="/categories/skilltree/">skilltree</a>
-  </div>
-
-        
-  
-  <div class="tags">
-    <a href="/tags/Eigen/">Eigen</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
 
 <nav id="pagination">
   
@@ -613,7 +611,7 @@
   
     <li><a href="/categories/Python/">Python</a><small>3</small></li>
   
-    <li><a href="/categories/algorithm/">algorithm</a><small>19</small></li>
+    <li><a href="/categories/algorithm/">algorithm</a><small>20</small></li>
   
     <li><a href="/categories/coding/">coding</a><small>1</small></li>
   
@@ -649,6 +647,10 @@
   <ul class="entry">
     
       <li>
+        <a href="/2018/06/12/algorithm/LeetCode_27/">LeetCode_35 Remove Element</a>
+      </li>
+    
+      <li>
         <a href="/2018/06/10/algorithm/LeetCode_119/">LeetCode_35 Pascal&#39;s Triangle II</a>
       </li>
     
@@ -662,10 +664,6 @@
     
       <li>
         <a href="/2018/06/05/algorithm/LeetCode_283/">LeetCode_35 Move Zeroes</a>
-      </li>
-    
-      <li>
-        <a href="/2018/06/04/algorithm/LeetCode_26/">LeetCode_35 Remove Duplicates from Sorted Array</a>
       </li>
     
   </ul>
@@ -693,7 +691,7 @@
   
     <li><a href="/tags/String/">String</a><small>1</small></li>
   
-    <li><a href="/tags/array/">array</a><small>8</small></li>
+    <li><a href="/tags/array/">array</a><small>9</small></li>
   
     <li><a href="/tags/coding/">coding</a><small>1</small></li>
   
