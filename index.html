@@ -78,156 +78,6 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2018-06-17T02:22:44.000Z"><a href="/2018/06/17/algorithm/LeetCode_628/">2018-06-17</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2018/06/17/algorithm/LeetCode_628/">LeetCode_628 Maximum Product of Three Numbers</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p><strong>题目描述：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Given an integer array, find three numbers whose product is maximum and output the maximum product.</div></pre></td></tr></table></figure></p>
-<p><strong>输入样例：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Input: [1,2,3]</div><div class="line">Output: 6</div><div class="line"></div><div class="line">Input: [1,2,3,4]</div><div class="line">Output: 24</div></pre></td></tr></table></figure></p>
-<p><strong>Code:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">def maximumProduct(self, nums):</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    :type nums: List[int]</div><div class="line">    :rtype: int</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    nums.sort()</div><div class="line">    product1 = nums[-1] * nums[0] * nums[1]</div><div class="line">    product2 = nums[-1] * nums[-2] * nums[-3]</div><div class="line">    product = max(product1, product2)</div><div class="line">    return product</div></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-  
-  <div class="categories">
-    <a href="/categories/algorithm/">algorithm</a>
-  </div>
-
-        
-  
-  <div class="tags">
-    <a href="/tags/array/">array</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2018-06-12T15:26:44.000Z"><a href="/2018/06/12/algorithm/LeetCode_27/">2018-06-12</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2018/06/12/algorithm/LeetCode_27/">LeetCode_35 Remove Element</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p><strong>输入样例：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Given nums = [3,2,2,3], val = 3,</div><div class="line"></div><div class="line">Your function should return length = 2, with the first two elements of nums being 2.</div><div class="line"></div><div class="line">It doesn&apos;t matter what you leave beyond the returned length.</div></pre></td></tr></table></figure></p>
-<p><strong>chh’s code:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">def removeElement(self, nums, val):</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    :type nums: List[int]</div><div class="line">    :type val: int</div><div class="line">    :rtype: int</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    while val in nums:</div><div class="line">        nums.remove(val)</div><div class="line">    return len(nums)</div></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-  
-  <div class="categories">
-    <a href="/categories/algorithm/">algorithm</a>
-  </div>
-
-        
-  
-  <div class="tags">
-    <a href="/tags/array/">array</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2018-06-10T03:06:52.000Z"><a href="/2018/06/10/algorithm/LeetCode_119/">2018-06-10</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2018/06/10/algorithm/LeetCode_119/">LeetCode_35 Pascal&#39;s Triangle II</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p><strong>题目描述：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Given a non-negative index k where k ≤ 33, return the kth index row of the Pascal&apos;s triangle.</div><div class="line">Note that the row index starts from 0.</div><div class="line"></div><div class="line">1</div><div class="line">1 1</div><div class="line">1 2 1</div><div class="line">1 3 3 1</div><div class="line">1 4 6 4 1</div></pre></td></tr></table></figure></p>
-<p><strong>输入样例：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: 3</div><div class="line">Output: [1,3,3,1]</div></pre></td></tr></table></figure></p>
-<p><strong>Code:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">def getRow(self, rowIndex):</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    :type rowIndex: int</div><div class="line">    :rtype: List[int]</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    res = [1] * (rowIndex + 1)</div><div class="line">    for i in range(1, rowIndex / 2 + 1):</div><div class="line">        res[i] = res[rowIndex - i] = res[i - 1] * (rowIndex - i + 1) / i</div><div class="line">    return res</div></pre></td></tr></table></figure></p>
-<p><strong>caohuanhuan’s code</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">def getRow(self, rowIndex):</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    :type rowIndex: int</div><div class="line">    :rtype: List[int]</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    #listN = [[1] * (rowIndex + 1)] * (rowIndex + 1)//这样的二维数组初始化方式是不对的</div><div class="line">    listN = [[ 1 for j in range(rowIndex + 1)] for i in range(rowIndex + 1)]</div><div class="line"></div><div class="line">    if rowIndex == 0:</div><div class="line">        return [1]</div><div class="line">    else:</div><div class="line">        for i in range(rowIndex + 1):</div><div class="line">            for j in range(i + 1):</div><div class="line">                if j == 0 or j == i:</div><div class="line">                    listN[i][j] = 1</div><div class="line">                else:</div><div class="line">                    listN[i][j] = listN[i -1][j - 1] + listN[i - 1][j]</div><div class="line">    return listN[rowIndex]</div></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-  
-  <div class="categories">
-    <a href="/categories/algorithm/">algorithm</a>
-  </div>
-
-        
-  
-  <div class="tags">
-    <a href="/tags/array/">array</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
         <time datetime="2018-06-08T05:07:12.000Z"><a href="/2018/06/08/algorithm/LeetCode_217/">2018-06-08</a></time>
       
       
@@ -577,11 +427,174 @@
 
 
 
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-06-01T05:41:34.000Z"><a href="/2018/06/01/algorithm/LeetCode_35/">2018-06-01</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/06/01/algorithm/LeetCode_35/">LeetCode_35 Search Insert Position</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>题目描述：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</div><div class="line"></div><div class="line">You may assume no duplicates in the array.</div></pre></td></tr></table></figure></p>
+<p>输入样例：<br><strong>Example 1:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [1,3,5,6], 5</div><div class="line">Output: 2</div></pre></td></tr></table></figure></p>
+<p><strong>Example 2:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [1,3,5,6], 2</div><div class="line">Output: 1</div></pre></td></tr></table></figure></p>
+<p><strong>Example 3:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [1,3,5,6], 7</div><div class="line">Output: 4</div></pre></td></tr></table></figure></p>
+<p><strong>Example 4:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [1,3,5,6], 0</div><div class="line">Output: 0</div></pre></td></tr></table></figure></p>
+<h2 id="1-解法一：暴力遍历"><a href="#1-解法一：暴力遍历" class="headerlink" title="1.解法一：暴力遍历"></a>1.解法一：暴力遍历</h2><p>由于给的数组是有序的，所以可以从左往右顺序遍历，把target与数组元素对比，直到找到比target大的元素，该元素的下标即所求。<br>Time: O(n)<br>Space: O(n)<br><strong>code</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">def searchInsert(self, nums, target):</div><div class="line">        return len([num for num in nums if target &gt; num])</div></pre></td></tr></table></figure></p>
+<h2 id="2-解法二：二分查找"><a href="#2-解法二：二分查找" class="headerlink" title="2. 解法二：二分查找"></a>2. 解法二：二分查找</h2><p>依然还是利用数组是有序，这个非常重要的特点。用二分查找可以降低算法时间复杂度。<br>Time: O(lgN)<br>Space: O(1)<br>需要注意的几个点：</p>
+<ol>
+<li>mid = (low + high) / 2，这样求中值的方法很容易造成溢出， 当（low + high）大于Integer.MAX_VALUE的时候会溢出，所以推荐使用位运算：mid = (low + high) &gt;&gt; 1，或mid = low + (high - low) / 2</li>
+<li>low = mid + 1, 这里的加1绝对不能漏掉，都则程序会陷入死循环。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">def searchInsert(self, nums, target):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        :type nums: List[int]</div><div class="line">        :type target: int</div><div class="line">        :rtype: int</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        if target &lt;= nums[0]:</div><div class="line">            return 0</div><div class="line">        elif target &gt; nums[-1]:</div><div class="line">            return len(nums)</div><div class="line">        else:</div><div class="line">            return self.findUpBorder(nums, target)</div><div class="line">        </div><div class="line">    def findUpBorder(self, nums, target):</div><div class="line">        low, high = 0, len(nums) - 1</div><div class="line">        #mid = low + (high - low) / 2</div><div class="line">        mid = (low + high) &gt;&gt; 1</div><div class="line">        </div><div class="line">        while(high &gt; low):</div><div class="line">            if target &lt; nums[mid]:</div><div class="line">                high = mid</div><div class="line">            else:</div><div class="line">                low = mid + 1</div><div class="line">            mid = (low + high) &gt;&gt; 1</div><div class="line">        if target == nums[mid - 1]:</div><div class="line">            return mid - 1</div><div class="line">        </div><div class="line">        return mid</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<script src="https://gist.github.com/yeshenlin/2a1f8117507c4a8a5aa66e458ffa87ca.js"></script>
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/algorithm/">algorithm</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/array/">array</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-05-02T08:05:04.000Z"><a href="/2018/05/02/skill_tree/Eigen API 使用/">2018-05-02</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/05/02/skill_tree/Eigen API 使用/">Eigen API 使用</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="1-矩阵定义和初始化"><a href="#1-矩阵定义和初始化" class="headerlink" title="1. 矩阵定义和初始化"></a>1. 矩阵定义和初始化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MatrixXd D; //声明一个double型的矩阵</div><div class="line">MatrixXd D(N, N);   //声明一个N * N的double矩阵</div><div class="line">MatrixXd D = MatrixXD::zero(N, N);  //声明并定义一个N * N的double型的矩阵</div></pre></td></tr></table></figure>
+<p>最推荐的初始化方法是第三种方法</p>
+<h2 id="Eigen-matrix-和-Opencv-mat的相互转换"><a href="#Eigen-matrix-和-Opencv-mat的相互转换" class="headerlink" title="Eigen matrix 和 Opencv mat的相互转换"></a>Eigen matrix 和 Opencv mat的相互转换</h2><p>在Opencv中core/include/opencv2/core/eigen.hpp文件中已经实现了Eigen matrix和Oencv mat之间的相互转换。下面随便列举两个API。详细的代码内容可以从<img src="https://github.com/opencv/opencv/blob/master/modules/core/include/opencv2/core/eigen.hpp" alt="eigen"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">void eigen2cv( const Eigen::Matrix&lt;_Tp, _rows, _cols, _options, _maxRows, _maxCols&gt;&amp; src, Mat&amp; dst )</div><div class="line">&#123;</div><div class="line">    if( !(src.Flags &amp; Eigen::RowMajorBit) )</div><div class="line">    &#123;</div><div class="line">        Mat _src(src.cols(), src.rows(), DataType&lt;_Tp&gt;::type,</div><div class="line">              (void*)src.data(), src.stride()*sizeof(_Tp));</div><div class="line">        transpose(_src, dst);</div><div class="line">    &#125;</div><div class="line">    else</div><div class="line">    &#123;</div><div class="line">        Mat _src(src.rows(), src.cols(), DataType&lt;_Tp&gt;::type,</div><div class="line">                 (void*)src.data(), src.stride()*sizeof(_Tp));</div><div class="line">        _src.copyTo(dst);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void cv2eigen( const Matx&lt;_Tp, _rows, 1&gt;&amp; src,</div><div class="line">               Eigen::Matrix&lt;_Tp, Eigen::Dynamic, 1&gt;&amp; dst )</div><div class="line">&#123;</div><div class="line">    dst.resize(_rows);</div><div class="line"></div><div class="line">    if( !(dst.Flags &amp; Eigen::RowMajorBit) )</div><div class="line">    &#123;</div><div class="line">        const Mat _dst(1, _rows, DataType&lt;_Tp&gt;::type,</div><div class="line">                 dst.data(), (size_t)(dst.stride()*sizeof(_Tp)));</div><div class="line">        transpose(src, _dst);</div><div class="line">    &#125;</div><div class="line">    else</div><div class="line">    &#123;</div><div class="line">        const Mat _dst(_rows, 1, DataType&lt;_Tp&gt;::type,</div><div class="line">                 dst.data(), (size_t)(dst.stride()*sizeof(_Tp)));</div><div class="line">        src.copyTo(_dst);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里列举一个使用例子。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Mat im = imread(path);</div><div class="line">cv2eigen(res, b);</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/skilltree/">skilltree</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/Eigen/">Eigen</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-03-05T06:51:44.000Z"><a href="/2018/03/05/skill_tree/搭建VPS并加速翻墙/">2018-03-05</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/03/05/skill_tree/搭建VPS并加速翻墙/">Mac搭建VPS并加速翻墙</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="1-付费VPS准备"><a href="#1-付费VPS准备" class="headerlink" title="1.付费VPS准备"></a>1.付费VPS准备</h2><p>1.1 在<a href="https://bandwagonhost.com/" target="_blank" rel="external">搬瓦工官网</a>上选择适合自己的VPS，如果只是平常用于简单翻墙的话，建议选择最便宜的那种类型，因为一个月500GB的流量正常情况下是用不完的。付费后，就可以在自己的My Service中看到自己拥有的VPS。<br>
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+        <a href="/2018/03/05/skill_tree/搭建VPS并加速翻墙/#more" class="more-link">更多内容</a>
+      </div>
+    </footer>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/skilltree/">skilltree</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/翻墙/">翻墙</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
 
 <nav id="pagination">
   
   <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
   </nav>
 
 </nav>
@@ -601,9 +614,9 @@
   
     <li><a href="/categories/Java/">Java</a><small>7</small></li>
   
-    <li><a href="/categories/Python/">Python</a><small>6</small></li>
+    <li><a href="/categories/Python/">Python</a><small>3</small></li>
   
-    <li><a href="/categories/algorithm/">algorithm</a><small>21</small></li>
+    <li><a href="/categories/algorithm/">algorithm</a><small>18</small></li>
   
     <li><a href="/categories/coding/">coding</a><small>1</small></li>
   
@@ -613,7 +626,7 @@
   
     <li><a href="/categories/mylife/">mylife</a><small>7</small></li>
   
-    <li><a href="/categories/py/">py</a><small>0</small></li>
+    <li><a href="/categories/py/">py</a><small>3</small></li>
   
     <li><a href="/categories/python/">python</a><small>0</small></li>
   
@@ -639,23 +652,23 @@
   <ul class="entry">
     
       <li>
-        <a href="/2018/06/17/algorithm/LeetCode_628/">LeetCode_628 Maximum Product of Three Numbers</a>
-      </li>
-    
-      <li>
-        <a href="/2018/06/12/algorithm/LeetCode_27/">LeetCode_35 Remove Element</a>
-      </li>
-    
-      <li>
-        <a href="/2018/06/10/algorithm/LeetCode_119/">LeetCode_35 Pascal&#39;s Triangle II</a>
-      </li>
-    
-      <li>
         <a href="/2018/06/08/algorithm/LeetCode_217/">LeetCode_35 Contains Duplicate</a>
       </li>
     
       <li>
         <a href="/2018/06/07/algorithm/LeetCode_189/">LeetCode_35 Rotate Array</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/05/algorithm/LeetCode_283/">LeetCode_35 Move Zeroes</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/04/algorithm/LeetCode_26/">LeetCode_35 Remove Duplicates from Sorted Array</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/03/algorithm/LeetCode_07/">LeetCode_35 Reverse Integer</a>
       </li>
     
   </ul>
@@ -683,7 +696,7 @@
   
     <li><a href="/tags/String/">String</a><small>1</small></li>
   
-    <li><a href="/tags/array/">array</a><small>10</small></li>
+    <li><a href="/tags/array/">array</a><small>7</small></li>
   
     <li><a href="/tags/coding/">coding</a><small>1</small></li>
   

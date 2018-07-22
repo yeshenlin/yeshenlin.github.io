@@ -78,203 +78,6 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2017-10-11T12:38:57.000Z"><a href="/2017/10/11/python/Python高级特性/">2017-10-11</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2017/10/11/python/Python高级特性/">Python高级特性</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="1-切片"><a href="#1-切片" class="headerlink" title="1. 切片"></a>1. 切片</h2><p>定义一个list</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">L = [&apos;Michael&apos;, &apos;Sarch&apos;, &apos;tarcy&apos;, &apos;Bob&apos;, &apos;Jack&apos;]</div></pre></td></tr></table></figure>
-<p>取任意一个区间<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print L[0:3]</div><div class="line"># [&apos;Michael&apos;, &apos;Sarch&apos;, &apos;tarcy&apos;]</div></pre></td></tr></table></figure></p>
-<p>取list最后2个数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print L[-2:]</div><div class="line"># [&apos;Bob&apos;, &apos;Jack&apos;]</div></pre></td></tr></table></figure></p>
-<p>取前面10个数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">L = range(100)</div><div class="line">print L[:10]</div><div class="line"># [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</div></pre></td></tr></table></figure></p>
-<p>取后面10个数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print L[-10:]</div><div class="line"># [90, 91, 92, 93, 94, 95, 96, 97, 98, 99]</div></pre></td></tr></table></figure></p>
-<p>取11-20个数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print L[10:20]</div><div class="line"># [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]</div></pre></td></tr></table></figure></p>
-<p>前10个数中，每两个取一个<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print L[:10:2]</div><div class="line"># [0, 2, 4, 6, 8]</div></pre></td></tr></table></figure></p>
-<p>所有的数每5个取一个<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print L[::5]</div><div class="line"># [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95]</div></pre></td></tr></table></figure></p>
-<p>str也是list，可以进行切片操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">print &apos;ABCDEFG&apos;[:3]</div><div class="line"># &apos;ABC&apos;</div><div class="line"></div><div class="line">print &apos;ABCDEFG&apos;[::2]</div><div class="line"># &apos;ACEG&apos;</div></pre></td></tr></table></figure></p>
-<h2 id="2-迭代"><a href="#2-迭代" class="headerlink" title="2. 迭代"></a>2. 迭代</h2><p>判断对象是否可迭代对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">from collections import Iterable</div><div class="line">print isinstance(&apos;abc&apos;, Iterable)</div><div class="line"># True</div><div class="line"></div><div class="line">print isinstance([1, 2, 3], Iterable)</div><div class="line"># True</div><div class="line"></div><div class="line">print isinstance(123, Iterable)</div><div class="line"># False</div></pre></td></tr></table></figure></p>
-<p>对list实现像Java那样的下表循环<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">for i, value in enumerate([&apos;A&apos;, &apos;B&apos;, &apos;C&apos;]):</div><div class="line">    print i, value</div><div class="line"># 0 A</div><div class="line"># 1 B</div><div class="line"># 2 C</div></pre></td></tr></table></figure></p>
-<p>在for循环里同时引用两个变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">for x, y in [(1, 1), (2, 4), (3, 9)]:</div><div class="line">    print x, y</div><div class="line"># 1 1</div><div class="line"># 2 4</div><div class="line"># 3 9</div></pre></td></tr></table></figure></p>
-<h2 id="3-列表生成式"><a href="#3-列表生成式" class="headerlink" title="3. 列表生成式"></a>3. 列表生成式</h2><p>生成一个1-10的list<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print range(1,11)</div><div class="line"># [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</div></pre></td></tr></table></figure></p>
-<p>生成一个[1<em>1.2</em>2,…,10*10]的list<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"># 复杂写法</div><div class="line">L = []</div><div class="line">for x in range(1, 11):</div><div class="line">    L.append(x * x)</div><div class="line">print L</div><div class="line"># [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]</div><div class="line"></div><div class="line"># 一行写法</div><div class="line">print [x * x for x in range(1, 11)]</div><div class="line"># [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]</div></pre></td></tr></table></figure></p>
-<p>后面可追加判断<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print [x * x for x in range(1, 11) if x % 2 == 0]</div><div class="line"># [4, 16, 36, 64, 100]</div></pre></td></tr></table></figure></p>
-<p>实现全排列<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print [m + n for m in &apos;ABC&apos; for n in &apos;XYZ&apos;]</div><div class="line"># [&apos;AX&apos;, &apos;AY&apos;, &apos;AZ&apos;, &apos;BX&apos;, &apos;BY&apos;, &apos;BZ&apos;, &apos;CX&apos;, &apos;CY&apos;, &apos;CZ&apos;]</div></pre></td></tr></table></figure></p>
-<p>打印出当前目录下所有的文件夹<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">import os</div><div class="line">print [d for d in os.listdir(&apos;.&apos;)]</div><div class="line"># [&apos;.git&apos;, &apos;.idea&apos;, &apos;123.png&apos;, &apos;23.jpg&apos;, &apos;27.jpg&apos;, &apos;bayes.py&apos;, &apos;classifierStorage.txt&apos;, &apos;data_struct.py&apos;, &apos;datingTestSet.txt&apos;, &apos;datingTestSet2.txt&apos;, &apos;HuffmanCompression.py&apos;, &apos;image_v5_half.jpg&apos;, &apos;kmeans.py&apos;, &apos;kNN.py&apos;, &apos;kNN.pyc&apos;, &apos;lenses.txt&apos;, &apos;logistic.py&apos;, &apos;mydir&apos;, &apos;mydir000001_0.jpg&apos;, &apos;README.md&apos;, &apos;res.jpg&apos;, &apos;res1.jpg&apos;, &apos;ResizeImageAndMat.py&apos;, &apos;result_v5_half.png&apos;, &apos;RGB2HSV.py&apos;, &apos;save_alpha_image.py&apos;, &apos;test.py&apos;, &apos;test_v1.py&apos;, &apos;trees.py&apos;]</div></pre></td></tr></table></figure></p>
-<p>在for循环中同时使用多个变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">d = &#123;&apos;x&apos;: &apos;A&apos;, &apos;y&apos;: &apos;B&apos;,&apos;z&apos;: &apos;C&apos;&#125;</div><div class="line">for k, v in d.iteritems():</div><div class="line">    print k, &apos;=&apos;, v</div><div class="line"># y = B</div><div class="line"># x = A</div><div class="line"># z = C</div></pre></td></tr></table></figure></p>
-<p>列表生成式使用多个变量生成list<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print [k + &apos;=&apos; + v for k, v in d.iteritems()]</div><div class="line"># [&apos;y=B&apos;, &apos;x=A&apos;, &apos;z=C&apos;]</div></pre></td></tr></table></figure></p>
-<p>把list中所有字符换成小写<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">L = [&apos;Hello&apos;, &apos;World&apos;]</div><div class="line">print [s.lower() for s in L]</div><div class="line"># [&apos;hello&apos;, &apos;world&apos;]</div></pre></td></tr></table></figure></p>
-<h2 id="4-生成器"><a href="#4-生成器" class="headerlink" title="4. 生成器"></a>4. 生成器</h2><p>对于比较长的列表，占用内存较大。只访问部分数据的时候非常浪费内存。生成器只保存算法，每次调用next，计算下一个元素的值。直到计算最后一个元素的值，没有更多的元素的时候，抛出StopIteration的错误。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">g = (x * x for x in range(10))</div><div class="line">print g</div><div class="line"></div><div class="line">print g.next()</div><div class="line"># 0</div><div class="line">print g.next()</div><div class="line"># 1</div><div class="line">print g.next()</div><div class="line"># 2</div><div class="line">print g.next()</div><div class="line"># 3</div></pre></td></tr></table></figure></p>
-<p>使用for循环避免不停地使用next()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">g = (x * x for x in range(10))</div><div class="line">print g</div><div class="line"></div><div class="line">for n in g:</div><div class="line">    print n</div><div class="line"></div><div class="line">&quot;&quot;&quot;</div><div class="line">0</div><div class="line">1</div><div class="line">4</div><div class="line">9</div><div class="line">16</div><div class="line">25</div><div class="line">36</div><div class="line">49</div><div class="line">64</div><div class="line">81</div><div class="line">&quot;&quot;&quot;</div></pre></td></tr></table></figure></p>
-<p>当推算的算法比较复杂的时候，可以用函数实现。比如，就算斐波那契可数列。<br>列表生成式的写法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">def fib(max):</div><div class="line">    n, a, b = 0,0,1</div><div class="line">    while n &lt; max:</div><div class="line">        print b</div><div class="line">        a, b = b, a + b</div><div class="line">        n = n + 1</div><div class="line"></div><div class="line">fib(6)</div><div class="line">&quot;&quot;&quot;</div><div class="line">1</div><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">5</div><div class="line">8</div><div class="line">&quot;&quot;&quot;</div></pre></td></tr></table></figure></p>
-<p>生成器的写法, yield关键字替换print:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">def fib(max):</div><div class="line">    n, a, b = 0,0,1</div><div class="line">    while n &lt; max:</div><div class="line">        yield b</div><div class="line">        a, b = b, a + b</div><div class="line">        n = n + 1</div><div class="line"></div><div class="line">for n in fib(6):</div><div class="line">    print n</div><div class="line">&quot;&quot;&quot;</div><div class="line">1</div><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">5</div><div class="line">8</div><div class="line">&quot;&quot;&quot;</div></pre></td></tr></table></figure></p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ol>
-<li><a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014317568446245b3e1c8837414168bcd2d485e553779e000" target="_blank" rel="external">廖雪峰的Python教程之高级特性</a></li>
-</ol>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-  
-  <div class="categories">
-    <a href="/categories/Python/">Python</a>
-  </div>
-
-        
-  
-  <div class="tags">
-    <a href="/tags/切片/">切片</a>, <a href="/tags/迭代/">迭代</a>, <a href="/tags/列表生成式/">列表生成式</a>, <a href="/tags/生成器/">生成器</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2017-10-11T06:28:05.000Z"><a href="/2017/10/11/python/Python的Dict和Set/">2017-10-11</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2017/10/11/python/Python的Dict和Set/">Python的Dict和Set</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="Dict"><a href="#Dict" class="headerlink" title="Dict"></a>Dict</h2><p>Python字典，其它语言称之为Map，即key-value pair。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">d = &#123;&quot;Michael&quot;:95, &apos;Bob&apos;: 75, &apos;Tracy&apos;:85&#125;</div><div class="line">print d[&apos;Bob&apos;]</div><div class="line"></div><div class="line">95</div></pre></td></tr></table></figure></p>
-<p>对字典中添加一个新的key-value<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">d[&apos;yelin&apos;] = 100</div><div class="line">print d</div><div class="line"></div><div class="line">&#123;&apos;yelin&apos;: 100, &apos;Bob&apos;: 75, &apos;Michael&apos;: 95, &apos;Tracy&apos;: 85&#125;</div></pre></td></tr></table></figure></p>
-<p>如果在添加kay-value之前，当前的key已经存在，那么value就会被冲掉<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">d[&apos;yelin&apos;] = 99</div><div class="line">print d</div><div class="line"></div><div class="line">&#123;&apos;yelin&apos;: 99, &apos;Bob&apos;: 75, &apos;Michael&apos;: 95, &apos;Tracy&apos;: 85&#125;</div></pre></td></tr></table></figure></p>
-<p>若取value的时候使用的kay不存在字典中，那么就会报错。</p>
-<p>比较推荐的取值方法：<br>使用get进行取值，如果key不存在，可以返回None，也可以指定返回的value：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">print d.get(&apos;zhangsan&apos;,-1)</div><div class="line"></div><div class="line">-1</div></pre></td></tr></table></figure></p>
-<p>删除一个key，使用pop(key), 此时会弹出一个value：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">d.pop(&apos;yelin&apos;)</div><div class="line"></div><div class="line">99</div></pre></td></tr></table></figure></p>
-<p>Dict的特点：</p>
-<ol>
-<li>查找和插入的速度极快，不对key值增加而增加；</li>
-<li>需要占用大量内存，内存浪费大。</li>
-</ol>
-<p>list的特点：</p>
-<ol>
-<li>查找和插入的时间随着元素的增加而增加；</li>
-<li>占用空间小，浪费内存很少。</li>
-</ol>
-<p>注意：由于Dict的底层原理是Hash算法，为了保证hash的正确性，Dict的key值必须是不可变类型，Python中的str、int、tuple是不可变的，list是可变的。因此使用list做key会报错。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">key = [1,2,3]</div><div class="line">d[key] = &apos;a list&apos;</div><div class="line">&gt;&gt; TypeError: unhashable type: &apos;list&apos;</div></pre></td></tr></table></figure></p>
-<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><p>set和dict类似，也是一组key的集合，但是set不存储value。set中的key不重复。set具有去重的功能。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">s = set([1,2,3,3])</div><div class="line">print s</div><div class="line"></div><div class="line">set([1,2,3])</div></pre></td></tr></table></figure></p>
-<p>添加和删除新key：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">s = set([1,2,3])</div><div class="line">s.add(3)</div><div class="line">print s</div><div class="line">//添加重复的key，没有任何效果</div><div class="line">set([1,2,3])</div><div class="line"></div><div class="line">s.remove(2)</div><div class="line">print s</div><div class="line"></div><div class="line">set([1,3])</div></pre></td></tr></table></figure></p>
-<p>对于setk可以实现数学意义上的交集、并集操作：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">s1 = set([1,2,3])</div><div class="line">s2 = set([2,3,4])</div><div class="line">print s1 &amp; s2</div><div class="line">print s1 | s2</div><div class="line"></div><div class="line">set([2,3])</div><div class="line">set([1,2,3,4])</div></pre></td></tr></table></figure></p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ol>
-<li><a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/00143167793538255adf33371774853a0ef943280573f4d000" target="_blank" rel="external">廖雪峰Python教程Dict和set</a></li>
-</ol>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-  
-  <div class="categories">
-    <a href="/categories/Python/">Python</a>
-  </div>
-
-        
-  
-  <div class="tags">
-    <a href="/tags/Python/">Python</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2017-10-11T06:13:39.000Z"><a href="/2017/10/11/algorithm/LeetCode_72/">2017-10-11</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2017/10/11/algorithm/LeetCode_72/">LeetCode 72 Edit Distance</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>Given two words word1 and word2, find the minimum number of steps required to convert word1 to word2. (each operation is counted as 1 step.)</p>
-<p>You have the following 3 operations permitted on a word:</p>
-<p>a) Insert a character<br>b) Delete a character<br>c) Replace a character</p>
-<p>主要思路：</p>
-<p>代码实现：</p>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-  
-  <div class="categories">
-    <a href="/categories/algorithm/">algorithm</a>
-  </div>
-
-        
-  
-  <div class="tags">
-    <a href="/tags/DP/">DP</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
         <time datetime="2017-10-06T08:21:34.000Z"><a href="/2017/10/06/mylife/我不想水群了/">2017-10-06</a></time>
       
       
@@ -494,11 +297,11 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2017-09-28T07:38:40.000Z"><a href="/2017/09/28/java/Java深拷贝/">2017-09-28</a></time>
+        <time datetime="2017-09-28T07:38:40.000Z"><a href="/2017/09/28/Java/Java深拷贝/">2017-09-28</a></time>
       
       
   
-    <h1 class="title"><a href="/2017/09/28/java/Java深拷贝/">Java深拷贝</a></h1>
+    <h1 class="title"><a href="/2017/09/28/Java/Java深拷贝/">Java深拷贝</a></h1>
   
 
     </header>
@@ -648,11 +451,190 @@
 
 
 
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-09-27T13:22:42.000Z"><a href="/2017/09/27/article/一百岁感言/">2017-09-27</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/09/27/article/一百岁感言/">一百岁感言</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="作者：杨绛"><a href="#作者：杨绛" class="headerlink" title="作者：杨绛"></a>作者：杨绛</h3><p>我今年一百岁，已经走到了人生的边缘，我无法确知自己还能走多远，寿命是不由自主的，但我很清楚我快“回家”了。</p>
+<p>我得洗净这一百年沾染的污秽回家。我没有“登泰山而小天下”之感，只在自己的小天地里过平静的生活。细想至此，我心静如水，我该平和地迎接每一天，准备回家。</p>
+<p>在这物欲横流的人世间，人生一世实在是够苦。你存心做一个与世无争的老实人吧，人家就利用你欺侮你。你稍有才德品貌，人家就嫉妒你排挤你。你大度退让，人家就侵犯你损害你。你要不与人争，就得与世无求，同时还要维持实力准备斗争。你要和别人和平共处，就先得和他们周旋，还得准备随时吃亏。</p>
+<p>少年贪玩，青年迷恋爱情，壮年汲汲于成名成家，暮年自安于自欺欺人。</p>
+<p>人寿几何，顽铁能炼成的精金，能有多少？但不同程度的锻炼，必有不同程度的成绩；不同程度的纵欲放肆，必积下不同程度的顽劣。</p>
+<p>上苍不会让所有幸福集中到某个人身上，得到爱情未必拥有金钱；拥有金钱未必得到快乐；得到快乐未必拥有健康；拥有健康未必一切都会如愿以偿。</p>
+<p>保持知足常乐的心态才是淬炼心智，净化心灵的最佳途径。一切快乐的享受都属于精神，这种快乐把忍受变为享受，是精神对于物质的胜利，这便是人生哲学。</p>
+<p>一个人经过不同程度的锻炼，就获得不同程度的修养、不同程度的效益。好比香料，捣得愈碎，磨得愈细，香得愈浓烈。我们曾如此渴望命运的波澜，到最后才发现：人生最曼妙的风景，竟是内心的淡定与从容……我们曾如此期盼外界的认可，到最后才知道：世界是自己的，与他人毫无关系！</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/hobby/">hobby</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/杨绛/">杨绛</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-09-27T09:07:26.000Z"><a href="/2017/09/27/article/小孩子的不快活/">2017-09-27</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/09/27/article/小孩子的不快活/">小孩子的不快活</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="作者：徐志摩"><a href="#作者：徐志摩" class="headerlink" title="作者：徐志摩"></a>作者：徐志摩</h2><p>你在小孩时快活不?我，不快活。至少我在回忆中想不起来。</p>
+<p>单看我们孩子的衣着先就可笑。浑身全给裹得紧紧，膊、胫、腿，也不让露在外面，怕着凉。怕着凉，不错；可是裤子是开裆的，孩子一往下蹲，屁股就往外露，肚子也就连带通风——这倒不怕着凉了!</p>
+<p>孩子是不能常洗澡的，洗澡又容易着凉，在我们家乡地方终年不洗澡的孩子并不出奇，我都不知道自己小时候每年洗几回澡。冬天不用说，因为屋子不生火，当然不洗。夏天有时不得不洗，但只浅浅的一只小桶，水又很烫，结果孩子们也就不爱洗。</p>
+<p>我记得孩子时候顶怕两件事：一件是剃头；一件是洗澡。“今天我总得‘捉牢’他来剃头”，“今天我总得‘捉牢’他来洗澡”，我妈总是这么说。他们可不对我讲一个一定得洗澡的理由，他们也不把洗的方法给弄适意些。这影响深极了，我到现在也总把洗澡看做一种必要的麻烦。</p>
+<p>我的受业师父查桐荪先生，因为他出世时父母怕孩子着凉没有给他洗澡，他就把这不洗澡习惯一直带到棺材里去——从生到死五十几年一次都没有洗过身体!不刷牙、不洗头、很少洗脸。</p>
+<p>我们很少想到，品格、性情，乃至思想上的不洁也多半是缘于小时候父母的姑息与颟顸。一般父母心目中的“好孩子”观念是：愈不像孩子的孩子在他们看来是愈好的孩子。</p>
+<p>孩子得听话，不许闹——中国父母顶得意的是孩子听人家吩咐规规矩矩地叫人，绝对机械性地叫人——“伯伯”、“妈妈”。</p>
+<p>因为要强制孩子听话，大人们有时就用种种哄骗恫吓的方法。多少成人作伪与怯懦的品性是在“别哭，老虎来了”、“别嚷，老太太来了”、“不许吃，吃了要长疮的”一类话下养成的!</p>
+<p>不要怪孩子性情不好，或是愁他们身子不好，实际只要你们肯费一点心思，花一点工夫，认清了孩子本能的倾向，治水似的耐心地去疏导它，原来不好的地方很容易变好。</p>
+<p>做父母的都有一个创作的机会，把你们的孩子养成一个健康、活泼、灵敏、慈爱的成人，替社会造一个有用的人才，替自然完成一个有意识的工作，同时也增你们自己的光，添你们的欢喜——这机会还不够大吗?</p>
+<p>现代的成人，为什么都是这么懒、这么脏(尤其在品格上与思想)、这么蠢、这么丑、这么破烂?现代的青年，为什么这么弱、这么多愁多悲哀?这种种的不健康——多是做爹娘的当初不曾尽他们应尽的责任，一半是愚暗，一半是懒怠。</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/hobby/">hobby</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/徐志摩/">徐志摩</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-09-27T07:09:08.000Z"><a href="/2017/09/27/article/明日又天涯/">2017-09-27</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/09/27/article/明日又天涯/">明日又天涯</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="作者：三毛"><a href="#作者：三毛" class="headerlink" title="作者：三毛"></a>作者：三毛</h2><p>我的朋友，今夜我是跟你告别了，多少次又多少次，你的眼光在默默的问我，Echo，你的将来要怎么过？你一个人这样的走了，你会好好的吗？你会吗？你会吗？</p>
+<p>看见你哀怜的眼睛，我的胃马上便绞痛起来，我也轻轻的在对自己哀求——不要再痛了，不要再痛了，难道痛得还没有尽头吗？</p>
+<p>明日，是一个不能逃避的东西，我没有退路。我不能回答你眼里的问题，我只知道，我胃痛，我便捂住自己的胃，不说一句话，因为这个痛是真真实实的。</p>
+<p>多少次，你说，虽然我是意气飞扬，满含自信若有所思的仰着头，脸上荡着笑，可是，灯光下，我的眼睛藏不住秘密，我的眸子里，闪烁的只是满满的倔强的眼泪，还有，那一个海也似的情深的故事。</p>
+<p>你说，Echo，你会一个人过日子吗？我想反问你，你听说过有谁，在这世界上，不是孤独的生，不是孤独的死？有谁？请你告诉我。</p>
+<p>你也说，不要忘了写信来，细细的告诉我，你的日子是怎么的在度过，因为有人在挂念你。</p>
+<p>我爱的朋友，不必写信，现在就可以告诉你，我是走了，回到我的家里去，在那儿，有海，有空茫的天，还有那永远吹拂着大风的哀愁海滩。</p>
+<p>家的后面，是一片无人的田野，左邻右舍，也只有在度假的时候才会出现，这个地方，可以走两小时不见人迹，而海鸥的叫声却是总也不断。</p>
+<p>我的日子会怎么过？</p>
+<p>我会一样的洗衣服，擦地，管我的盆景，铺我的床。偶尔，我会去小镇上，在买东西的时候，跟人说说话，去邮局信箱里，盼一封你的来信。也可能，在天气晴朗，而又心境安稳的时候，我会坐飞机，去那个最后之岛，买一把鲜花，在荷西长眠的地方坐一个静静的黄昏。</p>
+<p>再也没有鬼哭神号的事情了，最坏的已经来过了，再也没有什么。我只是有时会胃痛，会在一个人吃饭的时候，有些食不下咽。</p>
+<p>也曾对你说过，暮色来时，我会仔细的锁好门窗，也不再在白日将自己打扮得花枝招展，因为我很明白，昨日的风情，只会增加自己今日的不安全，那么，我的长裙，便留在箱子里吧。</p>
+<p>又说过，要养一只大狼狗，买一把猎枪，要是有谁，不得我的允许敢跨入我的花园一步，那么我要他死在我的枪下。说出这句话来，你震惊了，你心疼了，你方才知道，Echo的明日不是好玩的，你说，Echo你还是回来，</p>
+<p>我一直是要你回来的。</p>
+<p>我的朋友，我想再问你一句已经问过的话，有谁，在这个世界上不是孤独的生，不是孤独的死？</p>
+<p>青春结伴，我已有过，是感恩，是满足，没有遗憾。</p>
+<p>再说，夜来了，我拉上窗帘，将自己锁在屋内，是安全的，不再出去看黑</p>
+<p>夜里满天的繁星了，因为我知道，在任何一个星座上，都找不到我心里呼叫的名字。</p>
+<p>我开了温暖的落地灯，坐在我的大摇椅里，靠在软软的红色垫子上，这儿是我的家，一向是我的家。我坐下，擦擦我的口琴，然后，试几个音，然后，在那一屋的寂静里，我依旧吹着那首最爱的歌曲——甜蜜的家庭。</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/hobby/">hobby</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/三毛/">三毛</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
 
 <nav id="pagination">
   
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/3/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">下一页 &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">下一页 &raquo;</a>
   </nav>
 
 </nav>
@@ -672,9 +654,9 @@
   
     <li><a href="/categories/Java/">Java</a><small>7</small></li>
   
-    <li><a href="/categories/Python/">Python</a><small>6</small></li>
+    <li><a href="/categories/Python/">Python</a><small>3</small></li>
   
-    <li><a href="/categories/algorithm/">algorithm</a><small>21</small></li>
+    <li><a href="/categories/algorithm/">algorithm</a><small>18</small></li>
   
     <li><a href="/categories/coding/">coding</a><small>1</small></li>
   
@@ -684,7 +666,7 @@
   
     <li><a href="/categories/mylife/">mylife</a><small>7</small></li>
   
-    <li><a href="/categories/py/">py</a><small>0</small></li>
+    <li><a href="/categories/py/">py</a><small>3</small></li>
   
     <li><a href="/categories/python/">python</a><small>0</small></li>
   
@@ -710,23 +692,23 @@
   <ul class="entry">
     
       <li>
-        <a href="/2018/06/17/algorithm/LeetCode_628/">LeetCode_628 Maximum Product of Three Numbers</a>
-      </li>
-    
-      <li>
-        <a href="/2018/06/12/algorithm/LeetCode_27/">LeetCode_35 Remove Element</a>
-      </li>
-    
-      <li>
-        <a href="/2018/06/10/algorithm/LeetCode_119/">LeetCode_35 Pascal&#39;s Triangle II</a>
-      </li>
-    
-      <li>
         <a href="/2018/06/08/algorithm/LeetCode_217/">LeetCode_35 Contains Duplicate</a>
       </li>
     
       <li>
         <a href="/2018/06/07/algorithm/LeetCode_189/">LeetCode_35 Rotate Array</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/05/algorithm/LeetCode_283/">LeetCode_35 Move Zeroes</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/04/algorithm/LeetCode_26/">LeetCode_35 Remove Duplicates from Sorted Array</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/03/algorithm/LeetCode_07/">LeetCode_35 Reverse Integer</a>
       </li>
     
   </ul>
@@ -754,7 +736,7 @@
   
     <li><a href="/tags/String/">String</a><small>1</small></li>
   
-    <li><a href="/tags/array/">array</a><small>10</small></li>
+    <li><a href="/tags/array/">array</a><small>7</small></li>
   
     <li><a href="/tags/coding/">coding</a><small>1</small></li>
   

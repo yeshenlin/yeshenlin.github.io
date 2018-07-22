@@ -3,7 +3,7 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8" />
   
-  <title>第 6 页 | 一只咸鱼的池塘</title>
+  <title>py | 一只咸鱼的池塘</title>
   <meta name="author" content="一只咸鱼的池塘" />
 
   
@@ -72,86 +72,48 @@
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-03-30T08:27:25.000Z"><a href="/2015/03/30/java/Java编译和执行的过程/">2015-03-30</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/03/30/java/Java编译和执行的过程/">Java编译和执行的过程</a></h1>
-  
+<h2 class="archive-title category">py</h2>
 
-    </header>
-    <div class="entry">
-      
-        <p>Java的编译过程由Java编译器执行，Java的运行过程由JVM执行引擎执行。</p>
-<center><img src="http://yeshenlin.com/yelin_image/05.gif" alt="Java编译"></center><br><center><img src="http://yeshenlin.com/yelin_image/06.gif" alt="Java执行"></center>
 
-<p>Java的编译和执行过程主要包含三个机制</p>
-<ol>
-<li>Java源码编译机制</li>
-<li>类加载机制</li>
-<li>类执行机制</li>
-</ol>
-<h2 id="Java源码编译机制"><a href="#Java源码编译机制" class="headerlink" title="Java源码编译机制"></a>Java源码编译机制</h2><p>Java源码编译机制由一下三个过程组成：</p>
-<ol>
-<li>分析和输入到符号表</li>
-<li>注解处理</li>
-<li>语法分析和生成class文件</li>
-</ol>
-<p>流程图如下图所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">*.java --------&gt; 分析和注入 ---------&gt; 注解处理 ---------&gt; 语法分析 ---------&gt; *.class </div><div class="line">            |                                      |                            |</div><div class="line">            |______________________________________|                            |</div><div class="line">                                                                                |</div><div class="line">                                                                                ↓</div><div class="line">                                                                    ---------------------------------------------|</div><div class="line">                                                                    \1. 结构信息。包含class文件结构版本号各部分信息;\</div><div class="line">                                                                    \2. 元数据。声明与常量的信息，类、超类、接口的声 \</div><div class="line">                                                                    \   明信息、域和方法声明的信息和常量池；        \</div><div class="line">                                                                    \3. 方法信息。语句和源码表达式的信息。          \</div><div class="line">                                                                    \---------------------------------------------</div></pre></td></tr></table></figure>
-<h2 id="类加载机制"><a href="#类加载机制" class="headerlink" title="类加载机制"></a>类加载机制</h2><p>JVM类的加载是通过ClassLoader及其子类来完成的，类的层次关系和记载顺序可以用一下图来进行描述。</p>
-<p><center><img src="http://yeshenlin.com/yelin_image/07.gif" alt="类加载机制"></center></p>
-<h3 id="BootStrap-ClassLoader"><a href="#BootStrap-ClassLoader" class="headerlink" title="BootStrap ClassLoader"></a>BootStrap ClassLoader</h3><p>负责加载$JAVA_HOME中jre/lib/rt.jar里所有的 class，由 C++ 实现，不是 ClassLoader 子类。</p>
-<h3 id="Extension-ClassLoader"><a href="#Extension-ClassLoader" class="headerlink" title="Extension ClassLoader"></a>Extension ClassLoader</h3><p>负责加载Java平台中的扩展功能的一些jar包</p>
-<h3 id="App-ClassLoader"><a href="#App-ClassLoader" class="headerlink" title="App ClassLoader"></a>App ClassLoader</h3><p>负责加载classpath中指定的jar包及目录中的class</p>
-<h3 id="Custom-ClassLoader"><a href="#Custom-ClassLoader" class="headerlink" title="Custom ClassLoader"></a>Custom ClassLoader</h3><p>应用程序根据自身需要定义的ClassLoader。</p>
-<p>加载过程会先检查自底向上检测类是否被加载，而检查过程是自顶向下的。</p>
-<h2 id="类执行机制"><a href="#类执行机制" class="headerlink" title="类执行机制"></a>类执行机制</h2><p>JVM执行字节码，线程创建，产生计数器（PC）和栈（Stack），程序计数器存放下一条指令在方法内的偏移量，栈中存放一个个栈帧。每个栈帧对应着每个方法的每次调用，而栈帧又是有局部变量和操作数栈两部分组成，局部变量区用于存放方法中的局部变量和参数，操作数栈中用于存放方法执行过程中产生的中间结果。<br>栈的结构如下图所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">        ------------------------</div><div class="line">        |                      |</div><div class="line">    ----------------------     |</div><div class="line">    |                    |     |</div><div class="line">---------------------    |     |</div><div class="line">|   -------------   |    |     |</div><div class="line">|   | 局部变量区 |   |    |     |</div><div class="line">|   -------------   |    |     |</div><div class="line">|                   |    |     |</div><div class="line">|   -------------   |    |     |</div><div class="line">|   |  操作数栈  |   |    |------</div><div class="line">|   -------------   |    |</div><div class="line">|                   |-----</div><div class="line">|       栈帧        |</div><div class="line">---------------------</div></pre></td></tr></table></figure></p>
-
-      
-    </div>
+  <div class="archive">
     
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+      <article class="post">
+        <div class="post-content">
+          <header>
+            <div class="icon"></div>
+            <time datetime="2018-01-12T01:12:33.000Z"><a href="/2018/01/12/Python/Python API备忘/">2018-01-12</a></time>
+            
+              <h1 class="title"><a href="/2018/01/12/Python/Python API备忘/">python API 备忘</a></h1>
+            
+          </header>
         </div>
-        
-  
-  <div class="categories">
-    <a href="/categories/Java/">Java</a>
+      </article>
+    
+      <article class="post">
+        <div class="post-content">
+          <header>
+            <div class="icon"></div>
+            <time datetime="2017-11-25T03:05:00.000Z"><a href="/2017/11/25/Python/Python核心编程第一章/">2017-11-25</a></time>
+            
+              <h1 class="title"><a href="/2017/11/25/Python/Python核心编程第一章/">《Python核心编程》第一章习题-正则表达式</a></h1>
+            
+          </header>
+        </div>
+      </article>
+    
+      <article class="post">
+        <div class="post-content">
+          <header>
+            <div class="icon"></div>
+            <time datetime="2017-10-30T04:56:29.000Z"><a href="/2017/10/30/Python/Python实现两个list之和/">2017-10-30</a></time>
+            
+              <h1 class="title"><a href="/2017/10/30/Python/Python实现两个list之和/">python简洁实现两个list之和</a></h1>
+            
+          </header>
+        </div>
+      </article>
+    
   </div>
-
-        
-  
-  <div class="tags">
-    <a href="/tags/Java/">Java</a>, <a href="/tags/JVM/">JVM</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-<nav id="pagination">
-  
-  <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/5/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
-  </nav>
-
-</nav>
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
@@ -168,9 +130,9 @@
   
     <li><a href="/categories/Java/">Java</a><small>7</small></li>
   
-    <li><a href="/categories/Python/">Python</a><small>6</small></li>
+    <li><a href="/categories/Python/">Python</a><small>3</small></li>
   
-    <li><a href="/categories/algorithm/">algorithm</a><small>21</small></li>
+    <li><a href="/categories/algorithm/">algorithm</a><small>18</small></li>
   
     <li><a href="/categories/coding/">coding</a><small>1</small></li>
   
@@ -180,7 +142,7 @@
   
     <li><a href="/categories/mylife/">mylife</a><small>7</small></li>
   
-    <li><a href="/categories/py/">py</a><small>0</small></li>
+    <li><a href="/categories/py/">py</a><small>3</small></li>
   
     <li><a href="/categories/python/">python</a><small>0</small></li>
   
@@ -206,23 +168,23 @@
   <ul class="entry">
     
       <li>
-        <a href="/2018/06/17/algorithm/LeetCode_628/">LeetCode_628 Maximum Product of Three Numbers</a>
-      </li>
-    
-      <li>
-        <a href="/2018/06/12/algorithm/LeetCode_27/">LeetCode_35 Remove Element</a>
-      </li>
-    
-      <li>
-        <a href="/2018/06/10/algorithm/LeetCode_119/">LeetCode_35 Pascal&#39;s Triangle II</a>
-      </li>
-    
-      <li>
         <a href="/2018/06/08/algorithm/LeetCode_217/">LeetCode_35 Contains Duplicate</a>
       </li>
     
       <li>
         <a href="/2018/06/07/algorithm/LeetCode_189/">LeetCode_35 Rotate Array</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/05/algorithm/LeetCode_283/">LeetCode_35 Move Zeroes</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/04/algorithm/LeetCode_26/">LeetCode_35 Remove Duplicates from Sorted Array</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/03/algorithm/LeetCode_07/">LeetCode_35 Reverse Integer</a>
       </li>
     
   </ul>
@@ -250,7 +212,7 @@
   
     <li><a href="/tags/String/">String</a><small>1</small></li>
   
-    <li><a href="/tags/array/">array</a><small>10</small></li>
+    <li><a href="/tags/array/">array</a><small>7</small></li>
   
     <li><a href="/tags/coding/">coding</a><small>1</small></li>
   
