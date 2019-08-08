@@ -78,6 +78,76 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2017-10-11T06:28:05.000Z"><a href="/2017/10/11/Python/Python的Dict和Set/">2017-10-11</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/10/11/Python/Python的Dict和Set/">Python的Dict和Set</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="Dict"><a href="#Dict" class="headerlink" title="Dict"></a>Dict</h2><p>Python字典，其它语言称之为Map，即key-value pair。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">d = &#123;&quot;Michael&quot;:95, &apos;Bob&apos;: 75, &apos;Tracy&apos;:85&#125;</div><div class="line">print d[&apos;Bob&apos;]</div><div class="line"></div><div class="line">95</div></pre></td></tr></table></figure></p>
+<p>对字典中添加一个新的key-value<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">d[&apos;yelin&apos;] = 100</div><div class="line">print d</div><div class="line"></div><div class="line">&#123;&apos;yelin&apos;: 100, &apos;Bob&apos;: 75, &apos;Michael&apos;: 95, &apos;Tracy&apos;: 85&#125;</div></pre></td></tr></table></figure></p>
+<p>如果在添加kay-value之前，当前的key已经存在，那么value就会被冲掉<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">d[&apos;yelin&apos;] = 99</div><div class="line">print d</div><div class="line"></div><div class="line">&#123;&apos;yelin&apos;: 99, &apos;Bob&apos;: 75, &apos;Michael&apos;: 95, &apos;Tracy&apos;: 85&#125;</div></pre></td></tr></table></figure></p>
+<p>若取value的时候使用的kay不存在字典中，那么就会报错。</p>
+<p>比较推荐的取值方法：<br>使用get进行取值，如果key不存在，可以返回None，也可以指定返回的value：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">print d.get(&apos;zhangsan&apos;,-1)</div><div class="line"></div><div class="line">-1</div></pre></td></tr></table></figure></p>
+<p>删除一个key，使用pop(key), 此时会弹出一个value：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">d.pop(&apos;yelin&apos;)</div><div class="line"></div><div class="line">99</div></pre></td></tr></table></figure></p>
+<p>Dict的特点：</p>
+<ol>
+<li>查找和插入的速度极快，不对key值增加而增加；</li>
+<li>需要占用大量内存，内存浪费大。</li>
+</ol>
+<p>list的特点：</p>
+<ol>
+<li>查找和插入的时间随着元素的增加而增加；</li>
+<li>占用空间小，浪费内存很少。</li>
+</ol>
+<p>注意：由于Dict的底层原理是Hash算法，为了保证hash的正确性，Dict的key值必须是不可变类型，Python中的str、int、tuple是不可变的，list是可变的。因此使用list做key会报错。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">key = [1,2,3]</div><div class="line">d[key] = &apos;a list&apos;</div><div class="line">&gt;&gt; TypeError: unhashable type: &apos;list&apos;</div></pre></td></tr></table></figure></p>
+<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><p>set和dict类似，也是一组key的集合，但是set不存储value。set中的key不重复。set具有去重的功能。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">s = set([1,2,3,3])</div><div class="line">print s</div><div class="line"></div><div class="line">set([1,2,3])</div></pre></td></tr></table></figure></p>
+<p>添加和删除新key：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">s = set([1,2,3])</div><div class="line">s.add(3)</div><div class="line">print s</div><div class="line">//添加重复的key，没有任何效果</div><div class="line">set([1,2,3])</div><div class="line"></div><div class="line">s.remove(2)</div><div class="line">print s</div><div class="line"></div><div class="line">set([1,3])</div></pre></td></tr></table></figure></p>
+<p>对于setk可以实现数学意义上的交集、并集操作：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">s1 = set([1,2,3])</div><div class="line">s2 = set([2,3,4])</div><div class="line">print s1 &amp; s2</div><div class="line">print s1 | s2</div><div class="line"></div><div class="line">set([2,3])</div><div class="line">set([1,2,3,4])</div></pre></td></tr></table></figure></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ol>
+<li><a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/00143167793538255adf33371774853a0ef943280573f4d000" target="_blank" rel="external">廖雪峰Python教程Dict和set</a></li>
+</ol>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/Python/">Python</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/Python/">Python</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2017-10-11T06:13:39.000Z"><a href="/2017/10/11/algorithm/LeetCode_72/">2017-10-11</a></time>
       
       
@@ -566,72 +636,6 @@
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2017-09-27T07:09:08.000Z"><a href="/2017/09/27/article/明日又天涯/">2017-09-27</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2017/09/27/article/明日又天涯/">明日又天涯</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="作者：三毛"><a href="#作者：三毛" class="headerlink" title="作者：三毛"></a>作者：三毛</h2><p>我的朋友，今夜我是跟你告别了，多少次又多少次，你的眼光在默默的问我，Echo，你的将来要怎么过？你一个人这样的走了，你会好好的吗？你会吗？你会吗？</p>
-<p>看见你哀怜的眼睛，我的胃马上便绞痛起来，我也轻轻的在对自己哀求——不要再痛了，不要再痛了，难道痛得还没有尽头吗？</p>
-<p>明日，是一个不能逃避的东西，我没有退路。我不能回答你眼里的问题，我只知道，我胃痛，我便捂住自己的胃，不说一句话，因为这个痛是真真实实的。</p>
-<p>多少次，你说，虽然我是意气飞扬，满含自信若有所思的仰着头，脸上荡着笑，可是，灯光下，我的眼睛藏不住秘密，我的眸子里，闪烁的只是满满的倔强的眼泪，还有，那一个海也似的情深的故事。</p>
-<p>你说，Echo，你会一个人过日子吗？我想反问你，你听说过有谁，在这世界上，不是孤独的生，不是孤独的死？有谁？请你告诉我。</p>
-<p>你也说，不要忘了写信来，细细的告诉我，你的日子是怎么的在度过，因为有人在挂念你。</p>
-<p>我爱的朋友，不必写信，现在就可以告诉你，我是走了，回到我的家里去，在那儿，有海，有空茫的天，还有那永远吹拂着大风的哀愁海滩。</p>
-<p>家的后面，是一片无人的田野，左邻右舍，也只有在度假的时候才会出现，这个地方，可以走两小时不见人迹，而海鸥的叫声却是总也不断。</p>
-<p>我的日子会怎么过？</p>
-<p>我会一样的洗衣服，擦地，管我的盆景，铺我的床。偶尔，我会去小镇上，在买东西的时候，跟人说说话，去邮局信箱里，盼一封你的来信。也可能，在天气晴朗，而又心境安稳的时候，我会坐飞机，去那个最后之岛，买一把鲜花，在荷西长眠的地方坐一个静静的黄昏。</p>
-<p>再也没有鬼哭神号的事情了，最坏的已经来过了，再也没有什么。我只是有时会胃痛，会在一个人吃饭的时候，有些食不下咽。</p>
-<p>也曾对你说过，暮色来时，我会仔细的锁好门窗，也不再在白日将自己打扮得花枝招展，因为我很明白，昨日的风情，只会增加自己今日的不安全，那么，我的长裙，便留在箱子里吧。</p>
-<p>又说过，要养一只大狼狗，买一把猎枪，要是有谁，不得我的允许敢跨入我的花园一步，那么我要他死在我的枪下。说出这句话来，你震惊了，你心疼了，你方才知道，Echo的明日不是好玩的，你说，Echo你还是回来，</p>
-<p>我一直是要你回来的。</p>
-<p>我的朋友，我想再问你一句已经问过的话，有谁，在这个世界上不是孤独的生，不是孤独的死？</p>
-<p>青春结伴，我已有过，是感恩，是满足，没有遗憾。</p>
-<p>再说，夜来了，我拉上窗帘，将自己锁在屋内，是安全的，不再出去看黑</p>
-<p>夜里满天的繁星了，因为我知道，在任何一个星座上，都找不到我心里呼叫的名字。</p>
-<p>我开了温暖的落地灯，坐在我的大摇椅里，靠在软软的红色垫子上，这儿是我的家，一向是我的家。我坐下，擦擦我的口琴，然后，试几个音，然后，在那一屋的寂静里，我依旧吹着那首最爱的歌曲——甜蜜的家庭。</p>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-  
-  <div class="categories">
-    <a href="/categories/hobby/">hobby</a>
-  </div>
-
-        
-  
-  <div class="tags">
-    <a href="/tags/三毛/">三毛</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
 
 <nav id="pagination">
   
@@ -664,7 +668,7 @@
   
     <li><a href="/categories/hobby/">hobby</a><small>4</small></li>
   
-    <li><a href="/categories/mylife/">mylife</a><small>2</small></li>
+    <li><a href="/categories/mylife/">mylife</a><small>3</small></li>
   
     <li><a href="/categories/py/">py</a><small>4</small></li>
   
@@ -684,6 +688,10 @@
   <ul class="entry">
     
       <li>
+        <a href="/2019/08/08/mylife/my/">相识十五年</a>
+      </li>
+    
+      <li>
         <a href="/2019/05/03/Python/Python绘图库封装与学习/">Python绘图库的封装与学习</a>
       </li>
     
@@ -697,10 +705,6 @@
     
       <li>
         <a href="/2018/06/08/algorithm/LeetCode_217/">LeetCode_35 Contains Duplicate</a>
-      </li>
-    
-      <li>
-        <a href="/2018/06/07/algorithm/LeetCode_189/">LeetCode_35 Rotate Array</a>
       </li>
     
   </ul>
@@ -768,7 +772,7 @@
   
     <li><a href="/tags/生成器/">生成器</a><small>1</small></li>
   
-    <li><a href="/tags/生活/">生活</a><small>1</small></li>
+    <li><a href="/tags/生活/">生活</a><small>2</small></li>
   
     <li><a href="/tags/网课/">网课</a><small>1</small></li>
   
@@ -788,7 +792,7 @@
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/Eigen/" style="font-size: 10px;">Eigen</a> <a href="/tags/JVM/" style="font-size: 13.33px;">JVM</a> <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/Python/" style="font-size: 18.33px;">Python</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/array/" style="font-size: 20px;">array</a> <a href="/tags/coding/" style="font-size: 10px;">coding</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/string/" style="font-size: 11.67px;">string</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/三毛/" style="font-size: 10px;">三毛</a> <a href="/tags/切片/" style="font-size: 10px;">切片</a> <a href="/tags/列表生成式/" style="font-size: 10px;">列表生成式</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/字符串/" style="font-size: 11.67px;">字符串</a> <a href="/tags/开发环境/" style="font-size: 10px;">开发环境</a> <a href="/tags/张若水/" style="font-size: 10px;">张若水</a> <a href="/tags/徐志摩/" style="font-size: 10px;">徐志摩</a> <a href="/tags/所线程/" style="font-size: 10px;">所线程</a> <a href="/tags/排序/" style="font-size: 10px;">排序</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/日记/" style="font-size: 10px;">日记</a> <a href="/tags/杨绛/" style="font-size: 10px;">杨绛</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/深拷贝/" style="font-size: 10px;">深拷贝</a> <a href="/tags/生成器/" style="font-size: 10px;">生成器</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/网课/" style="font-size: 10px;">网课</a> <a href="/tags/翻墙/" style="font-size: 10px;">翻墙</a> <a href="/tags/迭代/" style="font-size: 10px;">迭代</a> <a href="/tags/链接/" style="font-size: 10px;">链接</a> <a href="/tags/链表/" style="font-size: 10px;">链表</a>
+    <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/Eigen/" style="font-size: 10px;">Eigen</a> <a href="/tags/JVM/" style="font-size: 13.33px;">JVM</a> <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/Python/" style="font-size: 18.33px;">Python</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/array/" style="font-size: 20px;">array</a> <a href="/tags/coding/" style="font-size: 10px;">coding</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/string/" style="font-size: 11.67px;">string</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/三毛/" style="font-size: 10px;">三毛</a> <a href="/tags/切片/" style="font-size: 10px;">切片</a> <a href="/tags/列表生成式/" style="font-size: 10px;">列表生成式</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/字符串/" style="font-size: 11.67px;">字符串</a> <a href="/tags/开发环境/" style="font-size: 10px;">开发环境</a> <a href="/tags/张若水/" style="font-size: 10px;">张若水</a> <a href="/tags/徐志摩/" style="font-size: 10px;">徐志摩</a> <a href="/tags/所线程/" style="font-size: 10px;">所线程</a> <a href="/tags/排序/" style="font-size: 10px;">排序</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/日记/" style="font-size: 10px;">日记</a> <a href="/tags/杨绛/" style="font-size: 10px;">杨绛</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/深拷贝/" style="font-size: 10px;">深拷贝</a> <a href="/tags/生成器/" style="font-size: 10px;">生成器</a> <a href="/tags/生活/" style="font-size: 11.67px;">生活</a> <a href="/tags/网课/" style="font-size: 10px;">网课</a> <a href="/tags/翻墙/" style="font-size: 10px;">翻墙</a> <a href="/tags/迭代/" style="font-size: 10px;">迭代</a> <a href="/tags/链接/" style="font-size: 10px;">链接</a> <a href="/tags/链表/" style="font-size: 10px;">链表</a>
   </div>
 </div>
 

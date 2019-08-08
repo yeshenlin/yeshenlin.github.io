@@ -3,19 +3,18 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8" />
   
-  <title>LeetCode_35 Move Zeroes | Now you see me!</title>
+  <title>相识十五年 | Now you see me!</title>
   <meta name="author" content="Now you see me!" />
 
   
-  <meta name="description" content="题目描述：1Given an array nums, write a function to move all 0&amp;apos;s to the end of it while maintaining the relative order of the non-zero elements.
-输入样例：" />
+  <meta name="description" content="记录一下与我一起相识十五年的朋友们。" />
   
 
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  <meta property="og:title" content="LeetCode_35 Move Zeroes" />
+  <meta property="og:title" content="相识十五年" />
   <meta property="og:site_name" content="Now you see me!" />
 
   
@@ -80,20 +79,21 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2018-06-05T05:58:25.000Z"><a href="/2018/06/05/algorithm/LeetCode_283/">2018-06-05</a></time>
+        <time datetime="2019-08-08T06:12:50.000Z"><a href="/2019/08/08/mylife/my/">2019-08-08</a></time>
       
       
   
-    <h1 class="title">LeetCode_35 Move Zeroes</h1>
+    <h1 class="title">相识十五年</h1>
   
 
     </header>
     <div class="entry">
       
-        <p><strong>题目描述：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Given an array nums, write a function to move all 0&apos;s to the end of it while maintaining the relative order of the non-zero elements.</div></pre></td></tr></table></figure></p>
-<p><strong>输入样例：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Example:</div><div class="line"></div><div class="line">Input: [0,1,0,3,12]</div><div class="line">Output: [1,3,12,0,0]</div></pre></td></tr></table></figure></p>
-<p><strong>Code:</strong><br>方法一：统计0的个数—&gt;前边删除0后边添加0<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">def moveZeroes(self, nums):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        :type nums: List[int]</div><div class="line">        :rtype: void Do not return anything, modify nums in-place instead.</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        for i in range(nums.count(0)):</div><div class="line">            nums.remove(0)</div><div class="line">            nums.append(0)</div></pre></td></tr></table></figure></p>
-<p>方法二：这个方法比上面复杂一些，因为这个方法还可以保证被删掉的0这个node被移到list后面，因此可以保证指针和0的相对位置也不变。因为在python的list里面，0是一个Node对象形式存储的。PS：对于这道题，倒是没必要考虑这么复杂。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">def moveZeroes(self, nums):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        :type nums: List[int]</div><div class="line">        :rtype: void Do not return anything, modify nums in-place instead.</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        i, nums_len = 0, len(nums)</div><div class="line">        while i &lt; nums_len:</div><div class="line">            if nums[i] == 0:</div><div class="line">                tmp = nums.pop(i)</div><div class="line">                nums.append(tmp)</div><div class="line">                nums_len -= 1</div><div class="line">            else:</div><div class="line">                i += 1</div></pre></td></tr></table></figure></p>
+        <p>记录一下与我一起相识十五年的朋友们。</p>
+<center><img src="http://yeshenlin.com/yelin_image/46.JPG" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/47.JPG" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/48.JPG" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/49.JPG" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/50.JPG" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/51.JPG" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/52.JPG" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/53.JPG" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/54.JPG" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/55.JPG" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/56.JPG" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/57.JPG" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/58.JPG" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/59.JPG" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/60.JPG" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/61.JPG" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/62.JPG" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/63.JPG" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/64.JPG" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/65.JPG" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/66.JPG" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/67.JPG" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/68.JPG" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/69.JPG" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/70.jpeg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/71.jppg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/70.jpeg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/71.jppg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/70.jpeg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/71.jppg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/70.jpeg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/71.jppg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/70.jpeg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/71.jppg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/70.jpeg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/71.jppg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/70.jpeg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/71.jppg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/70.jpeg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/71.jppg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/70.jpeg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/71.jppg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/72.jpeg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/73.jppg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/74.jpeg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/75.jppg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/76.jpeg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/77.jppg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/78.jpeg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/79.jppg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/80.jpeg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/81.jppg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/82.jpeg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/83.jppg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/84.jpeg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/85.jppg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/86.jpeg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/87.jppg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/88.jpeg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/89.jppg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/90.jpeg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/91.jppg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/92.jpeg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/93.jppg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/94.jpeg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/95.jppg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/96.jpeg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/97.jppg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/98.jpeg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/99.jppg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/100.jpeg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/101.jppg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/102.jpeg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/103.jppg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/104.jpeg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/105.jppg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/106.jpeg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/107.jppg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/108.jpeg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/109.jppg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/110.jpeg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/111.jppg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/112.jpeg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/113.jppg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/114.jpeg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/115.jppg" width="600"></center><br><center><img src="http://yeshenlin.com/yelin_image/116.jpeg" width="600"></center>
+
+
+
 
       
     </div>
@@ -106,13 +106,13 @@
         
   
   <div class="categories">
-    <a href="/categories/algorithm/">algorithm</a>
+    <a href="/categories/mylife/">mylife</a>
   </div>
 
         
   
   <div class="tags">
-    <a href="/tags/array/">array</a>
+    <a href="/tags/生活/">生活</a>
   </div>
 
         <!-- partial('post/share') -->
