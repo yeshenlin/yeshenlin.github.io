@@ -1,0 +1,335 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8" />
+  
+  <title>python 对象 | Now you see me!</title>
+  <meta name="author" content="Now you see me!" />
+
+  
+  <meta name="description" content="1.创建python类python类要注意驼峰式命名。
+添加属性：
+可以通过点记法对空类进行后创建属性😅，这个真的是太神奇了。
+12345class Point:    Passp = Point()p.x = 1p.y = 2
+2.初始化函数和构造函数1234567class Point:   " />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="python 对象" />
+  <meta property="og:site_name" content="Now you see me!" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="Now you see me!" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Now you see me!</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/archives/">所有文章</a></li>
+    
+      <li><a href="/categories/coding">编程感悟</a></li>
+    
+      <li><a href="/categories/algorithm">算法之道</a></li>
+    
+      <li><a href="/categories/Java">Java</a></li>
+    
+      <li><a href="/categories/Python">Python</a></li>
+    
+      <li><a href="/categories/linux">Linux</a></li>
+    
+      <li><a href="/categories/ml">机器学习</a></li>
+    
+      <li><a href="/categories/skilltree">Other</a></li>
+    
+      <li><a href="/categories/hobby">兴趣爱好</a></li>
+    
+      <li><a href="/categories/mylife">我的生活</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-02-03T14:29:21.000Z"><a href="/2019/02/03/Python/python面向对象/python对象/">2019-02-03</a></time>
+      
+      
+  
+    <h1 class="title">python 对象</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="1-创建python类"><a href="#1-创建python类" class="headerlink" title="1.创建python类"></a>1.创建python类</h2><p>python类要注意驼峰式命名。</p>
+<p><strong>添加属性</strong>：</p>
+<p>可以通过点记法对空类进行后创建属性😅，这个真的是太神奇了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span>:</span></div><div class="line">    Pass</div><div class="line">p = Point()</div><div class="line">p.x = <span class="number">1</span></div><div class="line">p.y = <span class="number">2</span></div></pre></td></tr></table></figure>
+<h2 id="2-初始化函数和构造函数"><a href="#2-初始化函数和构造函数" class="headerlink" title="2.初始化函数和构造函数"></a>2.初始化函数和构造函数</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x = <span class="number">0</span>, y = <span class="number">0</span>)</span>:</span><span class="comment">#在这里可以设置一个默认值</span></div><div class="line">        self.move(x, y)</div><div class="line">       </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">move</span><span class="params">(self, x, y)</span>:</span></div><div class="line">        self.x = x</div><div class="line">        self.y = y</div></pre></td></tr></table></figure>
+<h2 id="3-解释自己"><a href="#3-解释自己" class="headerlink" title="3.解释自己"></a>3.解释自己</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span>:</span></div><div class="line">    <span class="string">'This is a new class by yelin'</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x = <span class="number">0</span>, y = <span class="number">0</span>)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        This is a function, it move center of the</span></div><div class="line"><span class="string">        class to a new place</span></div><div class="line"><span class="string">        """</span></div><div class="line">        self.move(<span class="number">0</span>, <span class="number">0</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">move</span><span class="params">(self, x, y)</span>:</span></div><div class="line">        <span class="string">"I want to add some comment."</span></div><div class="line">        self.x = x</div><div class="line">        self.y = y</div></pre></td></tr></table></figure>
+<h2 id="4-模块"><a href="#4-模块" class="headerlink" title="4.模块"></a>4.模块</h2><p>千万不要使用如下写法, 因为它为导致命名空间的混乱，不利于查看源文件，代码维护变成噩梦，import * 会破坏代码补全：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> database <span class="keyword">import</span> *</div></pre></td></tr></table></figure>
+<h3 id="4-1-组织模块"><a href="#4-1-组织模块" class="headerlink" title="4.1 组织模块"></a>4.1 组织模块</h3><p>一个package就是放到一个文件夹里的模块集合，<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">```python</div><div class="line">parent_directory/</div><div class="line">	main.py</div><div class="line">    ecommerce/</div><div class="line">    	__init__.py</div><div class="line">        database.py</div><div class="line">        products.py</div><div class="line">        payments/</div><div class="line">        	__init__.py</div><div class="line">            paypal.py</div><div class="line">            authorizenet.py</div></pre></td></tr></table></figure></p>
+<h2 id="5-数据访问"><a href="#5-数据访问" class="headerlink" title="5.数据访问"></a>5.数据访问</h2><p>双下划线开头的变量并不是不可被访问的, 被”命名改编“后，只需要调用改编之后的变量名就可以调用了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SecretString</span>:</span></div><div class="line">    <span class="string">'''A not-at-all secure way to store a secret string.'''</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, plain_string, pass_phrase)</span>:</span></div><div class="line">        self.__plain_string = plain_string</div><div class="line">        self.__pass_phrase = pass_phrase</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">decrypt</span><span class="params">(self, pass_phrase)</span>:</span></div><div class="line">        <span class="string">'''Only show the string if the pass_phrase is correct'''</span></div><div class="line">        <span class="keyword">if</span> pass_phrase == self.__pass_phrase:</div><div class="line">            <span class="keyword">return</span> self.__plain_string</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span></div><div class="line"></div><div class="line">secret_string = SecretString(<span class="string">"ACME: Top Secret"</span>, <span class="string">"antwerp"</span>)</div><div class="line">print(secret_string._SecretString__plain_string)</div></pre></td></tr></table></figure>
+<h2 id="6-重载"><a href="#6-重载" class="headerlink" title="6.重载"></a>6.重载</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Friend</span><span class="params">(Concat)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, email, phone)</span>:</span></div><div class="line">        super().__init__(name, email)</div><div class="line">        self.phone = phone</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/Python/">Python</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/Python/">Python</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Java/">Java</a><small>7</small></li>
+  
+    <li><a href="/categories/Python/">Python</a><small>4</small></li>
+  
+    <li><a href="/categories/algorithm/">algorithm</a><small>18</small></li>
+  
+    <li><a href="/categories/coding/">coding</a><small>1</small></li>
+  
+    <li><a href="/categories/hobby/">hobby</a><small>4</small></li>
+  
+    <li><a href="/categories/mylife/">mylife</a><small>2</small></li>
+  
+    <li><a href="/categories/py/">py</a><small>4</small></li>
+  
+    <li><a href="/categories/skilltree/">skilltree</a><small>4</small></li>
+  
+    <li><a href="/categories/工具/">工具</a><small>1</small></li>
+  
+    <li><a href="/categories/算法/">算法</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2019/05/03/Python/Python绘图库封装与学习/">Python绘图库的封装与学习</a>
+      </li>
+    
+      <li>
+        <a href="/2019/02/03/Python/python面向对象/python对象/">python 对象</a>
+      </li>
+    
+      <li>
+        <a href="/2018/12/09/tools/环境搭建/">开发环境搭建</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/08/algorithm/LeetCode_217/">LeetCode_35 Contains Duplicate</a>
+      </li>
+    
+      <li>
+        <a href="/2018/06/07/algorithm/LeetCode_189/">LeetCode_35 Rotate Array</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/BFS/">BFS</a><small>1</small></li>
+  
+    <li><a href="/tags/DP/">DP</a><small>4</small></li>
+  
+    <li><a href="/tags/Eigen/">Eigen</a><small>1</small></li>
+  
+    <li><a href="/tags/JVM/">JVM</a><small>3</small></li>
+  
+    <li><a href="/tags/Java/">Java</a><small>5</small></li>
+  
+    <li><a href="/tags/Python/">Python</a><small>6</small></li>
+  
+    <li><a href="/tags/String/">String</a><small>1</small></li>
+  
+    <li><a href="/tags/array/">array</a><small>7</small></li>
+  
+    <li><a href="/tags/coding/">coding</a><small>1</small></li>
+  
+    <li><a href="/tags/docker/">docker</a><small>1</small></li>
+  
+    <li><a href="/tags/string/">string</a><small>2</small></li>
+  
+    <li><a href="/tags/tools/">tools</a><small>1</small></li>
+  
+    <li><a href="/tags/三毛/">三毛</a><small>1</small></li>
+  
+    <li><a href="/tags/切片/">切片</a><small>1</small></li>
+  
+    <li><a href="/tags/列表生成式/">列表生成式</a><small>1</small></li>
+  
+    <li><a href="/tags/多线程/">多线程</a><small>1</small></li>
+  
+    <li><a href="/tags/字符串/">字符串</a><small>2</small></li>
+  
+    <li><a href="/tags/开发环境/">开发环境</a><small>1</small></li>
+  
+    <li><a href="/tags/张若水/">张若水</a><small>1</small></li>
+  
+    <li><a href="/tags/徐志摩/">徐志摩</a><small>1</small></li>
+  
+    <li><a href="/tags/所线程/">所线程</a><small>1</small></li>
+  
+    <li><a href="/tags/排序/">排序</a><small>1</small></li>
+  
+    <li><a href="/tags/数据库/">数据库</a><small>1</small></li>
+  
+    <li><a href="/tags/日记/">日记</a><small>1</small></li>
+  
+    <li><a href="/tags/杨绛/">杨绛</a><small>1</small></li>
+  
+    <li><a href="/tags/正则表达式/">正则表达式</a><small>1</small></li>
+  
+    <li><a href="/tags/深拷贝/">深拷贝</a><small>1</small></li>
+  
+    <li><a href="/tags/生成器/">生成器</a><small>1</small></li>
+  
+    <li><a href="/tags/生活/">生活</a><small>1</small></li>
+  
+    <li><a href="/tags/网课/">网课</a><small>1</small></li>
+  
+    <li><a href="/tags/翻墙/">翻墙</a><small>1</small></li>
+  
+    <li><a href="/tags/迭代/">迭代</a><small>1</small></li>
+  
+    <li><a href="/tags/链接/">链接</a><small>1</small></li>
+  
+    <li><a href="/tags/链表/">链表</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/Eigen/" style="font-size: 10px;">Eigen</a> <a href="/tags/JVM/" style="font-size: 13.33px;">JVM</a> <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/Python/" style="font-size: 18.33px;">Python</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/array/" style="font-size: 20px;">array</a> <a href="/tags/coding/" style="font-size: 10px;">coding</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/string/" style="font-size: 11.67px;">string</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/三毛/" style="font-size: 10px;">三毛</a> <a href="/tags/切片/" style="font-size: 10px;">切片</a> <a href="/tags/列表生成式/" style="font-size: 10px;">列表生成式</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/字符串/" style="font-size: 11.67px;">字符串</a> <a href="/tags/开发环境/" style="font-size: 10px;">开发环境</a> <a href="/tags/张若水/" style="font-size: 10px;">张若水</a> <a href="/tags/徐志摩/" style="font-size: 10px;">徐志摩</a> <a href="/tags/所线程/" style="font-size: 10px;">所线程</a> <a href="/tags/排序/" style="font-size: 10px;">排序</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/日记/" style="font-size: 10px;">日记</a> <a href="/tags/杨绛/" style="font-size: 10px;">杨绛</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/深拷贝/" style="font-size: 10px;">深拷贝</a> <a href="/tags/生成器/" style="font-size: 10px;">生成器</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/网课/" style="font-size: 10px;">网课</a> <a href="/tags/翻墙/" style="font-size: 10px;">翻墙</a> <a href="/tags/迭代/" style="font-size: 10px;">迭代</a> <a href="/tags/链接/" style="font-size: 10px;">链接</a> <a href="/tags/链表/" style="font-size: 10px;">链表</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2019 Now you see me!
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script></footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

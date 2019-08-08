@@ -78,6 +78,132 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2019-05-03T15:37:06.000Z"><a href="/2019/05/03/Python/Python绘图库封装与学习/">2019-05-03</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2019/05/03/Python/Python绘图库封装与学习/">Python绘图库的封装与学习</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>matplotlib是Python常用的绘图库，在ipython notebook中结合matplotlib来进行交互绘图做数据分析非常方便。<br>matplotlib提供的原始API已经非常方便，但是我个人的需求需要更加简便化，所以针对个人进行再一次封装，以便进行傻瓜式调用。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding=utf-8</span></div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"><span class="keyword">import</span> matplotlib.pylab <span class="keyword">as</span> mlab</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div></pre></td></tr></table></figure>
+<h2 id="1-封装散点图接口"><a href="#1-封装散点图接口" class="headerlink" title="1.封装散点图接口"></a>1.封装散点图接口</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">scatterplot</span><span class="params">(ax,</span></span></div><div class="line"><span class="function"><span class="params">                x_data_list,</span></span></div><div class="line"><span class="function"><span class="params">                y_data_list,</span></span></div><div class="line"><span class="function"><span class="params">                color_list,</span></span></div><div class="line"><span class="function"><span class="params">                x_label=<span class="string">""</span>,</span></span></div><div class="line"><span class="function"><span class="params">                y_label=<span class="string">""</span>,</span></span></div><div class="line"><span class="function"><span class="params">                title=<span class="string">""</span>,</span></span></div><div class="line"><span class="function"><span class="params">                yscale_log=False)</span>:</span></div><div class="line">    <span class="string">"""绘制散点图</span></div><div class="line"><span class="string">    封装matplotlib提供的原始scatter接口，使其可以对一组会多组数据的输入进行绘制。</span></div><div class="line"><span class="string">    </span></div><div class="line"><span class="string">    Args:</span></div><div class="line"><span class="string">        ax: plt.subplot(), 一个子图</span></div><div class="line"><span class="string">        x_data_list: [[], []], 二维list</span></div><div class="line"><span class="string">        y_data_list: [[], []], 二维list</span></div><div class="line"><span class="string">        color_list: ["r", "b"], 颜色list</span></div><div class="line"><span class="string">        x_label: str, 横坐标名称</span></div><div class="line"><span class="string">        y_label: str, 纵坐标名称</span></div><div class="line"><span class="string">        title: str, 当前子图的名称</span></div><div class="line"><span class="string">    </span></div><div class="line"><span class="string">    Returns:</span></div><div class="line"><span class="string">        None</span></div><div class="line"><span class="string">    """</span></div><div class="line">    <span class="comment"># Plot the data, set the size (s), color and transparency (alpha)</span></div><div class="line">    <span class="comment"># of the points</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(x_data_list)):</div><div class="line">        ax.scatter(x_data_list[i],</div><div class="line">                   y_data_list[i],</div><div class="line">                   s=<span class="number">10</span>,</div><div class="line">                   color=color_list[i],</div><div class="line">                   alpha=<span class="number">0.75</span>)</div><div class="line"></div><div class="line">    <span class="keyword">if</span> yscale_log == <span class="keyword">True</span>:</div><div class="line">        ax.set_yscale(<span class="string">'log'</span>)</div><div class="line"></div><div class="line">    <span class="comment"># Label the axes and provide a title</span></div><div class="line">    ax.set_title(title)</div><div class="line">    ax.set_xlabel(x_label)</div><div class="line">    ax.set_ylabel(y_label)</div></pre></td></tr></table></figure>
+<p>对于上面封装好的接口，模拟三组输入数据看看效果。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">ax = plt.subplot()</div><div class="line">x_data_list = [np.random.randn(<span class="number">100</span>) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>)]</div><div class="line">y_data_list = [np.random.randn(<span class="number">100</span>) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>)]</div><div class="line">color_list = [<span class="string">"r"</span>, <span class="string">"g"</span>, <span class="string">"b"</span>]</div><div class="line">x_label = <span class="string">"X axis"</span></div><div class="line">y_label = <span class="string">"Y axis"</span></div><div class="line">title = <span class="string">"X-Y scatterploter"</span></div><div class="line">scatterplot(ax,</div><div class="line">            x_data_list,</div><div class="line">            y_data_list,</div><div class="line">            color_list,</div><div class="line">            x_label,</div><div class="line">            y_label,</div><div class="line">            title,</div><div class="line">            yscale_log=<span class="keyword">False</span>)</div></pre></td></tr></table></figure>
+<p><img src="http://yeshenlin.com/yelin_image/45.png" alt="png"></p>
+<h2 id="2-封装折线图"><a href="#2-封装折线图" class="headerlink" title="2. 封装折线图"></a>2. 封装折线图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">lineplot</span><span class="params">(ax,</span></span></div><div class="line"><span class="function"><span class="params">             x_data_list,</span></span></div><div class="line"><span class="function"><span class="params">             y_data_list,</span></span></div><div class="line"><span class="function"><span class="params">             color_list,</span></span></div><div class="line"><span class="function"><span class="params">             x_label=<span class="string">""</span>,</span></span></div><div class="line"><span class="function"><span class="params">             y_label=<span class="string">""</span>,</span></span></div><div class="line"><span class="function"><span class="params">             title=<span class="string">""</span>)</span>:</span></div><div class="line">    <span class="string">"""绘制散点图</span></div><div class="line"><span class="string">    封装matplotlib提供的原始scatter接口，使其可以对一组会多组数据的输入进行绘制。</span></div><div class="line"><span class="string">    </span></div><div class="line"><span class="string">    Args:</span></div><div class="line"><span class="string">        ax: plt.subplot(), 一个子图</span></div><div class="line"><span class="string">        x_data_list: [[], []], 二维list</span></div><div class="line"><span class="string">        y_data_list: [[], []], 二维list</span></div><div class="line"><span class="string">        color_list: ["r", "b"], 颜色list</span></div><div class="line"><span class="string">        x_label: str, 横坐标名称</span></div><div class="line"><span class="string">        y_label: str, 纵坐标名称</span></div><div class="line"><span class="string">        title: str, 当前子图的名称</span></div><div class="line"><span class="string">    </span></div><div class="line"><span class="string">    Returns:</span></div><div class="line"><span class="string">        None</span></div><div class="line"><span class="string">    """</span></div><div class="line">    <span class="comment"># Plot the best fit line, set the linewidth (lw), color and</span></div><div class="line">    <span class="comment"># transparency (alpha) of the line</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(x_data_list)):</div><div class="line">        ax.plot(x_data_list[i],</div><div class="line">                y_data_list[i],</div><div class="line">                lw=<span class="number">2</span>,</div><div class="line">                color=color_list[i],</div><div class="line">                alpha=<span class="number">1</span>)</div><div class="line"></div><div class="line">    <span class="comment"># Label the axes and provide a title</span></div><div class="line">    ax.set_title(title)</div><div class="line">    ax.set_xlabel(x_label)</div><div class="line">    ax.set_ylabel(y_label)</div></pre></td></tr></table></figure>
+<p>对于上面封装好的接口，模拟两组数据模拟y=x*x的效果.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> math</div><div class="line">ax = plt.subplot()</div><div class="line">x_data_list = [[i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">-100</span>, <span class="number">100</span>)] <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">2</span>)]</div><div class="line">y_data_list = [[math.pow(i, j + <span class="number">1</span>) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">-100</span>, <span class="number">100</span>)]</div><div class="line">               <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">2</span>)]</div><div class="line">color_list = [<span class="string">'r'</span>, <span class="string">'g'</span>]</div><div class="line">x_label = <span class="string">'X axis'</span></div><div class="line">y_label = <span class="string">'Y axis'</span></div><div class="line">title = <span class="string">'X &amp; Y'</span></div><div class="line">lineplot(ax, x_data_list, y_data_list, color_list, x_label, y_label, title)</div></pre></td></tr></table></figure>
+<p><img src="http://yeshenlin.com/yelin_image/41.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">histplot</span><span class="params">(ax,</span></span></div><div class="line"><span class="function"><span class="params">             x_data_list,</span></span></div><div class="line"><span class="function"><span class="params">             num_bins,</span></span></div><div class="line"><span class="function"><span class="params">             color_list,</span></span></div><div class="line"><span class="function"><span class="params">             alpha_list=[<span class="number">1.0</span>, <span class="number">0.5</span>],</span></span></div><div class="line"><span class="function"><span class="params">             x_label=<span class="string">""</span>,</span></span></div><div class="line"><span class="function"><span class="params">             y_label=<span class="string">""</span>,</span></span></div><div class="line"><span class="function"><span class="params">             title=<span class="string">""</span>,</span></span></div><div class="line"><span class="function"><span class="params">             cumulative=False,</span></span></div><div class="line"><span class="function"><span class="params">             normed=<span class="number">1</span>)</span>:</span></div><div class="line">    <span class="string">"""绘制直方图</span></div><div class="line"><span class="string">    Args:</span></div><div class="line"><span class="string">        ax: plt.subplot()，子图</span></div><div class="line"><span class="string">        x_data_list: list, n组数据</span></div><div class="line"><span class="string">        num_bins: int, 直方图的区间数</span></div><div class="line"><span class="string">        color_list: list(str), 颜色</span></div><div class="line"><span class="string">        alpha_list: list(float), 透明度</span></div><div class="line"><span class="string">        x_label: str，x轴信息</span></div><div class="line"><span class="string">        y_label: str, y轴信息</span></div><div class="line"><span class="string">        title: 当前子图的名称</span></div><div class="line"><span class="string">        cumulative: bool, 是否采用累积方式</span></div><div class="line"><span class="string">        normed: 总的概率值</span></div><div class="line"><span class="string">    </span></div><div class="line"><span class="string">    Return:</span></div><div class="line"><span class="string">        None</span></div><div class="line"><span class="string">    """</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(x_data_list)):</div><div class="line">        ax.hist(x_data_list[i],</div><div class="line">                <span class="number">50</span>,</div><div class="line">                cumulative=<span class="keyword">False</span>,</div><div class="line">                normed=<span class="number">1</span>,</div><div class="line">                facecolor=color_list[i],</div><div class="line">                alpha=alpha_list[i])</div><div class="line">    plt.xlabel(x_label)</div><div class="line">    plt.ylabel(y_label)</div><div class="line">    plt.title(title)</div></pre></td></tr></table></figure>
+<p>模拟两组正太分布数据：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">x_data_list = [</div><div class="line">    <span class="number">100</span> + <span class="number">15</span> * np.random.randn(<span class="number">10000</span>), <span class="number">100</span> + <span class="number">10</span> * np.random.randn(<span class="number">10000</span>)</div><div class="line">]</div><div class="line">ax = plt.subplot()</div><div class="line">histplot(ax=ax,</div><div class="line">         x_data_list=x_data_list,</div><div class="line">         num_bins=<span class="number">50</span>,</div><div class="line">         color_list=[<span class="string">"r"</span>, <span class="string">"g"</span>],</div><div class="line">         x_label=<span class="string">"X axis"</span>,</div><div class="line">         y_label=<span class="string">"Y axis"</span>,</div><div class="line">         title=<span class="string">"X &amp; Y"</span>)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<p><img src="http://yeshenlin.com/yelin_image/42.png" alt="png"></p>
+<h2 id="4-柱状图接口"><a href="#4-柱状图接口" class="headerlink" title="4.柱状图接口"></a>4.柱状图接口</h2><p>4.1 堆叠柱状图</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">name_list = [<span class="string">'Monday'</span>, <span class="string">'Tuesday'</span>, <span class="string">'Friday'</span>, <span class="string">'Sunday'</span>]</div><div class="line">num_list = [<span class="number">1.5</span>, <span class="number">0.6</span>, <span class="number">7.8</span>, <span class="number">6</span>]</div><div class="line">num_list1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>]</div><div class="line">plt.bar(range(len(num_list)), num_list, label=<span class="string">'boy'</span>, fc=<span class="string">'y'</span>)</div><div class="line">plt.bar(range(len(num_list)),</div><div class="line">        num_list1,</div><div class="line">        bottom=num_list,</div><div class="line">        label=<span class="string">'girl'</span>,</div><div class="line">        tick_label=name_list,</div><div class="line">        fc=<span class="string">'r'</span>)</div><div class="line">plt.legend()</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<p><img src="http://yeshenlin.com/yelin_image/43.png" alt="png"></p>
+<p>4.2 并列柱状图</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">name_list = [<span class="string">'Monday'</span>,<span class="string">'Tuesday'</span>,<span class="string">'Friday'</span>,<span class="string">'Sunday'</span>]</div><div class="line">num_list = [<span class="number">1.5</span>,<span class="number">0.6</span>,<span class="number">7.8</span>,<span class="number">6</span>]</div><div class="line">num_list1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>]</div><div class="line">x =list(range(len(num_list)))</div><div class="line">total_width, n = <span class="number">0.8</span>, <span class="number">2</span></div><div class="line">width = total_width / n</div><div class="line"> </div><div class="line">plt.bar(x, num_list, width=width, label=<span class="string">'boy'</span>,fc = <span class="string">'y'</span>)</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(x)):</div><div class="line">    x[i] = x[i] + width</div><div class="line">plt.bar(x, num_list1, width=width, label=<span class="string">'girl'</span>,tick_label = name_list,fc = <span class="string">'r'</span>)</div><div class="line">plt.legend()</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<p><img src="http://yeshenlin.com/yelin_image/44.png" alt="png"></p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/py/">py</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/Python/">Python</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-02-03T14:29:21.000Z"><a href="/2019/02/03/Python/python面向对象/python对象/">2019-02-03</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2019/02/03/Python/python面向对象/python对象/">python 对象</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="1-创建python类"><a href="#1-创建python类" class="headerlink" title="1.创建python类"></a>1.创建python类</h2><p>python类要注意驼峰式命名。</p>
+<p><strong>添加属性</strong>：</p>
+<p>可以通过点记法对空类进行后创建属性😅，这个真的是太神奇了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span>:</span></div><div class="line">    Pass</div><div class="line">p = Point()</div><div class="line">p.x = <span class="number">1</span></div><div class="line">p.y = <span class="number">2</span></div></pre></td></tr></table></figure>
+<h2 id="2-初始化函数和构造函数"><a href="#2-初始化函数和构造函数" class="headerlink" title="2.初始化函数和构造函数"></a>2.初始化函数和构造函数</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x = <span class="number">0</span>, y = <span class="number">0</span>)</span>:</span><span class="comment">#在这里可以设置一个默认值</span></div><div class="line">        self.move(x, y)</div><div class="line">       </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">move</span><span class="params">(self, x, y)</span>:</span></div><div class="line">        self.x = x</div><div class="line">        self.y = y</div></pre></td></tr></table></figure>
+<h2 id="3-解释自己"><a href="#3-解释自己" class="headerlink" title="3.解释自己"></a>3.解释自己</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span>:</span></div><div class="line">    <span class="string">'This is a new class by yelin'</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x = <span class="number">0</span>, y = <span class="number">0</span>)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        This is a function, it move center of the</span></div><div class="line"><span class="string">        class to a new place</span></div><div class="line"><span class="string">        """</span></div><div class="line">        self.move(<span class="number">0</span>, <span class="number">0</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">move</span><span class="params">(self, x, y)</span>:</span></div><div class="line">        <span class="string">"I want to add some comment."</span></div><div class="line">        self.x = x</div><div class="line">        self.y = y</div></pre></td></tr></table></figure>
+<h2 id="4-模块"><a href="#4-模块" class="headerlink" title="4.模块"></a>4.模块</h2><p>千万不要使用如下写法, 因为它为导致命名空间的混乱，不利于查看源文件，代码维护变成噩梦，import * 会破坏代码补全：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> database <span class="keyword">import</span> *</div></pre></td></tr></table></figure>
+<h3 id="4-1-组织模块"><a href="#4-1-组织模块" class="headerlink" title="4.1 组织模块"></a>4.1 组织模块</h3><p>一个package就是放到一个文件夹里的模块集合，<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">```python</div><div class="line">parent_directory/</div><div class="line">	main.py</div><div class="line">    ecommerce/</div><div class="line">    	__init__.py</div><div class="line">        database.py</div><div class="line">        products.py</div><div class="line">        payments/</div><div class="line">        	__init__.py</div><div class="line">            paypal.py</div><div class="line">            authorizenet.py</div></pre></td></tr></table></figure></p>
+<h2 id="5-数据访问"><a href="#5-数据访问" class="headerlink" title="5.数据访问"></a>5.数据访问</h2><p>双下划线开头的变量并不是不可被访问的, 被”命名改编“后，只需要调用改编之后的变量名就可以调用了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SecretString</span>:</span></div><div class="line">    <span class="string">'''A not-at-all secure way to store a secret string.'''</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, plain_string, pass_phrase)</span>:</span></div><div class="line">        self.__plain_string = plain_string</div><div class="line">        self.__pass_phrase = pass_phrase</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">decrypt</span><span class="params">(self, pass_phrase)</span>:</span></div><div class="line">        <span class="string">'''Only show the string if the pass_phrase is correct'''</span></div><div class="line">        <span class="keyword">if</span> pass_phrase == self.__pass_phrase:</div><div class="line">            <span class="keyword">return</span> self.__plain_string</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span></div><div class="line"></div><div class="line">secret_string = SecretString(<span class="string">"ACME: Top Secret"</span>, <span class="string">"antwerp"</span>)</div><div class="line">print(secret_string._SecretString__plain_string)</div></pre></td></tr></table></figure>
+<h2 id="6-重载"><a href="#6-重载" class="headerlink" title="6.重载"></a>6.重载</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Friend</span><span class="params">(Concat)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, email, phone)</span>:</span></div><div class="line">        super().__init__(name, email)</div><div class="line">        self.phone = phone</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/Python/">Python</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/Python/">Python</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2018-12-09T01:12:33.000Z"><a href="/2018/12/09/tools/环境搭建/">2018-12-09</a></time>
       
       
@@ -494,116 +620,6 @@
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2018-06-01T05:41:34.000Z"><a href="/2018/06/01/algorithm/LeetCode_35/">2018-06-01</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2018/06/01/algorithm/LeetCode_35/">LeetCode_35 Search Insert Position</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>题目描述：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</div><div class="line"></div><div class="line">You may assume no duplicates in the array.</div></pre></td></tr></table></figure></p>
-<p>输入样例：<br><strong>Example 1:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [1,3,5,6], 5</div><div class="line">Output: 2</div></pre></td></tr></table></figure></p>
-<p><strong>Example 2:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [1,3,5,6], 2</div><div class="line">Output: 1</div></pre></td></tr></table></figure></p>
-<p><strong>Example 3:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [1,3,5,6], 7</div><div class="line">Output: 4</div></pre></td></tr></table></figure></p>
-<p><strong>Example 4:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [1,3,5,6], 0</div><div class="line">Output: 0</div></pre></td></tr></table></figure></p>
-<h2 id="1-解法一：暴力遍历"><a href="#1-解法一：暴力遍历" class="headerlink" title="1.解法一：暴力遍历"></a>1.解法一：暴力遍历</h2><p>由于给的数组是有序的，所以可以从左往右顺序遍历，把target与数组元素对比，直到找到比target大的元素，该元素的下标即所求。<br>Time: O(n)<br>Space: O(n)<br><strong>code</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">def searchInsert(self, nums, target):</div><div class="line">        return len([num for num in nums if target &gt; num])</div></pre></td></tr></table></figure></p>
-<h2 id="2-解法二：二分查找"><a href="#2-解法二：二分查找" class="headerlink" title="2. 解法二：二分查找"></a>2. 解法二：二分查找</h2><p>依然还是利用数组是有序，这个非常重要的特点。用二分查找可以降低算法时间复杂度。<br>Time: O(lgN)<br>Space: O(1)<br>需要注意的几个点：</p>
-<ol>
-<li>mid = (low + high) / 2，这样求中值的方法很容易造成溢出， 当（low + high）大于Integer.MAX_VALUE的时候会溢出，所以推荐使用位运算：mid = (low + high) &gt;&gt; 1，或mid = low + (high - low) / 2</li>
-<li>low = mid + 1, 这里的加1绝对不能漏掉，都则程序会陷入死循环。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">def searchInsert(self, nums, target):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        :type nums: List[int]</div><div class="line">        :type target: int</div><div class="line">        :rtype: int</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        if target &lt;= nums[0]:</div><div class="line">            return 0</div><div class="line">        elif target &gt; nums[-1]:</div><div class="line">            return len(nums)</div><div class="line">        else:</div><div class="line">            return self.findUpBorder(nums, target)</div><div class="line">        </div><div class="line">    def findUpBorder(self, nums, target):</div><div class="line">        low, high = 0, len(nums) - 1</div><div class="line">        #mid = low + (high - low) / 2</div><div class="line">        mid = (low + high) &gt;&gt; 1</div><div class="line">        </div><div class="line">        while(high &gt; low):</div><div class="line">            if target &lt; nums[mid]:</div><div class="line">                high = mid</div><div class="line">            else:</div><div class="line">                low = mid + 1</div><div class="line">            mid = (low + high) &gt;&gt; 1</div><div class="line">        if target == nums[mid - 1]:</div><div class="line">            return mid - 1</div><div class="line">        </div><div class="line">        return mid</div></pre></td></tr></table></figure>
-</li>
-</ol>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-  
-  <div class="categories">
-    <a href="/categories/algorithm/">algorithm</a>
-  </div>
-
-        
-  
-  <div class="tags">
-    <a href="/tags/array/">array</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2018-05-02T08:05:04.000Z"><a href="/2018/05/02/skill_tree/Eigen API 使用/">2018-05-02</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2018/05/02/skill_tree/Eigen API 使用/">Eigen API 使用</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="1-矩阵定义和初始化"><a href="#1-矩阵定义和初始化" class="headerlink" title="1. 矩阵定义和初始化"></a>1. 矩阵定义和初始化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MatrixXd D; //声明一个double型的矩阵</div><div class="line">MatrixXd D(N, N);   //声明一个N * N的double矩阵</div><div class="line">MatrixXd D = MatrixXD::zero(N, N);  //声明并定义一个N * N的double型的矩阵</div></pre></td></tr></table></figure>
-<p>最推荐的初始化方法是第三种方法</p>
-<h2 id="Eigen-matrix-和-Opencv-mat的相互转换"><a href="#Eigen-matrix-和-Opencv-mat的相互转换" class="headerlink" title="Eigen matrix 和 Opencv mat的相互转换"></a>Eigen matrix 和 Opencv mat的相互转换</h2><p>在Opencv中core/include/opencv2/core/eigen.hpp文件中已经实现了Eigen matrix和Oencv mat之间的相互转换。下面随便列举两个API。详细的代码内容可以从<img src="https://github.com/opencv/opencv/blob/master/modules/core/include/opencv2/core/eigen.hpp" alt="eigen"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">void eigen2cv( const Eigen::Matrix&lt;_Tp, _rows, _cols, _options, _maxRows, _maxCols&gt;&amp; src, Mat&amp; dst )</div><div class="line">&#123;</div><div class="line">    if( !(src.Flags &amp; Eigen::RowMajorBit) )</div><div class="line">    &#123;</div><div class="line">        Mat _src(src.cols(), src.rows(), DataType&lt;_Tp&gt;::type,</div><div class="line">              (void*)src.data(), src.stride()*sizeof(_Tp));</div><div class="line">        transpose(_src, dst);</div><div class="line">    &#125;</div><div class="line">    else</div><div class="line">    &#123;</div><div class="line">        Mat _src(src.rows(), src.cols(), DataType&lt;_Tp&gt;::type,</div><div class="line">                 (void*)src.data(), src.stride()*sizeof(_Tp));</div><div class="line">        _src.copyTo(dst);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void cv2eigen( const Matx&lt;_Tp, _rows, 1&gt;&amp; src,</div><div class="line">               Eigen::Matrix&lt;_Tp, Eigen::Dynamic, 1&gt;&amp; dst )</div><div class="line">&#123;</div><div class="line">    dst.resize(_rows);</div><div class="line"></div><div class="line">    if( !(dst.Flags &amp; Eigen::RowMajorBit) )</div><div class="line">    &#123;</div><div class="line">        const Mat _dst(1, _rows, DataType&lt;_Tp&gt;::type,</div><div class="line">                 dst.data(), (size_t)(dst.stride()*sizeof(_Tp)));</div><div class="line">        transpose(src, _dst);</div><div class="line">    &#125;</div><div class="line">    else</div><div class="line">    &#123;</div><div class="line">        const Mat _dst(_rows, 1, DataType&lt;_Tp&gt;::type,</div><div class="line">                 dst.data(), (size_t)(dst.stride()*sizeof(_Tp)));</div><div class="line">        src.copyTo(_dst);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>这里列举一个使用例子。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Mat im = imread(path);</div><div class="line">cv2eigen(res, b);</div></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-  
-  <div class="categories">
-    <a href="/categories/skilltree/">skilltree</a>
-  </div>
-
-        
-  
-  <div class="tags">
-    <a href="/tags/Eigen/">Eigen</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
 
 <nav id="pagination">
   
@@ -628,7 +644,7 @@
   
     <li><a href="/categories/Java/">Java</a><small>7</small></li>
   
-    <li><a href="/categories/Python/">Python</a><small>3</small></li>
+    <li><a href="/categories/Python/">Python</a><small>4</small></li>
   
     <li><a href="/categories/algorithm/">algorithm</a><small>18</small></li>
   
@@ -636,9 +652,9 @@
   
     <li><a href="/categories/hobby/">hobby</a><small>4</small></li>
   
-    <li><a href="/categories/mylife/">mylife</a><small>7</small></li>
+    <li><a href="/categories/mylife/">mylife</a><small>2</small></li>
   
-    <li><a href="/categories/py/">py</a><small>3</small></li>
+    <li><a href="/categories/py/">py</a><small>4</small></li>
   
     <li><a href="/categories/skilltree/">skilltree</a><small>4</small></li>
   
@@ -656,6 +672,14 @@
   <ul class="entry">
     
       <li>
+        <a href="/2019/05/03/Python/Python绘图库封装与学习/">Python绘图库的封装与学习</a>
+      </li>
+    
+      <li>
+        <a href="/2019/02/03/Python/python面向对象/python对象/">python 对象</a>
+      </li>
+    
+      <li>
         <a href="/2018/12/09/tools/环境搭建/">开发环境搭建</a>
       </li>
     
@@ -665,14 +689,6 @@
     
       <li>
         <a href="/2018/06/07/algorithm/LeetCode_189/">LeetCode_35 Rotate Array</a>
-      </li>
-    
-      <li>
-        <a href="/2018/06/05/algorithm/LeetCode_283/">LeetCode_35 Move Zeroes</a>
-      </li>
-    
-      <li>
-        <a href="/2018/06/04/algorithm/LeetCode_26/">LeetCode_35 Remove Duplicates from Sorted Array</a>
       </li>
     
   </ul>
@@ -694,7 +710,7 @@
   
     <li><a href="/tags/Java/">Java</a><small>5</small></li>
   
-    <li><a href="/tags/Python/">Python</a><small>4</small></li>
+    <li><a href="/tags/Python/">Python</a><small>6</small></li>
   
     <li><a href="/tags/String/">String</a><small>1</small></li>
   
@@ -730,7 +746,7 @@
   
     <li><a href="/tags/数据库/">数据库</a><small>1</small></li>
   
-    <li><a href="/tags/日记/">日记</a><small>4</small></li>
+    <li><a href="/tags/日记/">日记</a><small>1</small></li>
   
     <li><a href="/tags/杨绛/">杨绛</a><small>1</small></li>
   
@@ -740,11 +756,9 @@
   
     <li><a href="/tags/生成器/">生成器</a><small>1</small></li>
   
-    <li><a href="/tags/生活/">生活</a><small>2</small></li>
+    <li><a href="/tags/生活/">生活</a><small>1</small></li>
   
     <li><a href="/tags/网课/">网课</a><small>1</small></li>
-  
-    <li><a href="/tags/美食/">美食</a><small>1</small></li>
   
     <li><a href="/tags/翻墙/">翻墙</a><small>1</small></li>
   
@@ -762,7 +776,7 @@
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/DP/" style="font-size: 16px;">DP</a> <a href="/tags/Eigen/" style="font-size: 10px;">Eigen</a> <a href="/tags/JVM/" style="font-size: 14px;">JVM</a> <a href="/tags/Java/" style="font-size: 18px;">Java</a> <a href="/tags/Python/" style="font-size: 16px;">Python</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/array/" style="font-size: 20px;">array</a> <a href="/tags/coding/" style="font-size: 10px;">coding</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/string/" style="font-size: 12px;">string</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/三毛/" style="font-size: 10px;">三毛</a> <a href="/tags/切片/" style="font-size: 10px;">切片</a> <a href="/tags/列表生成式/" style="font-size: 10px;">列表生成式</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/字符串/" style="font-size: 12px;">字符串</a> <a href="/tags/开发环境/" style="font-size: 10px;">开发环境</a> <a href="/tags/张若水/" style="font-size: 10px;">张若水</a> <a href="/tags/徐志摩/" style="font-size: 10px;">徐志摩</a> <a href="/tags/所线程/" style="font-size: 10px;">所线程</a> <a href="/tags/排序/" style="font-size: 10px;">排序</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/日记/" style="font-size: 16px;">日记</a> <a href="/tags/杨绛/" style="font-size: 10px;">杨绛</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/深拷贝/" style="font-size: 10px;">深拷贝</a> <a href="/tags/生成器/" style="font-size: 10px;">生成器</a> <a href="/tags/生活/" style="font-size: 12px;">生活</a> <a href="/tags/网课/" style="font-size: 10px;">网课</a> <a href="/tags/美食/" style="font-size: 10px;">美食</a> <a href="/tags/翻墙/" style="font-size: 10px;">翻墙</a> <a href="/tags/迭代/" style="font-size: 10px;">迭代</a> <a href="/tags/链接/" style="font-size: 10px;">链接</a> <a href="/tags/链表/" style="font-size: 10px;">链表</a>
+    <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/Eigen/" style="font-size: 10px;">Eigen</a> <a href="/tags/JVM/" style="font-size: 13.33px;">JVM</a> <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/Python/" style="font-size: 18.33px;">Python</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/array/" style="font-size: 20px;">array</a> <a href="/tags/coding/" style="font-size: 10px;">coding</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/string/" style="font-size: 11.67px;">string</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/三毛/" style="font-size: 10px;">三毛</a> <a href="/tags/切片/" style="font-size: 10px;">切片</a> <a href="/tags/列表生成式/" style="font-size: 10px;">列表生成式</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/字符串/" style="font-size: 11.67px;">字符串</a> <a href="/tags/开发环境/" style="font-size: 10px;">开发环境</a> <a href="/tags/张若水/" style="font-size: 10px;">张若水</a> <a href="/tags/徐志摩/" style="font-size: 10px;">徐志摩</a> <a href="/tags/所线程/" style="font-size: 10px;">所线程</a> <a href="/tags/排序/" style="font-size: 10px;">排序</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/日记/" style="font-size: 10px;">日记</a> <a href="/tags/杨绛/" style="font-size: 10px;">杨绛</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/深拷贝/" style="font-size: 10px;">深拷贝</a> <a href="/tags/生成器/" style="font-size: 10px;">生成器</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/网课/" style="font-size: 10px;">网课</a> <a href="/tags/翻墙/" style="font-size: 10px;">翻墙</a> <a href="/tags/迭代/" style="font-size: 10px;">迭代</a> <a href="/tags/链接/" style="font-size: 10px;">链接</a> <a href="/tags/链表/" style="font-size: 10px;">链表</a>
   </div>
 </div>
 
